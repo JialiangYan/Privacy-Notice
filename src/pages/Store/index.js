@@ -4,19 +4,12 @@ import styles from './index.module.css'
 
 import Slide from '../../components/Slide'
 
-import icon from '../../assets/icon.png'
+import up from '../../assets/up.png'
 
 export default function Store() {
   return (
     <div className={styles.appContainer}>
-      <div className={styles.header}>
-        <img src={icon} alt="App Icon" className={styles.appIcon} />
-        <div className={styles.appInfo}>
-          <h1 className={styles.appTitle}>Quick News</h1>
-          <p className={styles.appCategory}>Breaking, Local & World News</p>
-        </div>
-      </div>
-      {/* banner */}
+      <img src={up} alt="" className={styles.up} />
       <Slide />
       <div className="store-header">Rating&Reviews</div>
       <span className="content"></span>
