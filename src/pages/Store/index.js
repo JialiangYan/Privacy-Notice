@@ -35,18 +35,22 @@ export default function Store() {
 
   const images = [s1, s2, s3]
   const [more, openMore] = useState(false)
+  const [get, setGet] = useState(false)
   const description = more
     ? "QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
     : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
-  const btn = 'Get'
+  const btn = get ? 'Open' : 'Get'
+  const getApp = () => {}
 
   return (
     <div className={styles.main} ref={storeToapp}>
       {/* Store Page */}
       <div className={`${styles.store} store`}>
-        <div>
-          <img src={up} className={styles.up} />
-          <button>{btn}</button>
+        <div className={styles.up}>
+          <img src={up} className={styles.upImg} />
+          <button className={styles.btn} onClick={getApp}>
+            {btn}
+          </button>
         </div>
 
         <Slide images={images} />
