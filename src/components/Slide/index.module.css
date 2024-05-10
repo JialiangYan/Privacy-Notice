@@ -1,0 +1,21 @@
+.container {
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+.scroll {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
+}
+
+.row {
+  display: inline-block;
+}
+
+.img {
+  margin-left: 10px;
+  width: 58.26vw;
+  border-radius: 24px;
+}
