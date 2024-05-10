@@ -1,7 +1,25 @@
-.up {
-  width: 100%;
+.main {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
 }
 
-.appContainer {
-  padding: 20px;
+.app,
+.store {
+  /* padding-top: 2vh; */
+  border: 1.2px solid #ccc;
+}
+
+.store {
+  flex: 1;
+  min-width: 100%;
+}
+
+.app {
+  flex: 1;
+  min-width: 100%;
+}
+
+.up {
+  width: 100%;
 }
