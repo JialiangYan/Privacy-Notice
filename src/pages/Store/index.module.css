@@ -7,7 +7,12 @@
 .app,
 .store {
   padding-top: 2vh;
+  position: relative;
   /* border: 1.2px solid #ccc; */
+}
+
+.fullStore {
+  height: 100vh;
 }
 
 .store {
@@ -21,20 +26,18 @@
 }
 
 .up {
-  position: relative;
   margin-bottom: 26px;
+  position: relative;
 }
 
-.upImg {
-  position: relative;
+.img {
   width: 100%;
 }
 
 .btn {
   position: absolute;
-  top: 49%;
+  top: 47%;
   left: 39%;
-  z-index: 1;
 
   background-color: #007aff;
   border: none;
@@ -62,8 +65,4 @@
       display: none;
     }
   }
-}
-
-.bottom {
-  width: 100%;
 }
