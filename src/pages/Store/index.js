@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { motion } from 'framer-motion'
 
 import styles from './index.module.css'
 
@@ -16,25 +18,26 @@ import bottom from '../../assets/store/bottom.png'
 import buyp from '../../assets/store/buy-p.png'
 
 export default function Store() {
-  const tl = gsap.timeline()
-  const storeToapp = useRef()
+  // const tl = gsap.timeline()
+  // const storeToapp = useRef()
 
-  useGSAP(
-    () => {
-      gsap.to('.store', { x: -160, scale: 0.5, duration: 3 })
+  // useGSAP(
+  //   () => {
+  //     gsap.to('.store', { x: -160, scale: 0.5, duration: 3 })
 
-      gsap.to('.app', {
-        x: -300,
-        scale: 0.5,
-        duration: 3,
-        onUpdate: function () {
-          gsap.set('.app', { flex: '0 0 100%' })
-        },
-      })
-    },
-    { scope: storeToapp }
-  )
+  //     gsap.to('.app', {
+  //       x: -300,
+  //       scale: 0.5,
+  //       duration: 3,
+  //       onUpdate: function () {
+  //         gsap.set('.app', { flex: '0 0 100%' })
+  //       },
+  //     })
+  //   },
+  //   { scope: storeToapp }
+  // )
 
+  const navigate = useNavigate()
   const images = [s1, s2, s3]
   const [more, openMore] = useState(false) // more description
   const [get, setGet] = useState(false) // the content of button
@@ -48,18 +51,29 @@ export default function Store() {
     setGet(!get)
     setOpen(!open)
   }
+  const openApp = () => {
+    navigate('/intro')
+  }
   const confirm = () => {
     setOpen(!open)
   }
 
   return (
-    <div className={styles.main} ref={storeToapp}>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.3,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+    >
       {/* Store Page */}
-      <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
+      <div className={`${styles.store} ${open ? styles.fullStore : ''}`}>
         {open ? <Purchase image={buyp} confirm={confirm} /> : <div></div>}
         <div className={styles.up}>
           <img src={up} className={styles.img} />
-          <button className={styles.btn} onClick={getApp}>
+          <button className={styles.btn} onClick={get ? openApp : getApp}>
             {btn}
           </button>
         </div>
@@ -79,10 +93,6 @@ export default function Store() {
         </div>
         <img src={bottom} className={styles.img} />
       </div>
-      {/* App Page */}
-      <div className={`${styles.app} app`}>
-        <img src={up} alt="" className={styles.up} />
-      </div>
-    </div>
+    </motion.div>
   )
 }
