@@ -1,7 +1,14 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  /* overflow-x: hidden; */
+}
+
+.app,
 .store {
-  padding-top: 2vh;
+  width: 100vw;
   position: relative;
-  /* border: 1.2px solid #ccc; */
+  border: 1.2px solid #ccc;
 }
 
 .fullStore {
@@ -9,6 +16,7 @@
 }
 
 .app {
+  font-family: 'Sora', sans-serif;
   flex: 1;
   min-width: 100%;
 }
@@ -53,4 +61,38 @@
       display: none;
     }
   }
+}
+
+/* Intro */
+.introImg {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.intro2,
+.intro3 {
+  display: none;
+}
+
+.intro1Next,
+.intro2Next,
+.intro3Next {
+  position: absolute;
+  opacity: 0;
+  top: 93.5vh;
+  right: 4.5vw;
+  width: 98px;
+  height: 32px;
+}
+
+.intro2Back,
+.intro3Back {
+  position: absolute;
+  opacity: 0;
+  top: 93.5vh;
+  left: 4.5vw;
+  width: 98px;
+  height: 32px;
 }

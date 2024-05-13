@@ -4,10 +4,10 @@
 }
 
 .scroll {
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden;
+  overflow-y: hidden;
   white-space: nowrap;
-  -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
 .row {

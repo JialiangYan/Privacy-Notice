@@ -3,9 +3,9 @@ import styles from './index.module.css'
 
 function Slide({ images }) {
   return (
-    <div class={styles.container}>
-      <div class={styles.scroll}>
-        <div class={styles.row}>
+    <div className={styles.container}>
+      <div className={styles.scroll}>
+        <div className={styles.row}>
           {images.map((image, index) => (
             <img
               key={index}

@@ -2,7 +2,6 @@ import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { motion } from 'framer-motion'
 
 import styles from './index.module.css'
 
@@ -13,13 +12,17 @@ import up from '../../assets/store/up.png'
 import s1 from '../../assets/store/ss1.png'
 import s2 from '../../assets/store/ss2.png'
 import s3 from '../../assets/store/ss3.png'
+import i1 from '../../assets/app/2.1.png'
+import i2 from '../../assets/app/2.2.png'
+import i3 from '../../assets/app/2.3.png'
 import device from '../../assets/store/device.png'
 import bottom from '../../assets/store/bottom.png'
 import buyp from '../../assets/store/buy-p.png'
 
 export default function Store() {
-  // const tl = gsap.timeline()
-  // const storeToapp = useRef()
+  // animation for page transition
+  const tl = gsap.timeline()
+  const storeToapp = useRef()
 
   // useGSAP(
   //   () => {
@@ -37,6 +40,49 @@ export default function Store() {
   //   { scope: storeToapp }
   // )
 
+  // animation for sliding intro
+  const app = useRef()
+  const { contextSafe } = useGSAP({ scope: app })
+  // useGSAP(
+  //   () => {
+  //     gsap.to('.store', { x: -160, scale: 0.5, duration: 3 })
+
+  //     gsap.to('.app', {
+  //       x: -300,
+  //       scale: 0.5,
+  //       duration: 3,
+  //       onUpdate: function () {
+  //         gsap.set('.app', { flex: '0 0 100%' })
+  //       },
+  //     })
+  //   },
+  //   { scope: storeToapp }
+  // )
+
+  const handleNext1 = contextSafe(() => {
+    gsap.to('.intro1', { display: 'none' })
+    gsap.to('.intro2', { display: 'block' })
+  })
+
+  const handleBack2 = contextSafe(() => {
+    gsap.to('.intro2', { display: 'none' })
+    gsap.to('.intro1', { display: 'block' })
+  })
+
+  const handleNext2 = contextSafe(() => {
+    gsap.to('.intro2', { display: 'none' })
+    gsap.to('.intro3', { display: 'block' })
+  })
+
+  const handleBack3 = contextSafe(() => {
+    gsap.to('.intro3', { display: 'none' })
+    gsap.to('.intro2', { display: 'block' })
+  })
+
+  const handleNext3 = contextSafe(() => {
+    navigate('/home')
+  })
+
   const navigate = useNavigate()
   const images = [s1, s2, s3]
   const [more, openMore] = useState(false) // more description
@@ -52,35 +98,29 @@ export default function Store() {
     setOpen(!open)
   }
   const openApp = () => {
-    navigate('/intro')
+    console.log('Animation!')
   }
   const confirm = () => {
     setOpen(!open)
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 0.3,
-        delay: 0.5,
-        ease: [0, 0.71, 0.2, 1.01],
-      }}
-    >
+    <div className={styles.main} ref={storeToapp}>
       {/* Store Page */}
-      <div className={`${styles.store} ${open ? styles.fullStore : ''}`}>
+      <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
+        {/* Purchase modal */}
         {open ? <Purchase image={buyp} confirm={confirm} /> : <div></div>}
+        {/* Upper part */}
         <div className={styles.up}>
           <img src={up} className={styles.img} />
           <button className={styles.btn} onClick={get ? openApp : getApp}>
             {btn}
           </button>
         </div>
-
+        {/* Slides */}
         <Slide images={images} />
         <div className={styles.down}>
-          <img src={device} style={{ width: '100%' }} />
+          <img src={device} className={styles.img} />
           <div className={styles.description}>
             {description}
             <span
@@ -93,6 +133,23 @@ export default function Store() {
         </div>
         <img src={bottom} className={styles.img} />
       </div>
-    </motion.div>
+      {/* App Intro Page */}
+      <div className={`${styles.app} app`} ref={app}>
+        <div className={`${styles.intro1} intro1`}>
+          <img src={i1} alt="" className={`${styles.introImg}`} />
+          <button className={styles.intro1Next} onClick={handleNext1}></button>
+        </div>
+        <div className={`${styles.intro2} intro2`}>
+          <img src={i2} alt="" className={`${styles.introImg}`} />
+          <button className={styles.intro2Next} onClick={handleNext2}></button>
+          <button className={styles.intro2Back} onClick={handleBack2}></button>
+        </div>
+        <div className={`${styles.intro3} intro3`}>
+          <img src={i3} alt="" className={`${styles.introImg}`} />
+          <button className={styles.intro3Next} onClick={handleNext3}></button>
+          <button className={styles.intro3Back} onClick={handleBack3}></button>
+        </div>
+      </div>
+    </div>
   )
 }
