@@ -13,14 +13,14 @@ export default function Home() {
   const [ack, setAck] = useState(false)
 
   useEffect(() => {
-    const hasAck = localStorage.getItem('hasAck')
+    const hasAck = localStorage.getItem('hasAck1')
     if (hasAck) {
       setAck(true)
     }
   }, [])
 
   const handleGet = () => {
-    localStorage.setItem('hasAck', 'true')
+    localStorage.setItem('hasAck1', 'true')
     setAck(!ack)
   }
   const handleBlockClick = (id) => {
