@@ -16,3 +16,12 @@ img {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+#forbid {
+  text-align: center;
+}
+
+#forbid-info {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
