@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Example News Article 1",
+    "image": 0,
+    "source": "Example News Source",
+    "date": "2024-05-12",
+    "time": "1h ago",
+    "location": "Example City",
+    "author": "John Doe",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis dolor eget risus fermentum convallis. Phasellus aliquet velit ac lacus eleifend, eu sagittis lorem tempor. Nulla facilisi. Sed at fermentum est. Sed bibendum lorem et malesuada hendrerit. Nulla facilisi. Aliquam erat volutpat. Nam non purus at mauris sollicitudin efficitur."
+  },
+  {
+    "title": "Example News Article 2",
+    "image": 1,
+    "source": "Another Example News Source",
+    "date": "2024-05-11",
+    "time": "1h ago",
+    "location": "Another Example City",
+    "author": "Jane Smith",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nisl commodo, dapibus magna et, consectetur sapien. Duis volutpat massa non mauris volutpat, eget aliquam nunc venenatis. Fusce ut feugiat libero. Integer suscipit, ligula eget sollicitudin suscipit, ipsum sem ultricies elit, nec dignissim libero neque vel velit. Proin ac erat quis dolor facilisis posuere non sit amet elit."
+  },
+  {
+    "title": "Example News Article 3",
+    "image": 2,
+    "source": "Another Example News Source",
+    "date": "2024-05-11",
+    "time": "9h ago",
+    "location": "Another Example City",
+    "author": "Jane Smith",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nisl commodo, dapibus magna et, consectetur sapien. Duis volutpat massa non mauris volutpat, eget aliquam nunc venenatis. Fusce ut feugiat libero. Integer suscipit, ligula eget sollicitudin suscipit, ipsum sem ultricies elit, nec dignissim libero neque vel velit. Proin ac erat quis dolor facilisis posuere non sit amet elit."
+  }
+]

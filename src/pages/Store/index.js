@@ -20,6 +20,27 @@ import bottom from '../../assets/store/bottom.png'
 import buyp from '../../assets/store/buy-p.png'
 
 export default function Store() {
+  const navigate = useNavigate()
+  const images = [s1, s2, s3]
+  const [more, openMore] = useState(false) // more description
+  const [get, setGet] = useState(false) // the content of button
+  const [open, setOpen] = useState(false) // open the purchase
+
+  const description = more
+    ? "QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
+    : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
+  const btn = get ? 'Open' : 'Get'
+  const getApp = () => {
+    setGet(!get)
+    setOpen(!open)
+  }
+  const openApp = () => {
+    console.log('Animation!')
+  }
+  const confirm = () => {
+    setOpen(!open)
+  }
+
   // animation for page transition
   const tl = gsap.timeline()
   const storeToapp = useRef()
@@ -82,27 +103,6 @@ export default function Store() {
   const handleNext3 = contextSafe(() => {
     navigate('/home')
   })
-
-  const navigate = useNavigate()
-  const images = [s1, s2, s3]
-  const [more, openMore] = useState(false) // more description
-  const [get, setGet] = useState(false) // the content of button
-  const [open, setOpen] = useState(false) // open the purchase
-
-  const description = more
-    ? "QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
-    : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
-  const btn = get ? 'Open' : 'Get'
-  const getApp = () => {
-    setGet(!get)
-    setOpen(!open)
-  }
-  const openApp = () => {
-    console.log('Animation!')
-  }
-  const confirm = () => {
-    setOpen(!open)
-  }
 
   return (
     <div className={styles.main} ref={storeToapp}>

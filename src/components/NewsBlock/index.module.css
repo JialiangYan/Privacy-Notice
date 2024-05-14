@@ -1,0 +1,29 @@
+.block {
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 40px;
+  transition: transform 0.3s ease;
+}
+
+.block:hover {
+  transform: scale(0.95);
+}
+
+.img {
+  width: 100%;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 6px 12px 3px 12px;
+}
+
+.info {
+  color: #949494;
+  gap: 24px;
+  padding: 0 12px 12px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
