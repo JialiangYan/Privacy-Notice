@@ -1,32 +1,26 @@
 [
   {
-    "title": "Example News Article 1",
+    "title": "The End of a Melody: Taylor Swift and Travis Kelce Call It Quits",
     "image": 0,
-    "source": "Example News Source",
-    "date": "2024-05-12",
+    "source": "CNN Canada",
+    "date": "May 13, 2024",
     "time": "1h ago",
-    "location": "Example City",
-    "author": "John Doe",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis dolor eget risus fermentum convallis. Phasellus aliquet velit ac lacus eleifend, eu sagittis lorem tempor. Nulla facilisi. Sed at fermentum est. Sed bibendum lorem et malesuada hendrerit. Nulla facilisi. Aliquam erat volutpat. Nam non purus at mauris sollicitudin efficitur."
+    "author": "Alexander Johnson"
   },
   {
-    "title": "Example News Article 2",
+    "title": "Cardi B's Bold Revelation: Embracing Her Truth",
     "image": 1,
-    "source": "Another Example News Source",
-    "date": "2024-05-11",
+    "source": "CNN Canada",
+    "date": "May 12, 2024",
     "time": "1h ago",
-    "location": "Another Example City",
-    "author": "Jane Smith",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nisl commodo, dapibus magna et, consectetur sapien. Duis volutpat massa non mauris volutpat, eget aliquam nunc venenatis. Fusce ut feugiat libero. Integer suscipit, ligula eget sollicitudin suscipit, ipsum sem ultricies elit, nec dignissim libero neque vel velit. Proin ac erat quis dolor facilisis posuere non sit amet elit."
+    "author": "Emily Rodriguez"
   },
   {
-    "title": "Example News Article 3",
+    "title": "Jonathan Bailey joined 'Heartstopper' Season 3 after asking producer to cast him",
     "image": 2,
-    "source": "Another Example News Source",
-    "date": "2024-05-11",
+    "source": "CNN Canada",
+    "date": "May 12, 2024",
     "time": "9h ago",
-    "location": "Another Example City",
-    "author": "Jane Smith",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nisl commodo, dapibus magna et, consectetur sapien. Duis volutpat massa non mauris volutpat, eget aliquam nunc venenatis. Fusce ut feugiat libero. Integer suscipit, ligula eget sollicitudin suscipit, ipsum sem ultricies elit, nec dignissim libero neque vel velit. Proin ac erat quis dolor facilisis posuere non sit amet elit."
+    "author": "Benjamin Lee"
   }
 ]

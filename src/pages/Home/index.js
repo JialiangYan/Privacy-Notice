@@ -11,7 +11,16 @@ import styles from './index.module.css'
 export default function Home() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
+
+  useEffect(() => {
+    const hasAck = localStorage.getItem('hasAck')
+    if (hasAck) {
+      setAck(true)
+    }
+  }, [])
+
   const handleGet = () => {
+    localStorage.setItem('hasAck', 'true')
     setAck(!ack)
   }
   const handleBlockClick = (id) => {
