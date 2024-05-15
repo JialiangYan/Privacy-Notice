@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import transition from '../../animation/transition'
 import Modal from '../../components/Modal'
 import NewsBlock from '../../components/NewsBlock'
 
@@ -8,7 +9,7 @@ import pn1 from '../../assets/notice/pn1.png'
 
 import styles from './index.module.css'
 
-export default function Home() {
+function Home() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
 
@@ -69,3 +70,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default transition(Home)

@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import transition from '../../animation/transition'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
@@ -10,7 +11,7 @@ import Purchase from '../../components/Purchase'
 import DownloadAni from '../../components/DownloadAni'
 import LoadingAni from '../../components/LoadingAni'
 
-import loading from '../../assets/store/loading.svg'
+// import assets
 import up from '../../assets/store/up.png'
 import s1 from '../../assets/store/ss1.png'
 import s2 from '../../assets/store/ss2.png'
@@ -22,7 +23,7 @@ import device from '../../assets/store/device.png'
 import bottom from '../../assets/store/bottom.png'
 import buyp from '../../assets/store/buy-p.png'
 
-export default function Store() {
+function Store() {
   const navigate = useNavigate()
   const images = [s1, s2, s3]
   const [more, openMore] = useState(false) // more description
@@ -52,7 +53,7 @@ export default function Store() {
       .to(
         '.loading',
         {
-          duration: 3,
+          duration: 1,
           opacity: 1,
           onComplete: () => {
             setOpen(!open)
@@ -64,24 +65,43 @@ export default function Store() {
   const confirm = () => {
     setOpen(!open)
     tlBtn
-      .to('.loading', {
-        duration: 3,
-        opacity: 0,
-        onComplete: () => {
-          setOpen(!open)
+      .to(
+        '.loading',
+        {
+          duration: 3,
+          opacity: 0,
+          onComplete: () => {
+            setOpen(!open)
+          },
         },
-      })
-      .to('.downloading', {
-        duration: 3,
+        '+=0'
+      )
+      .to(
+        '.downloading',
+        {
+          duration: 0.3,
+          opacity: 1,
+        },
+        '+=0'
+      )
+      .to(
+        '.downloading',
+        {
+          duration: 3,
+          opacity: 0,
+          onComplete: () => {
+            setGet(!get)
+          },
+        },
+        '+=0'
+      )
+      .to('.btn', {
+        duration: 1,
         opacity: 1,
-        onComplete: () => {
-          setGet(!get)
-        },
+        width: '71px',
+        borderRadius: '100px',
+        backgroundColor: '#007aff',
       })
-    // .to('.btn', {
-    //   duration: 0.1,
-    //   opacity: 1,
-    // })
   }
 
   // animation for page transition
@@ -91,22 +111,24 @@ export default function Store() {
         borderRadius: '4rem',
         duration: 0.1,
       })
-      .to(['.store', '.app'], {
-        x: '-46vw',
-        scale: 0.95,
-        duration: 1,
-      })
-    // .to(['.store', '.app'], {
-    //   x: '-100vw',
-    //   scale: 1.01,
-    //   duration: 1,
-    // })
-
-    // gsap.to('.app', {
-    //   x: '-50vw',
-    //   scale: 0.9,
-    //   duration: 3,
-    // })
+      .to(
+        ['.store', '.app'],
+        {
+          x: '-46vw',
+          scale: 0.95,
+          duration: 1,
+        },
+        '+=0'
+      )
+      .to(
+        ['.store', '.app'],
+        {
+          x: '-100vw',
+          scale: 1.01,
+          duration: 1,
+        },
+        '+=0'
+      )
   })
 
   // animation for sliding intro
@@ -140,18 +162,6 @@ export default function Store() {
     <div className={styles.main} ref={storeToapp}>
       {/* Store Page */}
       <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
-        {/* Purchase modal */}
-        {open ? (
-          <Purchase
-            image={buyp}
-            confirm={confirm}
-            close={() => {
-              setOpen(!open)
-            }}
-          />
-        ) : (
-          <div></div>
-        )}
         {/* Upper part */}
         <div className={styles.up}>
           <img src={up} className={styles.img} style={{ marginTop: '5px' }} />
@@ -169,20 +179,33 @@ export default function Store() {
           </div>
         </div>
         <Slide images={images} />
-        {/* Lower part */}
-        <div className={styles.down}>
-          <img src={device} className={styles.img} />
-          <div className={styles.description}>
-            {description}
-            <span
-              className={more ? styles.nomore : styles.more}
-              onClick={() => openMore(!more)}
-            >
-              more
-            </span>
+        {/* Purchase modal */}
+        {open ? (
+          <Purchase
+            image={buyp}
+            confirm={confirm}
+            close={() => {
+              setOpen(!open)
+            }}
+          />
+        ) : (
+          // Lower part
+          <div>
+            <div className={styles.down}>
+              <img src={device} className={styles.img} />
+              <div className={styles.description}>
+                {description}
+                <span
+                  className={more ? styles.nomore : styles.more}
+                  onClick={() => openMore(!more)}
+                >
+                  more
+                </span>
+              </div>
+            </div>
+            <img src={bottom} className={styles.img} />
           </div>
-        </div>
-        <img src={bottom} className={styles.img} />
+        )}
       </div>
 
       {/* App Intro Page */}
@@ -205,3 +228,5 @@ export default function Store() {
     </div>
   )
 }
+
+export default transition(Store)

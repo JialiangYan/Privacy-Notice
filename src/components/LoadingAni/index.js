@@ -10,7 +10,7 @@ export default function DownloadAni() {
       rotation: 360,
       transformOrigin: 'center',
       repeat: -1,
-      duration: 2,
+      duration: 1.3,
       ease: 'linear',
     })
   }, [])

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import transition from '../../animation/transition'
 import Modal from '../../components/Modal'
 import styles from './index.module.css'
 import A1 from './A1'
@@ -13,7 +14,7 @@ import img3 from '../../assets/app/news1.png'
 import back from '../../assets/app/backBtn.png'
 import pn2 from '../../assets/notice/pn2.png'
 
-export default function Article() {
+function Article() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
 
@@ -62,3 +63,5 @@ export default function Article() {
     </>
   )
 }
+
+export default transition(Article)

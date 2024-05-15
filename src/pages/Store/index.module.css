@@ -9,6 +9,10 @@
   display: none;
 }
 
+.store {
+  padding-top: 15%;
+}
+
 .app,
 .store {
   width: 100vw;
@@ -43,7 +47,7 @@
   background-color: #007aff;
   border: none;
   width: 71px;
-  height: 29px;
+  height: 30px;
   border-radius: 100px;
 
   color: white;

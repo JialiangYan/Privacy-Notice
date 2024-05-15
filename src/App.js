@@ -2,7 +2,8 @@ import React from 'react'
 import Store from './pages/Store'
 import Home from './pages/Home'
 import Article from './pages/Article'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 
 export default function App() {
@@ -31,12 +32,14 @@ export default function App() {
   // }
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Store />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/article/:id" element={<Article />} />
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <AnimatePresence mode="wait">
+        <Routes>
+          <Route path="/" element={<Store />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/article/:id" element={<Article />} />
+        </Routes>
+      </AnimatePresence>
+    </BrowserRouter>
   )
 }
