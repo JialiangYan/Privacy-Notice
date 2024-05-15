@@ -7,6 +7,7 @@ import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
 import Tracker from '../../components/Tracker'
 
+import exit from '../../assets/notice/exitmodel.png'
 import data from '../../assets/app/data.json'
 import pn1 from '../../assets/notice/pn1.png'
 
@@ -52,7 +53,7 @@ function Home() {
       {tasknum == 3 ? (
         <>
           <Modal
-            content={'You have sccusssfully finished this study'}
+            image={exit}
             handleClick={() => {
               window.location.href = 'https://www.google.ca/'
             }}

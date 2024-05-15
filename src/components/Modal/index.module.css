@@ -9,33 +9,25 @@
 }
 
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 20%;
-  border-radius: 1rem;
-  background-color: #f4f4f4f9;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+  position: relative;
+  top: 40%;
+  left: 17%;
+  width: 100%;
   z-index: 999;
 }
 
-.content {
-  margin: 2rem 10px 2rem 10px;
-  text-align: center;
-  line-height: 1.5;
-  font-size: 1.4rem;
-  font-weight: 500;
+.btn {
+  position: absolute;
+  top: 73%;
+  left: 24%;
+  width: 90px;
+  height: 30px;
+  border-radius: 20px;
+  /* background-color: black; */
+  opacity: 0;
+  z-index: 1000;
 }
 
-.btn {
-  margin: 0 38.5% 1rem 38.5%;
-  border: 1px solid grey;
-  width: 80px;
-  height: 30px;
-  border-radius: 30px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  z-index: 1000;
+.img {
+  width: 70%;
 }

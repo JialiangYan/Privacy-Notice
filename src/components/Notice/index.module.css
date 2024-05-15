@@ -9,7 +9,7 @@
 }
 
 .modal {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -22,7 +22,9 @@
   left: 76vw;
   width: 45px;
   height: 20px;
-  background-color: black;
+  border-radius: 20px;
+  /* background-color: black; */
+  opacity: 0;
   z-index: 1000;
 }
 

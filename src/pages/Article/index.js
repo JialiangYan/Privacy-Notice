@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalState'
 import transition from '../../animation/transition'
-import Modal from '../../components/Notice'
+import Notice from '../../components/Notice'
 import styles from './index.module.css'
 import A1 from './A1'
 import A2 from './A2'
@@ -65,7 +65,7 @@ function Article() {
     <>
       {!ack ? (
         <>
-          <Modal image={pn2} handleGet={handleGet} />
+          <Notice image={pn2} handleGet={handleGet} />
         </>
       ) : (
         <></>
