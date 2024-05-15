@@ -16,9 +16,6 @@ import up from '../../assets/store/up.png'
 import s1 from '../../assets/store/ss1.png'
 import s2 from '../../assets/store/ss2.png'
 import s3 from '../../assets/store/ss3.png'
-import i1 from '../../assets/app/2.1.png'
-import i2 from '../../assets/app/2.2.png'
-import i3 from '../../assets/app/2.3.png'
 import device from '../../assets/store/device.png'
 import bottom from '../../assets/store/bottom.png'
 import buyp from '../../assets/store/buy-p.png'
@@ -129,34 +126,14 @@ function Store() {
         },
         '+=0'
       )
+
+    setTimeout(() => {
+      navigate('/intro1')
+    }, 3000)
   })
 
   // animation for sliding intro
   const app = useRef()
-
-  const handleNext1 = contextSafe(() => {
-    gsap.to('.intro1', { display: 'none' })
-    gsap.to('.intro2', { display: 'block' })
-  })
-
-  const handleBack2 = contextSafe(() => {
-    gsap.to('.intro2', { display: 'none' })
-    gsap.to('.intro1', { display: 'block' })
-  })
-
-  const handleNext2 = contextSafe(() => {
-    gsap.to('.intro2', { display: 'none' })
-    gsap.to('.intro3', { display: 'block' })
-  })
-
-  const handleBack3 = contextSafe(() => {
-    gsap.to('.intro3', { display: 'none' })
-    gsap.to('.intro2', { display: 'block' })
-  })
-
-  const handleNext3 = contextSafe(() => {
-    navigate('/home')
-  })
 
   return (
     <div className={styles.main} ref={storeToapp}>
@@ -210,20 +187,7 @@ function Store() {
 
       {/* App Intro Page */}
       <div className={`${styles.app} app`} ref={app}>
-        <div className={`${styles.intro1} intro1`}>
-          <img src={i1} alt="" className={`${styles.introImg}`} />
-          <button className={styles.intro1Next} onClick={handleNext1}></button>
-        </div>
-        <div className={`${styles.intro2} intro2`}>
-          <img src={i2} alt="" className={`${styles.introImg}`} />
-          <button className={styles.intro2Next} onClick={handleNext2}></button>
-          <button className={styles.intro2Back} onClick={handleBack2}></button>
-        </div>
-        <div className={`${styles.intro3} intro3`}>
-          <img src={i3} alt="" className={`${styles.introImg}`} />
-          <button className={styles.intro3Next} onClick={handleNext3}></button>
-          <button className={styles.intro3Back} onClick={handleBack3}></button>
-        </div>
+        <div className={styles.name}>QuickNews</div>
       </div>
     </div>
   )

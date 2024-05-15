@@ -80,42 +80,18 @@
   }
 }
 
-/* Intro */
-.introImg {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
+/* Intro Page */
+.app {
+  font-family: 'Sora';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #b25eb6;
 }
 
-.intro1,
-.intro2,
-.intro3 {
-  overflow: hidden;
-}
-
-.intro2,
-.intro3 {
-  display: none;
-}
-
-.intro1Next,
-.intro2Next,
-.intro3Next {
-  position: absolute;
-  opacity: 0;
-  top: 93.5vh;
-  right: 4.5vw;
-  width: 98px;
-  height: 32px;
-}
-
-.intro2Back,
-.intro3Back {
-  position: absolute;
-  opacity: 0;
-  top: 93.5vh;
-  left: 4.5vw;
-  width: 98px;
-  height: 32px;
+.name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
 }

@@ -1,7 +1,12 @@
 import React from 'react'
+
 import Store from './pages/Store'
 import Home from './pages/Home'
+import Intro1 from './pages/Intro/intro1'
+import Intro2 from './pages/Intro/intro2'
+import Intro3 from './pages/Intro/intro3'
 import Article from './pages/Article'
+
 import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
@@ -36,6 +41,9 @@ export default function App() {
       <AnimatePresence mode="wait">
         <Routes>
           <Route path="/" element={<Store />} />
+          <Route path="/intro1" element={<Intro1 />} />
+          <Route path="/intro2" element={<Intro2 />} />
+          <Route path="/intro3" element={<Intro3 />} />
           <Route path="/home" element={<Home />} />
           <Route path="/article/:id" element={<Article />} />
         </Routes>

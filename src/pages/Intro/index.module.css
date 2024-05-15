@@ -1,0 +1,32 @@
+/* Intro */
+.introImg {
+  width: 100vw;
+  height: 100vh;
+}
+
+.intro1,
+.intro2,
+.intro3 {
+  position: relative;
+}
+
+.intro1Next,
+.intro2Next,
+.intro3Next {
+  position: absolute;
+  opacity: 0;
+  top: 93.5vh;
+  right: 4.5vw;
+  width: 98px;
+  height: 32px;
+}
+
+.intro2Back,
+.intro3Back {
+  position: absolute;
+  opacity: 0;
+  top: 93.5vh;
+  left: 4.5vw;
+  width: 98px;
+  height: 32px;
+}
