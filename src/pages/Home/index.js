@@ -50,7 +50,7 @@ function Home() {
 
   return (
     <div>
-      {tasknum == 3 ? (
+      {tasknum === 3 ? (
         <>
           <Modal
             image={exit}
