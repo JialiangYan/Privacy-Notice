@@ -1,14 +1,20 @@
 import React from 'react'
 import styles from './index.module.css'
 
-export default function Modal({ image, handleGet }) {
+export default function Modal({ content, handleClick }) {
   return (
     <>
       <div className={styles.overlay}></div>
       <div className={styles.modal}>
-        <img className={styles.img} src={image} alt="" />
+        <div className={styles.content}>{content}</div>
+        {handleClick == null ? (
+          <></>
+        ) : (
+          <button onClick={handleClick} className={styles.btn}>
+            Exit
+          </button>
+        )}
       </div>
-      <button onClick={handleGet} className={styles.btn}></button>
     </>
   )
 }

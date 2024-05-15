@@ -43,7 +43,7 @@ function Store() {
       .to('.btn', {
         width: '29px',
         borderRadius: '12px',
-        duration: 1,
+        duration: 0.5,
         backgroundColor: 'rgba(0, 122, 255, 0.7',
         opacity: 0,
       })
@@ -93,7 +93,7 @@ function Store() {
         '+=0'
       )
       .to('.btn', {
-        duration: 1,
+        duration: 0.5,
         opacity: 1,
         width: '71px',
         borderRadius: '100px',
@@ -106,16 +106,28 @@ function Store() {
     tlPage
       .to(['.store', '.app'], {
         borderRadius: '4rem',
+        height: '100vh',
         duration: 0.1,
       })
       .to(
-        ['.store', '.app'],
+        '.app',
         {
-          x: '-46vw',
-          scale: 0.95,
+          x: '-50vw',
+          y: '0vh',
+          scale: 0.9,
           duration: 1,
         },
-        '+=0'
+        0
+      )
+      .to(
+        '.store',
+        {
+          x: '-45vw',
+          scale: 0.9,
+          y: '0vh',
+          duration: 1,
+        },
+        0
       )
       .to(
         ['.store', '.app'],
@@ -124,7 +136,7 @@ function Store() {
           scale: 1.01,
           duration: 1,
         },
-        '+=0'
+        '+=1'
       )
 
     setTimeout(() => {
@@ -155,7 +167,7 @@ function Store() {
             <LoadingAni />
           </div>
         </div>
-        <Slide images={images} />
+        <Slide className={styles.slide} images={images} />
         {/* Purchase modal */}
         {open ? (
           <Purchase

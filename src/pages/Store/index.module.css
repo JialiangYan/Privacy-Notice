@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: row;
   overflow-x: hidden;
-  background-color: black;
+  background-image: url(../../assets/store/wallpaper.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
 }
 
 .main::-webkit-scrollbar {
@@ -16,7 +20,7 @@
 .app,
 .store {
   width: 100vw;
-  position: relative;
+  /* position: relative; */
   background-color: white;
 }
 
@@ -37,6 +41,7 @@
 
 .img {
   width: 100%;
+  background-color: white;
 }
 
 .btn {
@@ -67,6 +72,7 @@
 
 .down {
   padding: 24px 20px 0;
+  background-color: white;
   .description {
     font-size: 15px;
     line-height: 156%;

@@ -2,7 +2,8 @@ import { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GlobalContext } from '../../GlobalState'
 import transition from '../../animation/transition'
-import Modal from '../../components/Notice'
+import Modal from '../../components/Modal'
+import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
 import Tracker from '../../components/Tracker'
 
@@ -12,19 +13,20 @@ import pn1 from '../../assets/notice/pn1.png'
 import styles from './index.module.css'
 
 function Home() {
-  const { tasknum } = useContext(GlobalContext)
+  const { tasknum, notice, updateNotice } = useContext(GlobalContext)
 
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
 
   useEffect(() => {
-    const hasAck = localStorage.getItem('hasAck1')
+    const hasAck = !notice.firstuse
     if (hasAck) {
       setAck(true)
     }
   }, [])
 
   const handleGet = () => {
+    updateNotice({ intro: !notice.intro })
     localStorage.setItem('hasAck1', 'true')
     setAck(!ack)
   }
@@ -47,9 +49,21 @@ function Home() {
 
   return (
     <div>
+      {tasknum == 3 ? (
+        <>
+          <Modal
+            content={'You have sccusssfully finished this study'}
+            handleClick={() => {
+              window.location.href = 'https://www.google.ca/'
+            }}
+          />
+        </>
+      ) : (
+        <></>
+      )}
       {!ack ? (
         <>
-          <Modal image={pn1} handleGet={handleGet} />
+          <Notice image={pn1} handleGet={handleGet} />
         </>
       ) : (
         <></>

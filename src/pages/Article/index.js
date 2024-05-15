@@ -18,17 +18,18 @@ import pn2 from '../../assets/notice/pn2.png'
 function Article() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
-  const { addTask } = useContext(GlobalContext)
+  const { addTask, notice, updateNotice } = useContext(GlobalContext)
 
   useEffect(() => {
-    const hasAck = localStorage.getItem('hasAck2')
+    console.log(notice)
+    const hasAck = !notice.duringuse
     if (hasAck) {
       setAck(true)
     }
   }, [])
 
   const handleGet = () => {
-    localStorage.setItem('hasAck2', 'true')
+    updateNotice({ duringuse: !notice.duringuse })
     setAck(!ack)
   }
 
