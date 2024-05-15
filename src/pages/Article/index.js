@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { GlobalContext } from '../../GlobalState'
 import transition from '../../animation/transition'
-import Modal from '../../components/Modal'
+import Modal from '../../components/Notice'
 import styles from './index.module.css'
 import A1 from './A1'
 import A2 from './A2'
@@ -17,6 +18,7 @@ import pn2 from '../../assets/notice/pn2.png'
 function Article() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
+  const { addTask } = useContext(GlobalContext)
 
   useEffect(() => {
     const hasAck = localStorage.getItem('hasAck2')
@@ -37,6 +39,26 @@ function Article() {
   const handleBack = () => {
     navigate('/home')
   }
+
+  // Track reading time
+  const startTimeRef = useRef(null)
+
+  useEffect(() => {
+    addTask()
+  }, [])
+
+  useEffect(() => {
+    // Set start time once when the component mounts
+    startTimeRef.current = Date.now()
+
+    return () => {
+      if (startTimeRef.current !== null) {
+        const endTime = Date.now()
+        const timeSpent = endTime - startTimeRef.current
+        console.log(`Time spent on page: ${timeSpent / 1000} seconds`)
+      }
+    }
+  }, [])
 
   return (
     <>

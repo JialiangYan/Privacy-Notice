@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { GlobalContext } from '../../GlobalState'
 import transition from '../../animation/transition'
-import Modal from '../../components/Modal'
+import Modal from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
+import Tracker from '../../components/Tracker'
 
 import data from '../../assets/app/data.json'
 import pn1 from '../../assets/notice/pn1.png'
@@ -10,6 +12,8 @@ import pn1 from '../../assets/notice/pn1.png'
 import styles from './index.module.css'
 
 function Home() {
+  const { tasknum } = useContext(GlobalContext)
+
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
 
@@ -51,6 +55,9 @@ function Home() {
         <></>
       )}
       <div className={styles.main}>
+        <div className={styles.tracker}>
+          <Tracker num={tasknum} />
+        </div>
         <div className={styles.title}>
           <div>News</div>
           <div className={styles.time}>{formattedDate}</div>

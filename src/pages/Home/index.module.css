@@ -1,3 +1,8 @@
+.tracker {
+  position: fixed;
+  right: 20px;
+}
+
 .main {
   background-color: #f0f0f0;
   padding: 10vh 20px 0 20px; /* top right bottom left */
