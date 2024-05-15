@@ -3,9 +3,13 @@
   margin-left: 10px;
 }
 
+/* Safari and Chrome */
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .scroll {
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-x: scroll;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }

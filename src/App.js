@@ -21,14 +21,14 @@ export default function App() {
     }
   }
 
-  if (!isMobileDevice()) {
-    // forbidden
-    return (
-      <div id="forbid">
-        <h1 id="forbid-info">Sorry, please use iPhone to start the study</h1>
-      </div>
-    )
-  }
+  // if (!isMobileDevice()) {
+  //   // forbidden
+  //   return (
+  //     <div id="forbid">
+  //       <h1 id="forbid-info">Sorry, please use iPhone to start the study</h1>
+  //     </div>
+  //   )
+  // }
 
   return (
     <Router>

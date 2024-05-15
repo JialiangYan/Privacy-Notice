@@ -1,14 +1,19 @@
 .main {
   display: flex;
   flex-direction: row;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
+  background-color: black;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
 }
 
 .app,
 .store {
   width: 100vw;
   position: relative;
-  border: 1.2px solid #ccc;
+  background-color: white;
 }
 
 .fullStore {
@@ -22,7 +27,7 @@
 }
 
 .up {
-  margin-bottom: 26px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -32,7 +37,7 @@
 
 .btn {
   position: absolute;
-  top: 47%;
+  top: 49%;
   left: 39%;
 
   background-color: #007aff;
@@ -46,6 +51,14 @@
   font-weight: bold;
   text-align: center;
   line-height: 29px;
+}
+
+.loading,
+.downloading {
+  position: absolute;
+  top: 49%;
+  left: 39%;
+  opacity: 0;
 }
 
 .down {
@@ -69,6 +82,12 @@
   width: 100%;
   top: 0;
   left: 0;
+}
+
+.intro1,
+.intro2,
+.intro3 {
+  overflow: hidden;
 }
 
 .intro2,

@@ -7,7 +7,10 @@ import styles from './index.module.css'
 
 import Slide from '../../components/Slide'
 import Purchase from '../../components/Purchase'
+import DownloadAni from '../../components/DownloadAni'
+import LoadingAni from '../../components/LoadingAni'
 
+import loading from '../../assets/store/loading.svg'
 import up from '../../assets/store/up.png'
 import s1 from '../../assets/store/ss1.png'
 import s2 from '../../assets/store/ss2.png'
@@ -26,59 +29,88 @@ export default function Store() {
   const [get, setGet] = useState(false) // the content of button
   const [open, setOpen] = useState(false) // open the purchase
 
+  const storeToapp = useRef()
+  const tlBtn = gsap.timeline()
+  const tlPage = gsap.timeline()
+  const { contextSafe } = useGSAP({ scope: storeToapp })
+
   const description = more
     ? "QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
     : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
   const btn = get ? 'Open' : 'Get'
-  const getApp = () => {
-    setGet(!get)
-    setOpen(!open)
-  }
-  const openApp = () => {
-    console.log('Animation!')
-  }
+
+  // animation for loading btn
+  const getApp = contextSafe(() => {
+    tlBtn
+      .to('.btn', {
+        width: '29px',
+        borderRadius: '12px',
+        duration: 1,
+        backgroundColor: 'rgba(0, 122, 255, 0.7',
+        opacity: 0,
+      })
+      .to(
+        '.loading',
+        {
+          duration: 3,
+          opacity: 1,
+          onComplete: () => {
+            setOpen(!open)
+          },
+        },
+        '+=0'
+      )
+  })
   const confirm = () => {
     setOpen(!open)
+    tlBtn
+      .to('.loading', {
+        duration: 3,
+        opacity: 0,
+        onComplete: () => {
+          setOpen(!open)
+        },
+      })
+      .to('.downloading', {
+        duration: 3,
+        opacity: 1,
+        onComplete: () => {
+          setGet(!get)
+        },
+      })
+    // .to('.btn', {
+    //   duration: 0.1,
+    //   opacity: 1,
+    // })
   }
 
   // animation for page transition
-  const tl = gsap.timeline()
-  const storeToapp = useRef()
+  const openApp = contextSafe(() => {
+    tlPage
+      .to(['.store', '.app'], {
+        borderRadius: '4rem',
+        duration: 0.1,
+      })
+      .to(['.store', '.app'], {
+        x: '-46vw',
+        scale: 0.95,
+        duration: 1,
+      })
+    // .to(['.store', '.app'], {
+    //   x: '-100vw',
+    //   scale: 1.01,
+    //   duration: 1,
+    // })
 
-  // useGSAP(
-  //   () => {
-  //     gsap.to('.store', { x: -160, scale: 0.5, duration: 3 })
-
-  //     gsap.to('.app', {
-  //       x: -300,
-  //       scale: 0.5,
-  //       duration: 3,
-  //       onUpdate: function () {
-  //         gsap.set('.app', { flex: '0 0 100%' })
-  //       },
-  //     })
-  //   },
-  //   { scope: storeToapp }
-  // )
+    // gsap.to('.app', {
+    //   x: '-50vw',
+    //   scale: 0.9,
+    //   duration: 3,
+    // })
+  })
 
   // animation for sliding intro
   const app = useRef()
-  const { contextSafe } = useGSAP({ scope: app })
-  // useGSAP(
-  //   () => {
-  //     gsap.to('.store', { x: -160, scale: 0.5, duration: 3 })
-
-  //     gsap.to('.app', {
-  //       x: -300,
-  //       scale: 0.5,
-  //       duration: 3,
-  //       onUpdate: function () {
-  //         gsap.set('.app', { flex: '0 0 100%' })
-  //       },
-  //     })
-  //   },
-  //   { scope: storeToapp }
-  // )
 
   const handleNext1 = contextSafe(() => {
     gsap.to('.intro1', { display: 'none' })
@@ -109,16 +141,35 @@ export default function Store() {
       {/* Store Page */}
       <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
         {/* Purchase modal */}
-        {open ? <Purchase image={buyp} confirm={confirm} /> : <div></div>}
+        {open ? (
+          <Purchase
+            image={buyp}
+            confirm={confirm}
+            close={() => {
+              setOpen(!open)
+            }}
+          />
+        ) : (
+          <div></div>
+        )}
         {/* Upper part */}
         <div className={styles.up}>
-          <img src={up} className={styles.img} />
-          <button className={styles.btn} onClick={get ? openApp : getApp}>
+          <img src={up} className={styles.img} style={{ marginTop: '5px' }} />
+          <button
+            className={`${styles.btn} btn`}
+            onClick={get ? openApp : getApp}
+          >
             {btn}
           </button>
+          <div className={`${styles.downloading} downloading`}>
+            <DownloadAni />
+          </div>
+          <div className={`${styles.loading} loading`}>
+            <LoadingAni />
+          </div>
         </div>
-        {/* Slides */}
         <Slide images={images} />
+        {/* Lower part */}
         <div className={styles.down}>
           <img src={device} className={styles.img} />
           <div className={styles.description}>
@@ -133,6 +184,7 @@ export default function Store() {
         </div>
         <img src={bottom} className={styles.img} />
       </div>
+
       {/* App Intro Page */}
       <div className={`${styles.app} app`} ref={app}>
         <div className={`${styles.intro1} intro1`}>

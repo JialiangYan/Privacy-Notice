@@ -31,18 +31,24 @@
 
 .confirm {
   position: absolute;
-  top: 200%;
+  top: 201%;
   left: 39%;
 
-  background-color: #007aff;
+  opacity: 0;
   border: none;
   width: 90px;
   height: 29px;
   border-radius: 100px;
+}
 
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 29px;
+.close {
+  position: absolute;
+  top: 4.5%;
+  left: 88.5%;
+
+  opacity: 0;
+  border: none;
+  width: 31px;
+  height: 31px;
+  border-radius: 100%;
 }
