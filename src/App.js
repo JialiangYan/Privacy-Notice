@@ -12,31 +12,31 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 
 export default function App() {
-  const isMobileDevice = () => {
-    const ua = navigator.userAgent.toLowerCase()
-    console.log(ua)
-    const isiPhone = ua.indexOf('iphone') != -1
+  // const isMobileDevice = () => {
+  //   const ua = navigator.userAgent.toLowerCase()
+  //   console.log(ua)
+  //   const isiPhone = ua.indexOf('iphone') != -1
 
-    // screen size + touch attr + device detection
-    if (
-      window.innerWidth < 500 &&
-      'ontouchstart' in document.documentElement &&
-      isiPhone
-    ) {
-      return true
-    } else {
-      return false
-    }
-  }
+  //   // screen size + touch attr + device detection
+  //   if (
+  //     window.innerWidth < 500 &&
+  //     'ontouchstart' in document.documentElement &&
+  //     !isiPhone
+  //   ) {
+  //     return true
+  //   } else {
+  //     return false
+  //   }
+  // }
 
-  if (!isMobileDevice()) {
-    // forbidden
-    return (
-      <div id="forbid">
-        <h1 id="forbid-info">Sorry, please use iPhone to start the study</h1>
-      </div>
-    )
-  }
+  // if (!isMobileDevice()) {
+  //   // forbidden
+  //   return (
+  //     <div id="forbid">
+  //       <h1 id="forbid-info">Sorry, please use iPhone to start the study</h1>
+  //     </div>
+  //   )
+  // }
 
   return (
     <BrowserRouter>
