@@ -13,7 +13,9 @@ function Purchase({ image, confirm, close }) {
     >
       <div className={styles.modal}>
         <img src={image} className={styles.img} />
-        <button className={styles.confirm} onClick={confirm}></button>
+        <button className={styles.confirm} onClick={confirm}>
+          {'Confirm'}
+        </button>
         <button className={styles.close} onClick={close}></button>
       </div>
     </motion.div>

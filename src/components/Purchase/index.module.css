@@ -30,23 +30,29 @@
 }
 
 .confirm {
-  background-color: black;
   position: absolute;
-  top: 259.5%;
+  top: 259%;
   left: 39%;
-  /* opacity: 0; */
+
+  background-color: #007aff;
   border: none;
   width: 90px;
-  height: 29px;
+  height: 30px;
   border-radius: 100px;
+
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 30px;
 }
 
 .close {
-  background-color: black;
+  /* background-color: black; */
   position: absolute;
   top: 4.5%;
   left: 88.5%;
-  /* opacity: 0; */
+  opacity: 0;
   border: none;
   width: 31px;
   height: 31px;

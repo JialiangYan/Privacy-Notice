@@ -1,13 +1,15 @@
 /* Intro */
 .introImg {
-  width: 100vw;
-  height: 100%;
+  width: 100%;
+  /* height: 100%; */
 }
 
 .intro1,
 .intro2,
 .intro3 {
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .intro1Next,
@@ -16,7 +18,7 @@
   position: absolute;
   opacity: 0;
   /* background: black; */
-  top: 107.5vh;
+  top: 104vh;
   right: 4.5vw;
   width: 98px;
   height: 32px;
@@ -26,7 +28,8 @@
 .intro3Back {
   position: absolute;
   opacity: 0;
-  top: 107.5vh;
+  /* background: black; */
+  top: 104vh;
   left: 4.5vw;
   width: 98px;
   height: 32px;

@@ -23,8 +23,8 @@
   width: 45px;
   height: 20px;
   border-radius: 20px;
-  background-color: black;
-  /* opacity: 0; */
+  /* background-color: black; */
+  opacity: 0;
   z-index: 1000;
 }
 
