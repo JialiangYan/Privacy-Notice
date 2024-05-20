@@ -59,6 +59,22 @@ function Store() {
         '+=0'
       )
   })
+
+  const close = () => {
+    setOpen(!open)
+    tlBtn
+      .set('.loading', {
+        opacity: 0,
+      })
+      .to('.btn', {
+        width: '71px',
+        borderRadius: '100px',
+        duration: 0.5,
+        backgroundColor: '#007aff',
+        opacity: 1,
+      })
+  }
+
   const confirm = () => {
     setOpen(!open)
     tlBtn
@@ -169,13 +185,7 @@ function Store() {
         <Slide className={styles.slide} images={images} />
         {/* Purchase modal */}
         {open ? (
-          <Purchase
-            image={buyp}
-            confirm={confirm}
-            close={() => {
-              setOpen(!open)
-            }}
-          />
+          <Purchase image={buyp} confirm={confirm} close={close} />
         ) : (
           // Lower part
           <div>
