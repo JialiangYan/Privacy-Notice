@@ -1,7 +1,7 @@
 /* Intro */
 .introImg {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 .intro1,
@@ -15,7 +15,8 @@
 .intro3Next {
   position: absolute;
   opacity: 0;
-  top: 93.5vh;
+  /* background: black; */
+  top: 107.5vh;
   right: 4.5vw;
   width: 98px;
   height: 32px;
@@ -25,7 +26,7 @@
 .intro3Back {
   position: absolute;
   opacity: 0;
-  top: 93.5vh;
+  top: 107.5vh;
   left: 4.5vw;
   width: 98px;
   height: 32px;

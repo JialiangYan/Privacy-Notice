@@ -1,6 +1,6 @@
 .main {
   background-color: #f0f0f0;
-  padding: 14vh 20px 60px 20px;
+  padding: 8vh 20px 60px 20px;
   height: 100%;
   position: relative;
   font-family: 'Sora';
@@ -11,7 +11,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.3;
-  padding: 6px 0 12px 0;
+  padding-bottom: 12px;
 }
 
 .info {
@@ -32,28 +32,26 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 12vh;
-  background-color: #b25eb6;
+  height: 5vh;
+  color: #b25eb6;
+  background-color: #fff;
 }
 
-.bimg {
+.bbtn {
   position: absolute;
-  top: 80%;
-  left: 5%;
+  top: 40%;
+  left: 7%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  width: 30px;
-  height: 30px;
+  font-size: 2rem;
 }
 
 .name {
   position: absolute;
-  top: 80%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.2rem;
   font-weight: bold;
-  color: white;
 }
 
 .text {

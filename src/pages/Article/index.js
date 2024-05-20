@@ -12,7 +12,6 @@ import data from '../../assets/app/data.json'
 import img1 from '../../assets/app/news1.png'
 import img2 from '../../assets/app/news1.png'
 import img3 from '../../assets/app/news1.png'
-import back from '../../assets/app/backBtn.png'
 import pn2 from '../../assets/notice/pn2.png'
 
 function Article() {
@@ -72,7 +71,9 @@ function Article() {
       )}
       <div className={styles.main}>
         <div className={styles.topBar}>
-          <img className={styles.bimg} src={back} alt="" onClick={handleBack} />
+          <div className={styles.bbtn} alt="" onClick={handleBack}>
+            {'<'}
+          </div>
           <div className={styles.name}>QuickNews</div>
         </div>
         <div className={styles.title}>{title}</div>

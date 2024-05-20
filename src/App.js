@@ -8,7 +8,7 @@ import Intro3 from './pages/Intro/intro3'
 import Article from './pages/Article'
 
 import { AnimatePresence } from 'framer-motion'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
 
 export default function App() {
@@ -48,6 +48,7 @@ export default function App() {
           <Route path="/intro3" element={<Intro3 />} />
           <Route path="/home" element={<Home />} />
           <Route path="/article/:id" element={<Article />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AnimatePresence>
     </BrowserRouter>

@@ -30,10 +30,11 @@
 }
 
 .confirm {
+  background-color: black;
   position: absolute;
-  top: 201%;
+  top: 259.5%;
   left: 39%;
-  opacity: 0;
+  /* opacity: 0; */
   border: none;
   width: 90px;
   height: 29px;
@@ -41,10 +42,11 @@
 }
 
 .close {
+  background-color: black;
   position: absolute;
   top: 4.5%;
   left: 88.5%;
-  opacity: 0;
+  /* opacity: 0; */
   border: none;
   width: 31px;
   height: 31px;

@@ -84,7 +84,7 @@ function Store() {
       .to(
         '.downloading',
         {
-          duration: 3,
+          duration: 0.5,
           opacity: 0,
           onComplete: () => {
             setGet(!get)
@@ -108,6 +108,7 @@ function Store() {
         borderRadius: '4rem',
         height: '100vh',
         duration: 0.1,
+        border: '2px solid gainsboro',
       })
       .to(
         '.app',
@@ -115,7 +116,7 @@ function Store() {
           x: '-50vw',
           y: '0vh',
           scale: 0.9,
-          duration: 1,
+          duration: 0.3,
         },
         0
       )
@@ -125,7 +126,7 @@ function Store() {
           x: '-45vw',
           scale: 0.9,
           y: '0vh',
-          duration: 1,
+          duration: 0.3,
         },
         0
       )
@@ -134,18 +135,16 @@ function Store() {
         {
           x: '-100vw',
           scale: 1.01,
-          duration: 1,
+          borderRadius: '0',
+          duration: 0.3,
         },
-        '+=1'
+        '+=0.3'
       )
 
     setTimeout(() => {
       navigate('/intro1')
     }, 3000)
   })
-
-  // animation for sliding intro
-  const app = useRef()
 
   return (
     <div className={styles.main} ref={storeToapp}>
@@ -198,7 +197,7 @@ function Store() {
       </div>
 
       {/* App Intro Page */}
-      <div className={`${styles.app} app`} ref={app}>
+      <div className={`${styles.app} app`}>
         <div className={styles.name}>QuickNews</div>
       </div>
     </div>
