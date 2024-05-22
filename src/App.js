@@ -7,6 +7,7 @@ import Intro2 from './pages/Intro/intro2'
 import Intro3 from './pages/Intro/intro3'
 import Article from './pages/Article'
 
+import PreventNavigation from './PreventNavigation'
 import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
@@ -40,17 +41,19 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <AnimatePresence mode="wait">
-        <Routes>
-          <Route path="/" element={<Store />} />
-          <Route path="/intro1" element={<Intro1 />} />
-          <Route path="/intro2" element={<Intro2 />} />
-          <Route path="/intro3" element={<Intro3 />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/article/:id" element={<Article />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AnimatePresence>
+      <PreventNavigation>
+        <AnimatePresence mode="wait">
+          <Routes>
+            <Route path="/" element={<Store />} />
+            <Route path="/intro1" element={<Intro1 />} />
+            <Route path="/intro2" element={<Intro2 />} />
+            <Route path="/intro3" element={<Intro3 />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/article/:id" element={<Article />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </AnimatePresence>
+      </PreventNavigation>
     </BrowserRouter>
   )
 }
