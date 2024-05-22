@@ -55,7 +55,8 @@ function Home() {
           <Modal
             image={exit}
             handleClick={() => {
-              window.location.href = 'https://www.google.ca/'
+              window.location.href =
+                'https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u'
             }}
           />
         </>
