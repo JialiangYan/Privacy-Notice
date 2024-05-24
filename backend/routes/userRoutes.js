@@ -5,7 +5,7 @@ const {
   finishParticipation,
 } = require('../controllers/userContorller')
 
-router.get('/createUser', createUser)
+router.post('/createUser', createUser)
 router.post('/finish', finishParticipation)
 
 module.exports = router

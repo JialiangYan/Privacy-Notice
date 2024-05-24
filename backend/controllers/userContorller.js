@@ -2,25 +2,38 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 
 const createUser = asyncHandler(async (req, res) => {
+  const { id } = req.body
+  if (!id) {
+    res.status(400)
+    throw new Error('ID is required')
+  }
+
   try {
     const condition = Math.floor(Math.random() * 10) + 1
-    const user = new User({ condition })
+    const user = new User({ id, condition })
     await user.save()
-    res.json({
-      uuid: user.uuid,
-      permission: user.permission,
-      condition: user.condition,
-    })
+    res.json({ message: 'Successfully create user', user })
   } catch (error) {
-    throw new Error('Error creating user')
+    if (error.code === 11000) {
+      res.status(400)
+      throw new Error('User id already exits')
+    } else {
+      res.status(500)
+      throw new Error('Error creating user')
+    }
   }
 })
 
 const finishParticipation = asyncHandler(async (req, res) => {
+  const { id } = req.body
+  if (!id) {
+    res.status(400)
+    throw new Error('ID is required')
+  }
+
   try {
-    const { uuid } = req.body
     const user = await User.findOneAndUpdate(
-      { uuid },
+      { id },
       { permission: false },
       { new: true }
     )
@@ -30,6 +43,7 @@ const finishParticipation = asyncHandler(async (req, res) => {
     }
     res.json({ message: 'Participation finished', user })
   } catch (error) {
+    res.status(500)
     throw new Error('Error finishing participation')
   }
 })

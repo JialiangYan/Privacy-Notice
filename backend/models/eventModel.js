@@ -11,8 +11,8 @@ const eventSchema = mongoose.Schema(
       required: true,
     },
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Client',
+      type: String,
+      ref: 'User',
       required: true,
     },
   },

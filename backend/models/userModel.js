@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
-const { v4: uuidv4 } = require('uuid')
 
 const userSchema = mongoose.Schema({
-  uuid: {
+  id: {
     type: String,
-    default: uuidv4,
     unique: true,
+    required: true,
   },
   condition: {
     type: Number,
