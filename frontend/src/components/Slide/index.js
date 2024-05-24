@@ -8,6 +8,7 @@ function Slide({ images }) {
         <div className={styles.row}>
           {images.map((image, index) => (
             <img
+              loading="lazy"
               key={index}
               className={styles.img}
               src={image}

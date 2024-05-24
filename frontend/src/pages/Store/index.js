@@ -168,7 +168,13 @@ function Store() {
       <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
         {/* Upper part */}
         <div className={styles.up}>
-          <img src={up} className={styles.img} style={{ marginTop: '5px' }} />
+          <img
+            loading="lazy"
+            src={up}
+            className={styles.img}
+            style={{ marginTop: '5px' }}
+            alt=""
+          />
           <button
             className={`${styles.btn} btn`}
             onClick={get ? openApp : getApp}
@@ -190,7 +196,7 @@ function Store() {
           // Lower part
           <div>
             <div className={styles.down}>
-              <img src={device} className={styles.img} />
+              <img loading="lazy" src={device} className={styles.img} alt="" />
               <div className={styles.description}>
                 {description}
                 <span
@@ -201,7 +207,7 @@ function Store() {
                 </span>
               </div>
             </div>
-            <img src={bottom} className={styles.img} />
+            <img loading="lazy" src={bottom} className={styles.img} alt="" />
           </div>
         )}
       </div>

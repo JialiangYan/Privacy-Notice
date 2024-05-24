@@ -17,7 +17,12 @@ function Intro3() {
   return (
     <>
       <div className={`${styles.intro1} intro1`}>
-        <img src={i3} alt="" className={`${styles.introImg}`} />
+        <img
+          src={i3}
+          loading="lazy"
+          alt="intro"
+          className={`${styles.introImg}`}
+        />
         <button className={styles.intro1Next} onClick={handleNext3}></button>
         <button className={styles.intro3Back} onClick={handleBack3}></button>
       </div>

@@ -12,7 +12,7 @@ export default function Notice({ image, handleClick }) {
           transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
           className={styles.modal}
         >
-          <img className={styles.img} src={image} alt="" />
+          <img loading="lazy" className={styles.img} src={image} alt="Notice" />
           <button onClick={handleClick} className={styles.btn}></button>
         </motion.div>
       </div>

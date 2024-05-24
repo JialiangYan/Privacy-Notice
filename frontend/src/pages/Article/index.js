@@ -71,7 +71,7 @@ function Article() {
       )}
       <div className={styles.main}>
         <div className={styles.topBar}>
-          <div className={styles.bbtn} alt="" onClick={handleBack}>
+          <div className={styles.bbtn} onClick={handleBack}>
             {'<'}
           </div>
           <div className={styles.name}>QuickNews</div>
