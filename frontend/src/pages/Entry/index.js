@@ -1,17 +1,35 @@
 import { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { GlobalContext } from '../../GlobalState'
 import transition from '../../animation/transition'
+import { createUser } from '../../utils/request'
+
 import styles from './index.module.css'
 
 function Entry() {
   const navigate = useNavigate()
-  const handleSubmit = () => {
-    navigate('/appstore')
+  const [userInput, setUserInput] = useState('')
+  const { setCondition } = useContext(GlobalContext)
+
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value)
   }
 
-  useEffect(() => {
-    // Get uuid?
-  }, [])
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const response = await createUser(userInput)
+    if (response.status === 200 && response.data.permission) {
+      setCondition(response.data.condition)
+      navigate('/appstore')
+    } else {
+      console.log(response)
+      alert('Sorry')
+    }
+  }
+
+  // useEffect(() => {
+  //   // Performance Improvement
+  // }, [])
 
   return (
     <div className={styles.main}>
@@ -137,17 +155,25 @@ function Entry() {
       </div>
       {/* Form */}
       <hr />
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <div className={styles.form}>
         <p>
           I have read this form. I have been told whom to contact if I have
           questions, and I am able to print a copy of this consent form for
           myself. I agree to participate in the research study described above
           (You can use my data).
         </p>
-        <button type="submit" className={styles.btn}>
-          Consent & Start
-        </button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={userInput}
+            onChange={handleInputChange}
+            placeholder="Enter your id"
+          />
+          <button type="submit" className={styles.btn}>
+            Consent
+          </button>
+        </form>
+      </div>
     </div>
   )
 }

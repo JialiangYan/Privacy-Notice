@@ -32,12 +32,10 @@
 }
 
 .btn {
-  display: block;
-  margin: 0 auto;
   border: 1px solid gainsboro;
   border-radius: 1rem;
   text-align: center;
-  width: 200px;
+  width: 90px;
   height: 30px;
   font-size: 1.1rem;
 }
