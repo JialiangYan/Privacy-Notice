@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Entry from './pages/Entry'
 import Store from './pages/Store'
 import Home from './pages/Home'
 import Intro1 from './pages/Intro/intro1'
@@ -44,7 +45,8 @@ export default function App() {
       <PreventNavigation>
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Store />} />
+            <Route path="/" element={<Entry />} />
+            <Route path="/appstore" element={<Store />} />
             <Route path="/intro1" element={<Intro1 />} />
             <Route path="/intro2" element={<Intro2 />} />
             <Route path="/intro3" element={<Intro3 />} />
