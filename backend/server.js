@@ -14,8 +14,15 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+// Create GET request
+app.get('/', (req, res) => {
+  res.send('Express on Vercel')
+})
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/log', require('./routes/eventRoutes'))
 app.use(errorHandler)
 
 app.listen(port, () => console.log(`Server is running at ${port}`))
+
+// Export the Express API
+module.exports = app
