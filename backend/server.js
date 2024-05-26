@@ -4,7 +4,7 @@ const colors = require('colors')
 const cors = require('cors')
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
-const port = process.env.PORT || 8082
+const port = process.env.PORT || 3002
 
 connectDB()
 
