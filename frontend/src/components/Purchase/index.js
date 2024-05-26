@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './index.module.css'
 import { motion } from 'framer-motion'
 
-function Purchase({ image, confirm, close }) {
+function Purchase({ image, confirm, close, condition }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}

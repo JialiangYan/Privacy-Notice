@@ -7,18 +7,24 @@ const apiClient = axios.create({
   },
 })
 
-export const logEvent = (eventName, data, userId) => {
-  return apiClient.post('/log/logEvent', {
+export const track = async (eventName, time, userId) => {
+  const res = await apiClient.post('/log/logEvent', {
     eventName,
-    data,
+    data: time,
     userId,
   })
+  console.log(res)
+  return res
 }
 
-export const finishUser = (userId) => {
-  return apiClient.post('/users/finish', { id: userId })
+export const finishUser = async (userId) => {
+  const res = await apiClient.post('/users/finish', { id: userId })
+  console.log(res)
+  return res
 }
 
-export const createUser = (userId) => {
-  return apiClient.post('/users/createUser', { id: userId })
+export const createUser = async (userId) => {
+  const res = await apiClient.post('/users/createUser', { id: userId })
+  console.log(res)
+  return res
 }

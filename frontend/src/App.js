@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Error from './pages/Error'
 import Entry from './pages/Entry'
 import Store from './pages/Store'
 import Home from './pages/Home'
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/intro3" element={<Intro3 />} />
             <Route path="/home" element={<Home />} />
             <Route path="/article/:id" element={<Article />} />
+            <Route path="/error" element={<Error />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AnimatePresence>

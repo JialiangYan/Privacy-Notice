@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { GlobalContext } from '../../GlobalState'
+import { track } from '../../utils/request'
 import transition from '../../animation/transition'
 import Notice from '../../components/Notice'
 import styles from './index.module.css'
@@ -17,19 +17,20 @@ import pn2 from '../../assets/notice/pn2.png'
 function Article() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
-  const { addTask, notice, updateNotice } = useContext(GlobalContext)
+  const condition = localStorage.getItem('condition')
+  const notify = localStorage.getItem('notify')
 
   useEffect(() => {
-    console.log(notice)
-    const hasAck = !notice.duringuse
-    if (hasAck) {
+    if (notify.articleNotice) {
+      // already notified
       setAck(true)
     }
   }, [])
 
   const handleGet = () => {
-    updateNotice({ duringuse: !notice.duringuse })
     setAck(!ack)
+    notify.articleNotice = true
+    localStorage.setItem('notify', JSON.stringify(notify))
   }
 
   const { id } = useParams()
@@ -41,10 +42,27 @@ function Article() {
   }
 
   // Track reading time
+  // analytics
+  const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTimeSpentOnPage((prevTime) => prevTime + 1000) // increment by 1 second
+    }, 1000) // every 1 second
+    return async () => {
+      try {
+        const prolificPid = localStorage.getItem('pid')
+        await track('ConsentFormTime', timeSpentOnPage, prolificPid)
+      } catch (error) {
+        console.error('Error creating user:', error)
+      }
+      clearInterval(intervalId)
+    } // cleanup
+  }, [])
+
   const startTimeRef = useRef(null)
 
   useEffect(() => {
-    addTask()
+    localStorage.setItem('tnum', localStorage.getItem('tnum') + 1)
   }, [])
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { GlobalContext } from '../../GlobalState'
 import transition from '../../animation/transition'
 import Modal from '../../components/Modal'
 import Notice from '../../components/Notice'
@@ -14,27 +13,29 @@ import pn1 from '../../assets/notice/pn1.png'
 import styles from './index.module.css'
 
 function Home() {
-  const { tasknum, notice, updateNotice } = useContext(GlobalContext)
-
   const navigate = useNavigate()
+  const condition = localStorage.getItem('condition')
+  const tnum = localStorage.getItem('tnum')
+  const notify = localStorage.getItem('notify')
   const [ack, setAck] = useState(false)
 
   useEffect(() => {
-    const hasAck = !notice.firstuse
-    if (hasAck) {
+    if (notify.homeNotice) {
+      // already notified
       setAck(true)
     }
   }, [])
 
   const handleGet = () => {
-    updateNotice({ intro: !notice.intro })
-    localStorage.setItem('hasAck1', 'true')
     setAck(!ack)
+    notify.homeNotice = true
+    localStorage.setItem('notify', JSON.stringify(notify))
   }
   const handleBlockClick = (id) => {
     navigate('/article/' + `${id}`)
   }
 
+  // get date
   const [formattedDate, setFormattedDate] = useState('')
   useEffect(() => {
     // Get today's date
@@ -50,7 +51,7 @@ function Home() {
 
   return (
     <div>
-      {tasknum === 3 ? (
+      {tnum === 3 ? (
         <>
           <Modal
             image={exit}
@@ -72,7 +73,7 @@ function Home() {
       )}
       <div className={styles.main}>
         <div className={styles.tracker}>
-          <Tracker num={tasknum} />
+          <Tracker num={tnum} />
         </div>
         <div className={styles.title}>
           <div>News</div>

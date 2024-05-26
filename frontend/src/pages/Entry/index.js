@@ -1,6 +1,5 @@
-import { useEffect, useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { GlobalContext } from '../../GlobalState'
+import { useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import transition from '../../animation/transition'
 import { createUser } from '../../utils/request'
 
@@ -8,28 +7,48 @@ import styles from './index.module.css'
 
 function Entry() {
   const navigate = useNavigate()
-  const [userInput, setUserInput] = useState('')
-  const { setCondition } = useContext(GlobalContext)
 
-  const handleInputChange = (e) => {
-    setUserInput(e.target.value)
-  }
+  // read parameters
+  const [searchParams] = useSearchParams()
+  const prolificPid = searchParams.get('PROLIFIC_PID')
+  const studyId = searchParams.get('STUDY_ID')
+  const sessionId = searchParams.get('SESSION_ID')
 
+  // track participant info
+  useEffect(() => {
+    if (!prolificPid || !studyId || !sessionId) {
+      navigate('/error')
+    }
+  }, [prolificPid, studyId, sessionId])
+
+  // functions
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await createUser(userInput)
-    if (response.status === 200 && response.data.permission) {
-      setCondition(response.data.condition)
-      navigate('/appstore')
-    } else {
-      console.log(response)
-      alert('Sorry')
+    try {
+      const res = await createUser(prolificPid)
+      if (res.data.user.permission) {
+        localStorage.setItem(
+          'notify',
+          JSON.stringify({
+            homeNotice: false,
+            articleNotice: false,
+          })
+        )
+        localStorage.setItem('tnum', 0) // set task num
+        localStorage.setItem('pid', prolificPid) // set pid
+        localStorage.setItem('condition', res.data.user.condition) // set timing condition for this app
+        navigate('/appstore')
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        console.error('User ID already exists')
+        alert('You have already participated this study before')
+      } else {
+        console.error('Error creating user:', error)
+        alert('Sorry, there is something wrong with the server')
+      }
     }
   }
-
-  // useEffect(() => {
-  //   // Performance Improvement
-  // }, [])
 
   return (
     <div className={styles.main}>
@@ -50,22 +69,20 @@ function Entry() {
           "QuickNews". To do this, you will perform a simulated app installation
           and usage task and answer some questionnaires.
         </p>
-        <p>
-          Specific study activities include:
-          <ul className={styles.lst}>
-            <li>using your iPhone to visit our website</li>
-            <li>simulate to install our app</li>
-            <li>simulate to use our app</li>
-            <li>answering questionnaires about your experience</li>
-          </ul>
-        </p>
+        <p>Specific study activities include:</p>
+        <ul className={styles.lst}>
+          <li>using your iPhone to visit our website</li>
+          <li>simulate to install our app</li>
+          <li>simulate to use our app</li>
+          <li>answering questionnaires about your experience</li>
+        </ul>
         <p>
           You must meet the following criteria to participate in this study:
-          <ul className={styles.lst}>
-            <li>be an adult</li>
-            <li>be an iPhone user</li>
-          </ul>
         </p>
+        <ul className={styles.lst}>
+          <li>be an adult</li>
+          <li>be an iPhone user</li>
+        </ul>
         <p>
           Your participation should take around 25 minutes. The data collected
           from this study will be used in articles for publication in journals
@@ -163,14 +180,8 @@ function Entry() {
           (You can use my data).
         </p>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={userInput}
-            onChange={handleInputChange}
-            placeholder="Enter your id"
-          />
           <button type="submit" className={styles.btn}>
-            Consent
+            Consent & Start
           </button>
         </form>
       </div>

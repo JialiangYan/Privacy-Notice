@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import gsap from 'gsap'
@@ -23,6 +23,7 @@ import buyp from '../../assets/store/buy-p.png'
 function Store() {
   const navigate = useNavigate()
   const images = [s1, s2, s3]
+  const condition = localStorage.getItem('condition') // timing condition
   const [more, openMore] = useState(false) // more description
   const [get, setGet] = useState(false) // the content of button
   const [open, setOpen] = useState(false) // open the purchase
@@ -191,7 +192,12 @@ function Store() {
         <Slide className={styles.slide} images={images} />
         {/* Purchase modal */}
         {open ? (
-          <Purchase image={buyp} confirm={confirm} close={close} />
+          <Purchase
+            image={buyp}
+            confirm={confirm}
+            close={close}
+            condition={condition}
+          />
         ) : (
           // Lower part
           <div>
