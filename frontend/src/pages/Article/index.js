@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { track } from '../../utils/request'
 import transition from '../../animation/transition'
@@ -17,19 +17,28 @@ import pn2 from '../../assets/notice/pn2.png'
 function Article() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
-  const condition = localStorage.getItem('condition')
-  const notify = localStorage.getItem('notify')
+  const notify = JSON.parse(localStorage.getItem('notify'))
 
   useEffect(() => {
-    if (notify.articleNotice) {
-      // already notified
+    if (!localStorage.getItem('user')) {
+      navigate('/error')
+    }
+  }, [navigate])
+
+  useEffect(() => {
+    // determine whether need to display notice
+    let condition = JSON.parse(localStorage.getItem('user')).condition
+    let displayNotice =
+      condition === 6 || condition === 8 || condition === 9 || condition === 10
+    if (notify.D2 || !displayNotice) {
+      // don't need to display
       setAck(true)
     }
-  }, [])
+  }, [notify])
 
   const handleGet = () => {
     setAck(!ack)
-    notify.articleNotice = true
+    notify.D2 = true
     localStorage.setItem('notify', JSON.stringify(notify))
   }
 
@@ -37,33 +46,35 @@ function Article() {
   const { title, image, source, date } = data[id]
   const imgs = [img1, img2, img3]
   const articles = [A1, A2, A3]
+
   const handleBack = () => {
+    localStorage.setItem(
+      'tnum',
+      JSON.stringify(JSON.parse(localStorage.getItem('tnum')) + 1)
+    )
     navigate('/home')
   }
 
   // Track reading time
   // analytics
-  const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTimeSpentOnPage((prevTime) => prevTime + 1000) // increment by 1 second
-    }, 1000) // every 1 second
-    return async () => {
-      try {
-        const prolificPid = localStorage.getItem('pid')
-        await track('ConsentFormTime', timeSpentOnPage, prolificPid)
-      } catch (error) {
-        console.error('Error creating user:', error)
-      }
-      clearInterval(intervalId)
-    } // cleanup
-  }, [])
+  // const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setTimeSpentOnPage((prevTime) => prevTime + 1000) // increment by 1 second
+  //   }, 1000) // every 1 second
+  //   return async () => {
+  //     try {
+  //       const prolificPid = localStorage.getItem('pid')
+  //       await track('ConsentFormTime', timeSpentOnPage, prolificPid)
+  //     } catch (error) {
+  //       console.error('Error creating user:', error)
+  //     }
+  //     clearInterval(intervalId)
+  //   } // cleanup
+  // }, [])
 
+  // get time spent
   const startTimeRef = useRef(null)
-
-  useEffect(() => {
-    localStorage.setItem('tnum', localStorage.getItem('tnum') + 1)
-  }, [])
 
   useEffect(() => {
     // Set start time once when the component mounts

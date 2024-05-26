@@ -23,7 +23,7 @@ import buyp from '../../assets/store/buy-p.png'
 function Store() {
   const navigate = useNavigate()
   const images = [s1, s2, s3]
-  const condition = localStorage.getItem('condition') // timing condition
+  const condition = JSON.parse(localStorage.getItem('user')).condition // timing condition
   const [more, openMore] = useState(false) // more description
   const [get, setGet] = useState(false) // the content of button
   const [open, setOpen] = useState(false) // open the purchase
@@ -37,6 +37,12 @@ function Store() {
     ? "QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
     : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
   const btn = get ? 'Open' : 'Get'
+
+  useEffect(() => {
+    if (!localStorage.getItem('user')) {
+      navigate('/error')
+    }
+  }, [navigate])
 
   // animation for loading btn
   const getApp = contextSafe(() => {
@@ -170,7 +176,6 @@ function Store() {
         {/* Upper part */}
         <div className={styles.up}>
           <img
-            loading="lazy"
             src={up}
             className={styles.img}
             style={{ marginTop: '5px' }}
@@ -202,7 +207,7 @@ function Store() {
           // Lower part
           <div>
             <div className={styles.down}>
-              <img loading="lazy" src={device} className={styles.img} alt="" />
+              <img src={device} className={styles.img} alt="" />
               <div className={styles.description}>
                 {description}
                 <span
@@ -213,7 +218,7 @@ function Store() {
                 </span>
               </div>
             </div>
-            <img loading="lazy" src={bottom} className={styles.img} alt="" />
+            <img src={bottom} className={styles.img} alt="" />
           </div>
         )}
       </div>

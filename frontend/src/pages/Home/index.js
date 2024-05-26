@@ -1,10 +1,11 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import Modal from '../../components/Modal'
 import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
 import Tracker from '../../components/Tracker'
+import { finishUser } from '../../utils/request'
 
 import exit from '../../assets/notice/exitmodel.png'
 import data from '../../assets/app/data.json'
@@ -14,25 +15,47 @@ import styles from './index.module.css'
 
 function Home() {
   const navigate = useNavigate()
-  const condition = localStorage.getItem('condition')
   const tnum = localStorage.getItem('tnum')
-  const notify = localStorage.getItem('notify')
+  const user = JSON.parse(localStorage.getItem('user'))
+  const notify = JSON.parse(localStorage.getItem('notify'))
   const [ack, setAck] = useState(false)
 
   useEffect(() => {
-    if (notify.homeNotice) {
-      // already notified
+    if (!localStorage.getItem('user')) {
+      navigate('/error')
+    }
+  }, [navigate])
+
+  useEffect(() => {
+    // determine whether need to display notice
+    let condition = JSON.parse(localStorage.getItem('user')).condition
+    let displayNotice =
+      condition === 6 || condition === 8 || condition === 9 || condition === 10
+    if (notify.D1 || !displayNotice) {
+      // don't need to display
       setAck(true)
     }
-  }, [])
+  }, [notify])
 
   const handleGet = () => {
     setAck(!ack)
-    notify.homeNotice = true
+    notify.D1 = true
     localStorage.setItem('notify', JSON.stringify(notify))
   }
   const handleBlockClick = (id) => {
     navigate('/article/' + `${id}`)
+  }
+
+  const handleExit = async () => {
+    try {
+      await finishUser(user.pid)
+      localStorage.clear()
+      window.location.href =
+        'https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u'
+    } catch (error) {
+      console.error('Error finish user:', error)
+      alert('Sorry, there is something wrong with the server')
+    }
   }
 
   // get date
@@ -51,15 +74,9 @@ function Home() {
 
   return (
     <div>
-      {tnum === 3 ? (
+      {tnum >= 3 ? (
         <>
-          <Modal
-            image={exit}
-            handleClick={() => {
-              window.location.href =
-                'https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u'
-            }}
-          />
+          <Modal image={exit} handleClick={handleExit} />
         </>
       ) : (
         <></>

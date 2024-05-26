@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8081/api',
+  baseURL: 'https://privacy-notice.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },

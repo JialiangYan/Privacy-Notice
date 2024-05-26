@@ -27,16 +27,18 @@ function Entry() {
     try {
       const res = await createUser(prolificPid)
       if (res.data.user.permission) {
-        localStorage.setItem(
-          'notify',
-          JSON.stringify({
-            homeNotice: false,
-            articleNotice: false,
-          })
-        )
-        localStorage.setItem('tnum', 0) // set task num
-        localStorage.setItem('pid', prolificPid) // set pid
-        localStorage.setItem('condition', res.data.user.condition) // set timing condition for this app
+        const notify = {
+          D1: false,
+          D2: false,
+        }
+        const user = {
+          pid: prolificPid,
+          condition: res.data.user.condition,
+          permission: true,
+        }
+        localStorage.setItem('notify', JSON.stringify(notify))
+        localStorage.setItem('user', JSON.stringify(user))
+        localStorage.setItem('tnum', 0) // set finished task num
         navigate('/appstore')
       }
     } catch (error) {
