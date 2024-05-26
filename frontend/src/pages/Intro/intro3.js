@@ -1,12 +1,14 @@
 import transition from '../../animation/transition'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { track } from '../../utils/request'
 import styles from './index.module.css'
 
 import i3 from '../../assets/app/2.3.png'
 
 function Intro3() {
   const navigate = useNavigate()
+  const user = JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
     if (!localStorage.getItem('user')) {
@@ -14,7 +16,20 @@ function Intro3() {
     }
   }, [navigate])
 
-  const handleNext3 = () => {
+  // analytics
+  const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTimeSpentOnPage((prevTime) => prevTime + 1000)
+    }, 1000)
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
+
+  const handleNext3 = async () => {
+    console.log('Time spent on page:', timeSpentOnPage)
+    await track('Intro3_Time', { time: timeSpentOnPage }, user.pid)
     navigate('/home')
   }
 

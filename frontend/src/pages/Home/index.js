@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
-import Modal from '../../components/Modal'
 import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
 import Tracker from '../../components/Tracker'
 import { finishUser } from '../../utils/request'
 
-import exit from '../../assets/notice/exitmodel.png'
 import data from '../../assets/app/data.json'
 import pn1 from '../../assets/notice/pn1.png'
 
@@ -37,18 +35,14 @@ function Home() {
     }
   }, [notify])
 
-  const handleGet = () => {
-    setAck(!ack)
-    notify.D1 = true
-    localStorage.setItem('notify', JSON.stringify(notify))
-  }
-  const handleBlockClick = (id) => {
-    navigate('/article/' + `${id}`)
-  }
-
-  const handleExit = async () => {
-    await finishUser(user.pid)
-  }
+  useEffect(() => {
+    async function report() {
+      if (tnum >= 3) {
+        await finishUser(user.pid)
+      }
+    }
+    report()
+  }, [tnum, user])
 
   // get date
   const [formattedDate, setFormattedDate] = useState('')
@@ -64,15 +58,17 @@ function Home() {
     setFormattedDate(newFormattedDate)
   }, [])
 
+  const handleGet = () => {
+    setAck(!ack)
+    notify.D1 = true
+    localStorage.setItem('notify', JSON.stringify(notify))
+  }
+  const handleBlockClick = (id) => {
+    navigate(`/article/${id}`)
+  }
+
   return (
     <div>
-      {tnum >= 3 ? (
-        <>
-          <Modal image={exit} handleClick={handleExit} />
-        </>
-      ) : (
-        <></>
-      )}
       {!ack ? (
         <>
           <Notice image={pn1} handleGet={handleGet} />

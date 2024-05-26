@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { toast, Slide } from 'react-toastify'
 
 const apiClient = axios.create({
   baseURL: 'https://privacy-notice.onrender.com/api',
@@ -8,11 +7,11 @@ const apiClient = axios.create({
   },
 })
 
-export const track = async (eventName, time, userId) => {
+export const track = async (eventName, data, userId) => {
   try {
     const res = await apiClient.post('/log/logEvent', {
       eventName,
-      data: time,
+      data,
       userId,
     })
     console.log(res.data.message)
@@ -26,13 +25,13 @@ export const finishUser = async (userId) => {
     const res = await apiClient.post('/users/finish', { id: userId })
     console.log(res.data.message)
     localStorage.clear()
-    alert(
-      'You have finished the user study. You will be directed to the post-study questionnaire automatically.'
-    )
     setTimeout(() => {
       window.location.href =
         'https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u'
-    }, 3000)
+    }, 1000)
+    alert(
+      'You have finished the user study. You will be directed to the post-study questionnaire automatically.'
+    )
   } catch (error) {
     console.log('Error finsih participation', error)
     alert('Sorry, there is something wrong with the server')

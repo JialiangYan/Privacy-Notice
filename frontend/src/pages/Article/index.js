@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { track } from '../../utils/request'
 import transition from '../../animation/transition'
@@ -18,6 +18,7 @@ function Article() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
   const notify = JSON.parse(localStorage.getItem('notify'))
+  const user = JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
     if (!localStorage.getItem('user')) {
@@ -47,47 +48,35 @@ function Article() {
   const imgs = [img1, img2, img3]
   const articles = [A1, A2, A3]
 
-  const handleBack = () => {
-    localStorage.setItem(
-      'tnum',
-      JSON.stringify(JSON.parse(localStorage.getItem('tnum')) + 1)
-    )
-    navigate('/home')
-  }
-
-  // Track reading time
   // analytics
-  // const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setTimeSpentOnPage((prevTime) => prevTime + 1000) // increment by 1 second
-  //   }, 1000) // every 1 second
-  //   return async () => {
-  //     try {
-  //       const prolificPid = localStorage.getItem('pid')
-  //       await track('ConsentFormTime', timeSpentOnPage, prolificPid)
-  //     } catch (error) {
-  //       console.error('Error creating user:', error)
-  //     }
-  //     clearInterval(intervalId)
-  //   } // cleanup
-  // }, [])
-
-  // get time spent
-  const startTimeRef = useRef(null)
-
+  const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)
   useEffect(() => {
-    // Set start time once when the component mounts
-    startTimeRef.current = Date.now()
-
+    const intervalId = setInterval(() => {
+      setTimeSpentOnPage((prevTime) => prevTime + 1000) // increment by 1 second
+    }, 1000) // every 1 second
     return () => {
-      if (startTimeRef.current !== null) {
-        const endTime = Date.now()
-        const timeSpent = endTime - startTimeRef.current
-        console.log(`Time spent on page: ${timeSpent / 1000} seconds`)
-      }
-    }
+      clearInterval(intervalId)
+    } // cleanup
   }, [])
+
+  const handleBack = async () => {
+    console.log('Time spent on page:', timeSpentOnPage)
+    if (timeSpentOnPage > 3000) {
+      // for testing convience
+      localStorage.setItem(
+        'tnum',
+        JSON.stringify(JSON.parse(localStorage.getItem('tnum')) + 1)
+      )
+      await track(`Article${id}_Time`, { time: timeSpentOnPage }, user.pid)
+      navigate('/home')
+    } else {
+      alert(
+        `Sorry, You have to read for at least 3 minutes. You have already read for ${
+          timeSpentOnPage / 1000
+        } seconds`
+      )
+    }
+  }
 
   return (
     <>

@@ -19,7 +19,7 @@ function Entry() {
     if (!prolificPid || !studyId || !sessionId) {
       navigate('/error')
     }
-  }, [prolificPid, studyId, sessionId])
+  }, [prolificPid, studyId, sessionId, navigate])
 
   // functions
   const handleSubmit = async (e) => {
