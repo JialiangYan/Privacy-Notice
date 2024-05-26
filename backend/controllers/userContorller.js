@@ -15,7 +15,7 @@ const createUser = asyncHandler(async (req, res) => {
     res.json({ message: 'Successfully create user', user })
   } catch (error) {
     if (error.code === 11000) {
-      res.status(400)
+      res.status(409)
       throw new Error('User id already exits')
     } else {
       res.status(500)
@@ -38,7 +38,7 @@ const finishParticipation = asyncHandler(async (req, res) => {
       { new: true }
     )
     if (!user) {
-      res.status(400)
+      res.status(404)
       throw new Error('User not found')
     }
     res.json({ message: 'Participation finished', user })

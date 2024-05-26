@@ -13,7 +13,7 @@ const logEvent = asyncHandler(async (req, res) => {
     const user = await User.findOne({ id: userId })
 
     if (!user) {
-      res.status(400)
+      res.status(404)
       throw new Error('User not found')
     }
 
