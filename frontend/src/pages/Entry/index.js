@@ -24,32 +24,7 @@ function Entry() {
   // functions
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const res = await createUser(prolificPid)
-      if (res.data.user.permission) {
-        const notify = {
-          D1: false,
-          D2: false,
-        }
-        const user = {
-          pid: prolificPid,
-          condition: res.data.user.condition,
-          permission: true,
-        }
-        localStorage.setItem('notify', JSON.stringify(notify))
-        localStorage.setItem('user', JSON.stringify(user))
-        localStorage.setItem('tnum', 0) // set finished task num
-        navigate('/appstore')
-      }
-    } catch (error) {
-      if (error.response && error.response.status === 409) {
-        console.error('User ID already exists')
-        alert('You have already participated this study before')
-      } else {
-        console.error('Error creating user:', error)
-        alert('Sorry, there is something wrong with the server')
-      }
-    }
+    await createUser(prolificPid, navigate)
   }
 
   return (

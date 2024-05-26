@@ -47,15 +47,7 @@ function Home() {
   }
 
   const handleExit = async () => {
-    try {
-      await finishUser(user.pid)
-      localStorage.clear()
-      window.location.href =
-        'https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u'
-    } catch (error) {
-      console.error('Error finish user:', error)
-      alert('Sorry, there is something wrong with the server')
-    }
+    await finishUser(user.pid)
   }
 
   // get date
