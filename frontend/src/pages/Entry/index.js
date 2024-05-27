@@ -40,31 +40,28 @@ function Entry() {
           Research Assistant: Jialiang Yan <br /> jialian6@ualberta.ca
         </p>
         <p>
-          This study is being conducted for research at the University of
-          Alberta. The purpose of it is to collect feedback on the user
+          The purpose of this study is to collect feedback on the user
           experience from app installation to usage process of our news app
           "QuickNews". To do this, you will perform a simulated app installation
-          and usage task and answer some questionnaires.
+          and usage task and answer our questionnaire.
         </p>
         <p>Specific study activities include:</p>
         <ul className={styles.lst}>
-          <li>using your iPhone to visit our website</li>
+          <li>using your mobile device to visit our website</li>
           <li>simulate to install our app</li>
           <li>simulate to use our app</li>
-          <li>answering questionnaires about your experience</li>
+          <li>answering the post-study questionnaire about your experience</li>
         </ul>
         <p>
           You must meet the following criteria to participate in this study:
         </p>
         <ul className={styles.lst}>
           <li>be an adult</li>
-          <li>be an iPhone user</li>
+          <li>be a mobile device user</li>
         </ul>
         <p>
-          Your participation should take around 25 minutes. The data collected
-          from this study will be used in articles for publication in journals
-          and conference proceedings. Any write-ups of the data will not include
-          information that can be linked directly to you.
+          Your participation should take around 30 minutes. The data collected
+          from this study will be used to improve user experience.
         </p>
         <div className={styles.title2}>Benefits</div>
         <p>

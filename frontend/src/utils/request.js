@@ -26,9 +26,8 @@ export const finishUser = async (userId) => {
     console.log(res.data.message)
     localStorage.clear()
     setTimeout(() => {
-      window.location.href =
-        'https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u'
-    }, 1000)
+      window.location.href = `https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u/?PROLIFIC_PID=${userId}`
+    }, 500)
     alert(
       'You have finished the user study. You will be directed to the post-study questionnaire automatically.'
     )

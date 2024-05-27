@@ -17,8 +17,9 @@ import s1 from '../../assets/store/ss1.png'
 import s2 from '../../assets/store/ss2.png'
 import s3 from '../../assets/store/ss3.png'
 import device from '../../assets/store/device.png'
-import bottom from '../../assets/store/bottom.png'
-import buyp from '../../assets/store/buy-p.png'
+import review from '../../assets/store/1_Reviews.png'
+import privacy from '../../assets/store/2_App Privacy.png'
+import info from '../../assets/store/3_Information.png'
 
 function Store() {
   const navigate = useNavigate()
@@ -171,6 +172,11 @@ function Store() {
 
   return (
     <div className={styles.main} ref={storeToapp}>
+      {/* Purchase Model */}
+      {open && (
+        <Purchase confirm={confirm} close={close} condition={condition} />
+      )}
+
       {/* Store Page */}
       <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
         {/* Upper part */}
@@ -194,33 +200,25 @@ function Store() {
             <LoadingAni />
           </div>
         </div>
+        {condition === 3 && <img src={privacy} className={styles.img} alt="" />}
         <Slide className={styles.slide} images={images} />
-        {/* Purchase modal */}
-        {open ? (
-          <Purchase
-            image={buyp}
-            confirm={confirm}
-            close={close}
-            condition={condition}
-          />
-        ) : (
-          // Lower part
-          <div>
-            <div className={styles.down}>
-              <img src={device} className={styles.img} alt="" />
-              <div className={styles.description}>
-                {description}
-                <span
-                  className={more ? styles.nomore : styles.more}
-                  onClick={() => openMore(!more)}
-                >
-                  more
-                </span>
-              </div>
-            </div>
-            <img src={bottom} className={styles.img} alt="" />
+        <div className={styles.down}>
+          <img src={device} className={styles.img} alt="" />
+          <div className={styles.description}>
+            {description}
+            <span
+              className={more ? styles.nomore : styles.more}
+              onClick={() => openMore(!more)}
+            >
+              more
+            </span>
           </div>
+        </div>
+        <img src={review} className={styles.img} alt="" />
+        {condition !== 1 && condition !== 3 && (
+          <img src={privacy} className={styles.img} alt="" />
         )}
+        <img src={info} className={styles.img} alt="" />
       </div>
 
       {/* App Intro Page */}

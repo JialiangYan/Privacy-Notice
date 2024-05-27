@@ -9,7 +9,7 @@ import Intro2 from './pages/Intro/intro2'
 import Intro3 from './pages/Intro/intro3'
 import Article from './pages/Article'
 
-import PreventNavigation from './PreventNavigation'
+import PreventNavigation from './utils/PreventNavigation'
 import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
