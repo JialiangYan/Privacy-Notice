@@ -5,11 +5,13 @@ import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
 import Tracker from '../../components/Tracker'
 import { finishUser } from '../../utils/request'
+import { ToastContainer, Slide } from 'react-toastify'
 
 import data from '../../assets/app/data.json'
 import pn1 from '../../assets/notice/pn1.png'
 
 import styles from './index.module.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Home() {
   const navigate = useNavigate()
@@ -17,12 +19,6 @@ function Home() {
   const user = JSON.parse(localStorage.getItem('user'))
   const notify = JSON.parse(localStorage.getItem('notify'))
   const [ack, setAck] = useState(false)
-
-  useEffect(() => {
-    if (!localStorage.getItem('user')) {
-      navigate('/error')
-    }
-  }, [navigate])
 
   useEffect(() => {
     // determine whether need to display notice
@@ -33,7 +29,7 @@ function Home() {
       // don't need to display
       setAck(true)
     }
-  }, [notify])
+  }, [notify, navigate])
 
   useEffect(() => {
     async function report() {
@@ -76,6 +72,20 @@ function Home() {
       ) : (
         <></>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Slide}
+      />
       <div className={styles.main}>
         <div className={styles.tracker}>
           <Tracker num={tnum} />

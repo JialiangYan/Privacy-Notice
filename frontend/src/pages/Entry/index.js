@@ -91,7 +91,7 @@ function Entry() {
           summary will outline the research and discuss our findings and
           recommendations.
         </p>
-        <p>You are also eligible to receive $8 after completing the study.</p>
+        <p>You are also eligible to receive $9 after completing the study.</p>
         <div className={styles.title2}>Confidentiality & Anonymity</div>
         <p>
           No one will be identified in this study and identifying personal

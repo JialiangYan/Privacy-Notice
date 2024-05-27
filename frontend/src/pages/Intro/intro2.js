@@ -10,11 +10,11 @@ function Intro2() {
   const condition = JSON.parse(localStorage.getItem('user')).condition
   const displayNext3 = condition === 5 || condition === 7 || condition === 10
 
-  useEffect(() => {
-    if (!localStorage.getItem('user')) {
-      navigate('/error')
-    }
-  }, [navigate])
+  // useEffect(() => {
+  //   if (!localStorage.getItem('user')) {
+  //     navigate('/error')
+  //   }
+  // }, [navigate])
 
   const handleNext2 = () => {
     if (displayNext3) {

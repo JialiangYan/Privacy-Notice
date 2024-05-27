@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const apiClient = axios.create({
   baseURL: 'https://privacy-notice.onrender.com/api',
@@ -24,11 +25,11 @@ export const finishUser = async (userId) => {
   try {
     const res = await apiClient.post('/users/finish', { id: userId })
     console.log(res.data.message)
-    localStorage.clear()
+    // localStorage.clear()
+    toast.success(
+      'You have finished the user study. You will be directed to the post-study questionnaire automatically.'
+    )
     setTimeout(() => {
-      alert(
-        'You have finished the user study. You will be directed to the post-study questionnaire automatically.'
-      )
       window.location.href = `https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u/?PROLIFIC_PID=${userId}`
     }, 1000)
   } catch (error) {

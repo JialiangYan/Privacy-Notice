@@ -10,11 +10,11 @@ function Intro3() {
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'))
 
-  useEffect(() => {
-    if (!localStorage.getItem('user')) {
-      navigate('/error')
-    }
-  }, [navigate])
+  // useEffect(() => {
+  //   if (!localStorage.getItem('user')) {
+  //     navigate('/error')
+  //   }
+  // }, [navigate])
 
   // analytics
   const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)

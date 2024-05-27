@@ -21,12 +21,6 @@ function Article() {
   const user = JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
-    if (!localStorage.getItem('user')) {
-      navigate('/error')
-    }
-  }, [navigate])
-
-  useEffect(() => {
     // determine whether need to display notice
     let condition = JSON.parse(localStorage.getItem('user')).condition
     let displayNotice =

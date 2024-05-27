@@ -9,6 +9,7 @@ body,
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overscroll-behavior: none;
   overflow-x: hidden !important;
+  background-color: white;
 }
 
 img {

@@ -8,11 +8,11 @@ import i1 from '../../assets/app/2.1.png'
 function Intro1() {
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (!localStorage.getItem('user')) {
-      navigate('/error')
-    }
-  }, [navigate])
+  // useEffect(() => {
+  //   if (!localStorage.getItem('user')) {
+  //     navigate('/error')
+  //   }
+  // }, [navigate])
 
   const handleNext1 = () => {
     navigate('/intro2')
