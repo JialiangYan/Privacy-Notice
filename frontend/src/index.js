@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <StrictMode>
-    <Analytics mode={'production'} />;
+    <Analytics mode={'production'} />
     <SpeedInsights />
     <App />
   </StrictMode>
