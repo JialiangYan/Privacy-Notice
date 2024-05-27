@@ -26,11 +26,11 @@ export const finishUser = async (userId) => {
     console.log(res.data.message)
     localStorage.clear()
     setTimeout(() => {
+      alert(
+        'You have finished the user study. You will be directed to the post-study questionnaire automatically.'
+      )
       window.location.href = `https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u/?PROLIFIC_PID=${userId}`
-    }, 500)
-    alert(
-      'You have finished the user study. You will be directed to the post-study questionnaire automatically.'
-    )
+    }, 1000)
   } catch (error) {
     console.log('Error finsih participation', error)
     alert('Sorry, there is something wrong with the server')
@@ -43,7 +43,8 @@ export const createUser = async (userId, navigate) => {
     console.log(res.data.message, res.data.user.id)
     const user = {
       pid: res.data.user.id,
-      condition: res.data.user.condition,
+      // condition: res.data.user.condition,
+      condition: 10, //for test
       permission: res.data.user.permission,
     }
     const notify = {
