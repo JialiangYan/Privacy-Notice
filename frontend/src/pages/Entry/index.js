@@ -42,8 +42,8 @@ function Entry() {
         <p>
           The purpose of this study is to collect feedback on the user
           experience from app installation to usage process of our news app
-          "QuickNews". To do this, you will perform a simulated app installation
-          and usage task and answer our questionnaire.
+          named "QuickNews". To do this, you will perform a simulated app
+          installation and usage task and answer our questionnaire.
         </p>
         <p>Specific study activities include:</p>
         <ul className={styles.lst}>
