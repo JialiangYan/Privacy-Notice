@@ -55,7 +55,7 @@ function Article() {
 
   const handleBack = async () => {
     console.log('Time spent on page:', timeSpentOnPage)
-    if (timeSpentOnPage > 3000) {
+    if (timeSpentOnPage > 180000) {
       // for testing convience
       localStorage.setItem(
         'tnum',
