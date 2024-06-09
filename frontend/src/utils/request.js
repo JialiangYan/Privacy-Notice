@@ -26,12 +26,13 @@ export const finishUser = async (userId) => {
     const res = await apiClient.post('/users/finish', { id: userId })
     console.log(res.data.message)
     // localStorage.clear()
-    toast.success(
-      'You have finished the user study. You will be directed to the post-study questionnaire automatically.'
+    toast(
+      'You have finished the user study. You will be directed to the post-study questionnaire automatically.',
+      {
+        onClose: () =>
+          (window.location.href = `https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u/?PROLIFIC_PID=${userId}`),
+      }
     )
-    setTimeout(() => {
-      window.location.href = `https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u/?PROLIFIC_PID=${userId}`
-    }, 1000)
   } catch (error) {
     console.log('Error finsih participation', error)
     alert('Sorry, there is something wrong with the server')

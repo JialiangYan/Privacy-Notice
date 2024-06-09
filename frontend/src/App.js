@@ -8,6 +8,7 @@ import Intro1 from './pages/Intro/intro1'
 import Intro2 from './pages/Intro/intro2'
 import Intro3 from './pages/Intro/intro3'
 import Article from './pages/Article'
+import Instruct from './pages/Instruct'
 
 import PreventNavigation from './utils/PreventNavigation'
 import { AnimatePresence } from 'framer-motion'
@@ -47,6 +48,7 @@ export default function App() {
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<Entry />} />
+            <Route path="/instruct" element={<Instruct />} />
             <Route path="/appstore" element={<Store />} />
             <Route path="/intro1" element={<Intro1 />} />
             <Route path="/intro2" element={<Intro2 />} />

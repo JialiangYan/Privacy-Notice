@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import transition from '../../animation/transition'
-import { createUser } from '../../utils/request'
+import 'react-toastify/dist/ReactToastify.css'
 
 import styles from './index.module.css'
 
@@ -11,20 +11,18 @@ function Entry() {
   // read parameters
   const [searchParams] = useSearchParams()
   const prolificPid = searchParams.get('PROLIFIC_PID')
-  const studyId = searchParams.get('STUDY_ID')
-  const sessionId = searchParams.get('SESSION_ID')
 
   // track participant info
   useEffect(() => {
-    if (!prolificPid || !studyId || !sessionId) {
+    if (!prolificPid) {
       navigate('/error')
     }
-  }, [prolificPid, studyId, sessionId, navigate])
+  }, [prolificPid, navigate])
 
   // functions
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await createUser(prolificPid, navigate)
+    navigate('/instruct', { state: { prolificPid } })
   }
 
   return (
@@ -40,29 +38,22 @@ function Entry() {
           Research Assistant: Jialiang Yan <br /> jialian6@ualberta.ca
         </p>
         <p>
-          The purpose of this study is to collect feedback on the user
-          experience from app installation to usage process of our news app
-          named "QuickNews". To do this, you will perform a simulated app
-          installation and usage task and answer our questionnaire.
+          The purpose of this study is to improve the user experience from app
+          installation to app usage process. To do this, you will perform a
+          simulated app installation and usage task in the our web app and then
+          answer a questionnaire. All these activities will take place in your
+          browser.
         </p>
-        <p>Specific study activities include:</p>
-        <ul className={styles.lst}>
-          <li>using your mobile device to visit our website</li>
-          <li>simulate to install our app</li>
-          <li>simulate to use our app</li>
-          <li>answering the post-study questionnaire about your experience</li>
-        </ul>
         <p>
           You must meet the following criteria to participate in this study:
         </p>
         <ul className={styles.lst}>
-          <li>be an adult</li>
-          <li>be a mobile device user</li>
+          <li>Between the ages of 18 and 65</li>
+          <li>English speaking</li>
+          <li>Within North America</li>
+          <li>iPhone user</li>
         </ul>
-        <p>
-          Your participation should take around 30 minutes. The data collected
-          from this study will be used to improve user experience.
-        </p>
+        <p>Your participation should take around 30 minutes.</p>
         <div className={styles.title2}>Benefits</div>
         <p>
           Other than the receipt of a small honorarium, you will not directly
@@ -86,12 +77,10 @@ function Entry() {
         </p>
         <div className={styles.title2}>Remuneration/Compensation</div>
         <p>
-          To thank you for your time, we will be pleased to make a summary of
-          the results available to you once they have been compiled. This
-          summary will outline the research and discuss our findings and
-          recommendations.
+          To thank you for your time, you will be eligible to receive $9 after
+          completing the study. Besides, we will be pleased to make a summary of
+          the results available to you once they have been compiled.
         </p>
-        <p>You are also eligible to receive $9 after completing the study.</p>
         <div className={styles.title2}>Confidentiality & Anonymity</div>
         <p>
           No one will be identified in this study and identifying personal
@@ -111,7 +100,7 @@ function Entry() {
         </div>
         <p>
           You get to choose whether you want to complete study activities. It is
-          okay if you don’t want us to use your data. We can always exclude your
+          okay if you don't want us to use your data. We can always exclude your
           data while analyzing that of others.
         </p>
         <p>
@@ -129,18 +118,19 @@ function Entry() {
         </p>
         <div className={styles.title2}>Further Information</div>
         <p>
-          Please contact Bailey, by email at kacsmar@ualberta.ca , or Jialiang,
-          by email at jialian6@ualberta.ca, if you would like to know more. They
-          are both happy to answer questions about this study and what we are
-          doing. Please contact either of them if you have any questions or
-          concerns.
+          Please contact Bailey, by email at <a href="">kacsmar@ualberta.ca</a>{' '}
+          , or Jialiang, by email at <a href="">jialian6@ualberta.ca</a>, if you
+          would like to know more. They are both happy to answer questions about
+          this study and what we are doing. Please contact either of them if you
+          have any questions or concerns.
         </p>
         <p>
           The plan for this study has been reviewed by a Research Ethics Board
-          at the University of Alberta (Pro00000000). If you have any questions
+          at the University of Alberta (Pro00142737). If you have any questions
           regarding your rights as a research participant, you may contact the
-          University of Alberta Research Ethics Office at reoffice@ualberta.ca
-          or 780-492-2615 and quote Ethics ID Pro00000000. This office is
+          University of Alberta Research Ethics Office at{' '}
+          <a href="">reoffice@ualberta.ca</a>
+          or 780-492-2615 and quote Ethics ID Pro00142737. This office is
           independent of the study investigators.
         </p>
       </div>
@@ -155,7 +145,7 @@ function Entry() {
         </p>
         <form onSubmit={handleSubmit}>
           <button type="submit" className={styles.btn}>
-            Consent & Start
+            Consent
           </button>
         </form>
       </div>
