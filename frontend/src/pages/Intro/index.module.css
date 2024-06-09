@@ -12,25 +12,39 @@
   width: 100%;
 }
 
+/* appearance of buttons */
+.intro1Next,
+.intro2Next,
+.intro3Next,
+.intro2Back,
+.intro3Back {
+  width: 98px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+
+  letter-spacing: 0.8px;
+  transform: scaleY(0.9);
+  color: black;
+  font-size: 1.3rem;
+  /* font-weight: bold; */
+  text-align: center;
+  display: block;
+  box-shadow: 5px 2px 0 rgba(0, 0, 0, 1); /* 右侧阴影 */
+}
+
 .intro1Next,
 .intro2Next,
 .intro3Next {
   position: absolute;
-  opacity: 0;
-  /* background: black; */
-  top: 104vh;
-  right: 4.5vw;
-  width: 98px;
-  height: 32px;
+  right: 5vw;
+  bottom: 5vh;
 }
 
 .intro2Back,
 .intro3Back {
   position: absolute;
-  opacity: 0;
-  /* background: black; */
-  top: 104vh;
-  left: 4.5vw;
-  width: 98px;
-  height: 32px;
+  left: 5vw;
+  bottom: 5vh;
 }

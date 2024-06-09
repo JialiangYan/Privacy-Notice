@@ -12,8 +12,14 @@ export default function Notice({ image, handleGet }) {
           transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
           className={styles.modal}
         >
-          <img className={styles.img} src={image} alt="notice" />
-          <button onClick={handleGet} className={styles.btn}></button>
+          <img
+            className={styles.img}
+            onClick={handleGet}
+            src={image}
+            alt="notice"
+          />
+          {/* <button onClick={handleGet} className={styles.btn}>
+          </button> */}
         </motion.div>
       </div>
     </>

@@ -41,8 +41,12 @@ function Intro3() {
     <>
       <div className={`${styles.intro1} intro1`}>
         <img src={i3} alt="intro" className={`${styles.introImg}`} />
-        <button className={styles.intro1Next} onClick={handleNext3}></button>
-        <button className={styles.intro3Back} onClick={handleBack3}></button>
+        <button className={styles.intro1Next} onClick={handleNext3}>
+          Agree
+        </button>
+        <button className={styles.intro3Back} onClick={handleBack3}>
+          Disagree
+        </button>
       </div>
     </>
   )

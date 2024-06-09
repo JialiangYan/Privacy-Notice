@@ -65,7 +65,7 @@ function Article() {
       navigate('/home')
     } else {
       alert(
-        `Sorry, You have to read for at least 3 minutes. You have already read for ${
+        `Sorry, You have to read for at least 90 seconds. You have already read for ${
           timeSpentOnPage / 1000
         } seconds`
       )
