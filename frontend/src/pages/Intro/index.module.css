@@ -28,6 +28,7 @@
   transform: scaleY(0.9);
   color: black;
   font-size: 1.3rem;
+  padding: 0;
   /* font-weight: bold; */
   text-align: center;
   display: block;

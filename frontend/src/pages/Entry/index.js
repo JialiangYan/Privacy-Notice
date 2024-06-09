@@ -129,9 +129,8 @@ function Entry() {
           at the University of Alberta (Pro00142737). If you have any questions
           regarding your rights as a research participant, you may contact the
           University of Alberta Research Ethics Office at{' '}
-          <a href="">reoffice@ualberta.ca</a>
-          or 780-492-2615 and quote Ethics ID Pro00142737. This office is
-          independent of the study investigators.
+          <a href="">reoffice@ualberta.ca</a> or 780-492-2615 and quote Ethics
+          ID Pro00142737. This office is independent of the study investigators.
         </p>
       </div>
       {/* Form */}
