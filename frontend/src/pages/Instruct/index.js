@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import { createUser } from '../../utils/request'
