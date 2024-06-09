@@ -22,7 +22,7 @@ export default function DownloadAni() {
         duration: 0.1,
         borderColor: '#007bff',
       })
-  }, [])
+  }, [tl])
 
   return (
     <div>

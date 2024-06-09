@@ -54,7 +54,7 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/article/:id" element={<Article />} />
             <Route path="/error" element={<Error />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="/error" replace />} />
           </Routes>
         </AnimatePresence>
       </PreventNavigation>

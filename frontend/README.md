@@ -1,4 +1,4 @@
-## Privacy Notice Project
+## User Study Project
 
 A simulation platform.
 
