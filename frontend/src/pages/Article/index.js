@@ -8,6 +8,9 @@ import A1 from './A1'
 import A2 from './A2'
 import A3 from './A3'
 
+import { ToastContainer, Slide, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import data from '../../assets/app/data.json'
 import img1 from '../../assets/app/news1.png'
 import img2 from '../../assets/app/news1.png'
@@ -66,7 +69,7 @@ function Article() {
       navigate('/home')
     } else {
       // alert('Enter else')
-      alert(
+      toast(
         `Sorry, You have to read for at least 90 seconds. You have already read for ${
           timeSpentOnPage / 1000
         } seconds`
@@ -84,6 +87,17 @@ function Article() {
         <></>
       )}
       <div className={styles.main}>
+        <ToastContainer
+          position="top-center"
+          autoClose={1000}
+          limit={1}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          theme="light"
+          transition={Slide}
+        />
         <div className={styles.topBar}>
           <div className={styles.bbtn} onClick={handleBack}>
             {'<'}
