@@ -65,7 +65,7 @@ function Article() {
       await track(`Article${id}_Time`, { time: timeSpentOnPage }, user.pid)
       navigate('/home')
     } else {
-      alert('Enter else')
+      // alert('Enter else')
       alert(
         `Sorry, You have to read for at least 90 seconds. You have already read for ${
           timeSpentOnPage / 1000
