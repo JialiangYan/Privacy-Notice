@@ -89,7 +89,7 @@ function Article() {
       <div className={styles.main}>
         <ToastContainer
           position="top-center"
-          autoClose={1000}
+          autoClose={3000}
           limit={1}
           hideProgressBar={false}
           newestOnTop={false}
