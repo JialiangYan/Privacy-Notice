@@ -54,6 +54,7 @@ function Article() {
   }, [])
 
   const handleBack = async () => {
+    alert('Alert Click')
     console.log('Time spent on page:', timeSpentOnPage)
     if (timeSpentOnPage > 90000) {
       // for testing convience
