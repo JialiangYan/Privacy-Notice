@@ -54,7 +54,7 @@ function Article() {
   }, [])
 
   const handleBack = async () => {
-    alert('Alert Click')
+    // alert('Alert Click')
     console.log('Time spent on page:', timeSpentOnPage)
     if (timeSpentOnPage > 90000) {
       // for testing convience
@@ -65,6 +65,7 @@ function Article() {
       await track(`Article${id}_Time`, { time: timeSpentOnPage }, user.pid)
       navigate('/home')
     } else {
+      alert('Enter else')
       alert(
         `Sorry, You have to read for at least 90 seconds. You have already read for ${
           timeSpentOnPage / 1000
