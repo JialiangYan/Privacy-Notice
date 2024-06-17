@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import gsap from 'gsap'
@@ -172,7 +172,7 @@ function Store() {
       <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
         {/* Upper part */}
         <div className={styles.up}>
-          <LazyLoad height={400}>
+          <LazyLoad>
             <img
               src={up}
               className={styles.img}

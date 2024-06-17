@@ -3,7 +3,6 @@ import PreventNavigation from './utils/PreventNavigation'
 import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
-import { divide } from 'lodash'
 
 const Error = lazy(() => import('./pages/Error'))
 const Entry = lazy(() => import('./pages/Entry'))

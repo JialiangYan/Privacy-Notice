@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './index.module.css'
 
-import s1 from '../../assets/store/ss1.jpg'
-import s2 from '../../assets/store/ss2.jpg'
-import s3 from '../../assets/store/ss3.jpg'
+import s1 from '../../assets/store/ss1.webp'
+import s2 from '../../assets/store/ss2.webp'
+import s3 from '../../assets/store/ss3.webp'
 
 function Slide() {
   const images = [s1, s2, s3]
