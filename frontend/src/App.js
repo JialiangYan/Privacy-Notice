@@ -49,7 +49,7 @@ export default function App() {
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/" element={<Entry />} />
-              <Route path="/instruct/:id" element={<Instruct />} />
+              <Route path="/instruction" element={<Instruct />} />
               <Route path="/appstore" element={<Store />} />
               <Route path="/intro1" element={<Intro1 />} />
               <Route path="/intro2" element={<Intro2 />} />

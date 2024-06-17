@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useUser } from '../../UserContext'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import transition from '../../animation/transition'
 import 'react-toastify/dist/ReactToastify.css'
@@ -9,6 +10,7 @@ function Entry() {
   const navigate = useNavigate()
 
   // read parameters
+  const { setUserId } = useUser()
   const [searchParams] = useSearchParams()
   const prolificPid = searchParams.get('PROLIFIC_PID')
 
@@ -16,13 +18,15 @@ function Entry() {
   useEffect(() => {
     if (!prolificPid) {
       navigate('/error')
+    } else {
+      setUserId(prolificPid)
     }
   }, [prolificPid, navigate])
 
   // functions
   const handleSubmit = async (e) => {
     e.preventDefault()
-    navigate(`/instruct/${prolificPid}`)
+    navigate('/instruction')
   }
 
   return (

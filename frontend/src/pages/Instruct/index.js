@@ -1,28 +1,35 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useUser } from '../../UserContext'
+import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import { createUser } from '../../utils/request'
 import { ToastContainer, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
-import { throttle } from 'lodash'
+import throttle from 'lodash/throttle'
 
 import styles from './index.module.css'
 
 function Instruct() {
-  const { id } = useParams()
   const navigate = useNavigate()
-  console.log('id is ', id)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  // get Proprofic id
+  const { userId } = useUser()
+
   // functions
   const throttledSubmit = throttle(async () => {
+    if (isSubmitted) return
     toast.promise(
       async () => {
-        await createUser(id, navigate)
+        await createUser(userId, navigate)
       },
       {
         pending: 'Loading...',
       }
     )
-  }, 60000)
+    setIsSubmitted(true)
+  }, 10000)
 
   const onSubmit = (e) => {
     e.preventDefault()
