@@ -39,12 +39,6 @@ function Store() {
     : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
   const btn = get ? 'Open' : 'Get'
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem('user')) {
-  //     navigate('/error')
-  //   }
-  // }, [navigate])
-
   // animation for loading btn
   const getApp = contextSafe(() => {
     tlBtn

@@ -62,7 +62,7 @@ export const createUser = async (userId, navigate) => {
     if (error.response && error.response.status === 409) {
       alert('You have already participated this study before')
     } else {
-      alert('Sorry, there is something wrong with the server')
+      alert(`Sorry, there is something wrong with the server ${userId}`)
     }
   }
 }
