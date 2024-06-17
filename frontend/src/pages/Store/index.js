@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import LazyLoad from 'react-lazyload'
 
 import styles from './index.module.css'
 
@@ -175,12 +176,14 @@ function Store() {
       <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
         {/* Upper part */}
         <div className={styles.up}>
-          <img
-            src={up}
-            className={styles.img}
-            style={{ marginTop: '5px' }}
-            alt=""
-          />
+          <LazyLoad height={400}>
+            <img
+              src={up}
+              className={styles.img}
+              style={{ marginTop: '5px' }}
+              alt=""
+            />
+          </LazyLoad>
           <button
             className={`${styles.btn} btn`}
             onClick={get ? openApp : getApp}
@@ -210,9 +213,13 @@ function Store() {
         </div>
         <img src={review} className={styles.img} alt="" />
         {condition !== 1 && condition !== 3 && (
-          <img src={privacy} className={styles.img} alt="" />
+          <LazyLoad>
+            <img src={privacy} className={styles.img} alt="" />
+          </LazyLoad>
         )}
-        <img src={info} className={styles.img} alt="" />
+        <LazyLoad>
+          <img src={info} className={styles.img} alt="" />
+        </LazyLoad>
       </div>
 
       {/* App Intro Page */}
