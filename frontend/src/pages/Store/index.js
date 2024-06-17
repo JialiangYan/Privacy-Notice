@@ -197,7 +197,11 @@ function Store() {
             <LoadingAni />
           </div>
         </div>
-        {condition === 3 && <img src={privacy} className={styles.img} alt="" />}
+        {condition === 3 && (
+          <LazyLoad>
+            <img src={privacy} className={styles.img} alt="" />
+          </LazyLoad>
+        )}
         <Slide className={styles.slide} images={images} />
         <div className={styles.down}>
           <img src={device} className={styles.img} alt="" />

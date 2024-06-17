@@ -3,6 +3,7 @@ import PreventNavigation from './utils/PreventNavigation'
 import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
+import { divide } from 'lodash'
 
 const Error = lazy(() => import('./pages/Error'))
 const Entry = lazy(() => import('./pages/Entry'))
@@ -13,7 +14,7 @@ const Intro2 = lazy(() => import('./pages/Intro/intro2'))
 const Intro3 = lazy(() => import('./pages/Intro/intro3'))
 const Article = lazy(() => import('./pages/Article'))
 const Instruct = lazy(() => import('./pages/Instruct'))
-const Loading = () => <div>Loading...</div>
+const Loading = lazy(() => import('./components/LoadingAni'))
 
 export default function App() {
   // const isMobileDevice = () => {
@@ -46,7 +47,13 @@ export default function App() {
     <BrowserRouter>
       <PreventNavigation>
         <AnimatePresence mode="wait">
-          <Suspense fallback={<Loading />}>
+          <Suspense
+            fallback={
+              <div id="loading">
+                <Loading />
+              </div>
+            }
+          >
             <Routes>
               <Route path="/" element={<Entry />} />
               <Route path="/instruction" element={<Instruct />} />

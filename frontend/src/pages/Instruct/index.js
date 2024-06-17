@@ -20,7 +20,7 @@ function Instruct() {
           "QuickNews".{' '}
           <strong>
             Please imagine that you want to install this app on your iPhone and
-            use it
+            use it.
           </strong>
           .
         </p>

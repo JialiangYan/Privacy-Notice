@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './index.module.css'
 
 function Slide({ images }) {
+  useEffect(() => {
+    images.forEach((image) => {
+      const img = new Image()
+      img.src = image
+    })
+  }, [])
+
   return (
     <div className={styles.container}>
       <div className={styles.scroll}>
