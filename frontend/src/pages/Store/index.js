@@ -14,9 +14,6 @@ import LoadingAni from '../../components/LoadingAni'
 
 // import assets
 import up from '../../assets/store/up.png'
-import s1 from '../../assets/store/ss1.png'
-import s2 from '../../assets/store/ss2.png'
-import s3 from '../../assets/store/ss3.png'
 import device from '../../assets/store/device.png'
 import review from '../../assets/store/1_Reviews.png'
 import privacy from '../../assets/store/2_App Privacy.png'
@@ -24,7 +21,6 @@ import info from '../../assets/store/3_Information.png'
 
 function Store() {
   const navigate = useNavigate()
-  const images = [s1, s2, s3]
   const condition = JSON.parse(localStorage.getItem('user')).condition // timing condition
   const [more, openMore] = useState(false) // more description
   const [get, setGet] = useState(false) // the content of button
@@ -202,7 +198,7 @@ function Store() {
             <img src={privacy} className={styles.img} alt="" />
           </LazyLoad>
         )}
-        <Slide className={styles.slide} images={images} />
+        <Slide className={styles.slide} />
         <div className={styles.down}>
           <img src={device} className={styles.img} alt="" />
           <div className={styles.description}>
