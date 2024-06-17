@@ -12,6 +12,9 @@ function Slide({ images }) {
               className={styles.img}
               src={image}
               alt={`Screenshot ${index + 1}`}
+              onLoad={() => {
+                console.log('LOaded', index)
+              }}
             />
           ))}
         </div>

@@ -1,29 +1,32 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import transition from '../../animation/transition'
 import { createUser } from '../../utils/request'
 import { ToastContainer, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
-import { useLocation } from 'react-router-dom'
+import { throttle } from 'lodash'
 
 import styles from './index.module.css'
 
 function Instruct() {
+  const { id } = useParams()
   const navigate = useNavigate()
-  const location = useLocation()
-  const { prolificPid } = location.state || {}
-
+  console.log('id is ', id)
   // functions
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const throttledSubmit = throttle(async () => {
     toast.promise(
       async () => {
-        await createUser(prolificPid, navigate)
+        await createUser(id, navigate)
       },
       {
         pending: 'Loading...',
       }
     )
+  }, 60000)
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    throttledSubmit()
   }
 
   return (
@@ -61,7 +64,7 @@ function Instruct() {
           post-study questionnaire.
         </p>
         <p>Note: All these activities will take place in your browser.</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <button type="submit" className={styles.btn}>
             Start the Study
           </button>

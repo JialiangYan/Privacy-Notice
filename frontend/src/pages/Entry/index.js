@@ -22,7 +22,7 @@ function Entry() {
   // functions
   const handleSubmit = async (e) => {
     e.preventDefault()
-    navigate('/instruct', { state: { prolificPid } })
+    navigate(`/instruct/${prolificPid}`)
   }
 
   return (

@@ -1,19 +1,19 @@
-import React from 'react'
-
-import Error from './pages/Error'
-import Entry from './pages/Entry'
-import Store from './pages/Store'
-import Home from './pages/Home'
-import Intro1 from './pages/Intro/intro1'
-import Intro2 from './pages/Intro/intro2'
-import Intro3 from './pages/Intro/intro3'
-import Article from './pages/Article'
-import Instruct from './pages/Instruct'
-
+import React, { lazy, Suspense } from 'react'
 import PreventNavigation from './utils/PreventNavigation'
 import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
+
+const Error = lazy(() => import('./pages/Error'))
+const Entry = lazy(() => import('./pages/Entry'))
+const Store = lazy(() => import('./pages/Store'))
+const Home = lazy(() => import('./pages/Home'))
+const Intro1 = lazy(() => import('./pages/Intro/intro1'))
+const Intro2 = lazy(() => import('./pages/Intro/intro2'))
+const Intro3 = lazy(() => import('./pages/Intro/intro3'))
+const Article = lazy(() => import('./pages/Article'))
+const Instruct = lazy(() => import('./pages/Instruct'))
+const Loading = () => <div>Loading...</div>
 
 export default function App() {
   // const isMobileDevice = () => {
@@ -46,18 +46,20 @@ export default function App() {
     <BrowserRouter>
       <PreventNavigation>
         <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<Entry />} />
-            <Route path="/instruct" element={<Instruct />} />
-            <Route path="/appstore" element={<Store />} />
-            <Route path="/intro1" element={<Intro1 />} />
-            <Route path="/intro2" element={<Intro2 />} />
-            <Route path="/intro3" element={<Intro3 />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/article/:id" element={<Article />} />
-            <Route path="/error" element={<Error />} />
-            <Route path="*" element={<Navigate to="/error" replace />} />
-          </Routes>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Entry />} />
+              <Route path="/instruct/:id" element={<Instruct />} />
+              <Route path="/appstore" element={<Store />} />
+              <Route path="/intro1" element={<Intro1 />} />
+              <Route path="/intro2" element={<Intro2 />} />
+              <Route path="/intro3" element={<Intro3 />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/article/:id" element={<Article />} />
+              <Route path="/error" element={<Error />} />
+              <Route path="*" element={<Navigate to="/error" replace />} />
+            </Routes>
+          </Suspense>
         </AnimatePresence>
       </PreventNavigation>
     </BrowserRouter>
