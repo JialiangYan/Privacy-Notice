@@ -24,7 +24,7 @@ function Home() {
     // determine whether need to display notice
     let condition = JSON.parse(localStorage.getItem('user')).condition
     let displayNotice =
-      condition === 6 || condition === 8 || condition === 9 || condition === 10
+      condition === 5 || condition === 7 || condition === 8 || condition === 9
     if (notify.D1 || !displayNotice) {
       // don't need to display
       setAck(true)

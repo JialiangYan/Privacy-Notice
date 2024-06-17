@@ -46,7 +46,7 @@ export const createUser = async (userId, navigate) => {
     const user = {
       pid: res.data.user.id,
       // condition: res.data.user.condition,
-      condition: 10, //for test
+      condition: 9, //for test
       permission: res.data.user.permission,
     }
     const notify = {

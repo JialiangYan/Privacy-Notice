@@ -6,7 +6,7 @@ import nbuy from '../../assets/store/buy-np.png'
 
 function Purchase({ confirm, close, condition }) {
   const buy =
-    condition === 4 || condition === 7 || condition === 9 || condition === 10
+    condition === 3 || condition === 6 || condition === 8 || condition === 9
 
   return (
     <motion.div

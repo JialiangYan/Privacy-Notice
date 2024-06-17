@@ -193,7 +193,7 @@ function Store() {
             <LoadingAni />
           </div>
         </div>
-        {condition === 3 && (
+        {condition === 2 && (
           <LazyLoad>
             <img src={privacy} className={styles.img} alt="" />
           </LazyLoad>
@@ -212,7 +212,7 @@ function Store() {
           </div>
         </div>
         <img src={review} className={styles.img} alt="" />
-        {condition !== 1 && condition !== 3 && (
+        {condition !== 2 && (
           <LazyLoad>
             <img src={privacy} className={styles.img} alt="" />
           </LazyLoad>

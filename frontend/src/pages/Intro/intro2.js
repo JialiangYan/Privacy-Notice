@@ -8,7 +8,7 @@ import i2 from '../../assets/app/2.2.png'
 function Intro2() {
   const navigate = useNavigate()
   const condition = JSON.parse(localStorage.getItem('user')).condition
-  const displayNext3 = condition === 5 || condition === 7 || condition === 10
+  const displayNext3 = condition === 4 || condition === 6 || condition === 9
 
   // useEffect(() => {
   //   if (!localStorage.getItem('user')) {
