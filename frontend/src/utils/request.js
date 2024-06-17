@@ -56,13 +56,15 @@ export const createUser = async (userId, navigate) => {
     localStorage.setItem('notify', JSON.stringify(notify))
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('tnum', 0) // set finished task num
-    navigate('/appstore')
+    navigate('/instruction')
   } catch (error) {
     console.error('Error create user', error)
     if (error.response && error.response.status === 409) {
       alert('You have already participated this study before')
     } else {
-      alert(`Sorry, there is something wrong with the server ${userId}`)
+      alert(
+        `Sorry, there is something wrong with the server - userid: ${userId}`
+      )
     }
   }
 }

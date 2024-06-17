@@ -1,16 +1,19 @@
-import { useEffect } from 'react'
-import { useUser } from '../../UserContext'
+import { useEffect, useState } from 'react'
+import { createUser } from '../../utils/request'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import transition from '../../animation/transition'
+import { ToastContainer, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify'
+import throttle from 'lodash/throttle'
 
 import styles from './index.module.css'
 
 function Entry() {
   const navigate = useNavigate()
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   // read parameters
-  const { setUserId } = useUser()
   const [searchParams] = useSearchParams()
   const prolificPid = searchParams.get('PROLIFIC_PID')
 
@@ -18,19 +21,42 @@ function Entry() {
   useEffect(() => {
     if (!prolificPid) {
       navigate('/error')
-    } else {
-      setUserId(prolificPid)
     }
   }, [prolificPid, navigate])
 
   // functions
-  const handleSubmit = async (e) => {
+  const throttledSubmit = throttle(async () => {
+    if (isSubmitted) return
+    toast.promise(
+      async () => {
+        await createUser(prolificPid, navigate)
+      },
+      {
+        pending: 'Loading...',
+      }
+    )
+    setIsSubmitted(true)
+  }, 10000)
+
+  const onSubmit = (e) => {
     e.preventDefault()
-    navigate('/instruction')
+    throttledSubmit()
   }
 
   return (
     <div className={styles.main}>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        theme="light"
+        transition={Slide}
+      />
       <div className={styles.title1}>Welcome to our user study! </div>
       {/* Consent Content */}
       <div className={styles.content}>
@@ -146,7 +172,7 @@ function Entry() {
           myself. I agree to participate in the research study described above
           (You can use my data).
         </p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <button type="submit" className={styles.btn}>
             Consent
           </button>

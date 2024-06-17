@@ -1,55 +1,18 @@
-import React, { useState } from 'react'
-import { useUser } from '../../UserContext'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
-import { createUser } from '../../utils/request'
-import { ToastContainer, Slide } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { toast } from 'react-toastify'
-import throttle from 'lodash/throttle'
-
 import styles from './index.module.css'
 
 function Instruct() {
   const navigate = useNavigate()
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
-  // get Proprofic id
-  const { userId } = useUser()
-
-  // functions
-  const throttledSubmit = throttle(async () => {
-    if (isSubmitted) return
-    toast.promise(
-      async () => {
-        await createUser(userId, navigate)
-      },
-      {
-        pending: 'Loading...',
-      }
-    )
-    setIsSubmitted(true)
-  }, 10000)
-
-  const onSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    throttledSubmit()
+    navigate('/appstore')
   }
 
   return (
     <div className={styles.main}>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        limit={1}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        theme="light"
-        transition={Slide}
-      />
       <div className={styles.title1}>Study Instruction</div>
       <div className={styles.form}>
         <p>
@@ -71,7 +34,7 @@ function Instruct() {
           post-study questionnaire.
         </p>
         <p>Note: All these activities will take place in your browser.</p>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
           <button type="submit" className={styles.btn}>
             Start the Study
           </button>
