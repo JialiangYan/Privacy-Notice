@@ -9,7 +9,7 @@ const createUser = asyncHandler(async (req, res) => {
   }
 
   try {
-    const condition = Math.floor(Math.random() * 10) + 1
+    const condition = Math.floor(Math.random() * 9) + 1
     const user = new User({ id, condition })
     await user.save()
     res.json({ message: 'Successfully create user', user })
