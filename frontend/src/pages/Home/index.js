@@ -1,25 +1,29 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
+import { ToastContainer, Slide } from 'react-toastify'
+
 import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
 import Tracker from '../../components/Tracker'
 import { finishUser } from '../../utils/request'
-import { ToastContainer, Slide } from 'react-toastify'
-
-import data from '../../assets/app/data.json'
+import news from '../../components/NewsContent/News'
 import pn1 from '../../assets/notice/pn1.png'
-
 import styles from './index.module.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 function Home() {
   const navigate = useNavigate()
-  const tnum = localStorage.getItem('tnum')
   const user = JSON.parse(localStorage.getItem('user'))
   const notify = JSON.parse(localStorage.getItem('notify'))
+  const orderNews = user.newsOrder.map((id) =>
+    news.find((item) => item.id === id)
+  )
   const [ack, setAck] = useState(false)
+  const [tnum, setTum] = useState(0) // number of read articles
+  const [formattedDate, setFormattedDate] = useState('') // date
 
+  // useEffects:
   useEffect(() => {
     // determine whether need to display notice
     let condition = JSON.parse(localStorage.getItem('user')).condition
@@ -29,19 +33,22 @@ function Home() {
       // don't need to display
       setAck(true)
     }
-  }, [notify, navigate])
+  }, [notify, user, navigate])
 
   useEffect(() => {
-    async function report() {
-      if (tnum >= 3) {
-        await finishUser(user.pid)
-      }
-    }
-    report()
-  }, [tnum, user])
+    setTum(user.task.filter((task) => task === true).length)
+  }, [user])
 
-  // get date
-  const [formattedDate, setFormattedDate] = useState('')
+  useEffect(() => {
+    const report = async () => {
+      await finishUser(user.pid)
+    }
+
+    if (tnum >= 3) {
+      report()
+    }
+  }, [tnum, user.pid])
+
   useEffect(() => {
     // Get today's date
     const today = new Date()
@@ -54,6 +61,7 @@ function Home() {
     setFormattedDate(newFormattedDate)
   }, [])
 
+  // functions
   const handleGet = () => {
     setAck(!ack)
     notify.D1 = true
@@ -91,11 +99,11 @@ function Home() {
           <div>News</div>
           <div className={styles.time}>{formattedDate}</div>
         </div>
-        {data.map((article, index) => (
+        {orderNews.map((article, index) => (
           <div key={index}>
             <NewsBlock
               article={article}
-              handleBlockClick={() => handleBlockClick(index)}
+              handleBlockClick={() => handleBlockClick(article.id)}
             />
           </div>
         ))}

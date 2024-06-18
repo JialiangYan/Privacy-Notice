@@ -48,6 +48,8 @@ export const createUser = async (userId, navigate) => {
       // condition: res.data.user.condition,
       condition: 9, //for test
       permission: res.data.user.permission,
+      newsOrder: res.data.user.news || [0, 1, 2, 3, 4, 5],
+      task: [false, false, false, false, false, false], // use news id to identify which news is read
     }
     const notify = {
       D1: false,
@@ -55,7 +57,6 @@ export const createUser = async (userId, navigate) => {
     }
     localStorage.setItem('notify', JSON.stringify(notify))
     localStorage.setItem('user', JSON.stringify(user))
-    localStorage.setItem('tnum', 0) // set finished task num
     navigate('/instruction')
   } catch (error) {
     console.error('Error create user', error)
