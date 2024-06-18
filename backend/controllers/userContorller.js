@@ -1,6 +1,25 @@
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 
+// Helper functions
+const returnNews = () => {
+  function shuffleArray(array) {
+    const shuffledArray = [...array]
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1))
+      ;[shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ]
+    }
+    return shuffledArray
+  }
+  let ids = [0, 1, 2, 3, 4, 5]
+  let shuffledIds = shuffleArray(ids)
+  return shuffledIds
+}
+
+// Controllers
 const createUser = asyncHandler(async (req, res) => {
   const { id } = req.body
   if (!id) {
@@ -10,7 +29,8 @@ const createUser = asyncHandler(async (req, res) => {
 
   try {
     const condition = Math.floor(Math.random() * 9) + 1
-    const user = new User({ id, condition })
+    const news = [...returnNews()]
+    const user = new User({ id, condition, news })
     await user.save()
     res.json({ message: 'Successfully create user', user })
   } catch (error) {

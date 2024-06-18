@@ -10,6 +10,11 @@ const userSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  news: {
+    type: [Number],
+    default: [0, 1, 2, 3, 4, 5],
+    required: true,
+  },
   permission: { type: Boolean, default: true },
 })
 
