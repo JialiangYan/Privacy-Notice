@@ -2,17 +2,12 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ProgressBarPlugin = require('webpackbar')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
-  },
-  optimization: {
-    minimizer: [new UglifyJsPlugin()],
   },
   module: {
     rules: [
@@ -56,10 +51,6 @@ module.exports = {
       scriptLoading: 'blocking',
     }),
     new ProgressBarPlugin(),
-    new CompressionPlugin({
-      test: /\.(js|css)$/,
-      algorithm: 'gzip',
-    }),
   ],
   devServer: {
     static: {
