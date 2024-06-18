@@ -1,6 +1,5 @@
 .down {
   padding: 24px 21px 0;
-  background-color: white;
   .description {
     font-size: 15px;
     line-height: 156%;
@@ -16,5 +15,4 @@
 
 .img {
   width: 100%;
-  /* background-color: white; */
 }

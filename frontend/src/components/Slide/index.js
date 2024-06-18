@@ -10,9 +10,9 @@ function Slide() {
     <div className={styles.container}>
       <div className={styles.scroll}>
         <div className={styles.row}>
-          <img className={styles.img} src={s1} alt="" loading="lazy" />
-          <img className={styles.img} src={s2} alt="" loading="lazy" />
-          <img className={styles.img} src={s3} alt="" loading="lazy" />
+          <img className={styles.img} src={s1} alt="" />
+          <img className={styles.img} src={s2} alt="" />
+          <img className={styles.img} src={s3} alt="" />
         </div>
       </div>
     </div>

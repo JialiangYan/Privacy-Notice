@@ -1,5 +1,4 @@
 .main {
-  background-color: white;
   overflow: hidden;
   width: 200%;
 }
@@ -25,7 +24,6 @@
   font-family: 'Sora';
   width: 100vw;
   height: 100vh;
-  background-color: white;
   position: relative;
   box-sizing: border-box;
 }
@@ -51,7 +49,6 @@
 
 .img {
   width: 100%;
-  /* background-color: white; */
 }
 
 .btn {
