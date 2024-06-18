@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import LazyLoad from 'react-lazyload'
 
 import styles from './index.module.css'
 
@@ -21,7 +20,7 @@ import info from '../../assets/store/3_Information.png'
 
 function Store() {
   const navigate = useNavigate()
-  const condition = JSON.parse(localStorage.getItem('user')).condition // timing condition
+  const condition = JSON.parse(localStorage.getItem('user')).condition || 9 // timing condition
   const [more, openMore] = useState(false) // more description
   const [get, setGet] = useState(false) // the content of button
   const [open, setOpen] = useState(false) // open the purchase
@@ -191,11 +190,7 @@ function Store() {
             <LoadingAni />
           </div>
         </div>
-        {condition === 2 && (
-          <LazyLoad>
-            <img src={privacy} className={styles.img} alt="" />
-          </LazyLoad>
-        )}
+        {condition === 2 && <img src={privacy} className={styles.img} alt="" />}
         <Slide className={styles.slide} />
         <div className={styles.down}>
           <img src={device} className={styles.img} alt="" />
@@ -210,14 +205,8 @@ function Store() {
           </div>
         </div>
         <img src={review} className={styles.img} alt="" />
-        {condition !== 2 && (
-          <LazyLoad>
-            <img src={privacy} className={styles.img} alt="" />
-          </LazyLoad>
-        )}
-        <LazyLoad>
-          <img src={info} className={styles.img} alt="" />
-        </LazyLoad>
+        {condition !== 2 && <img src={privacy} className={styles.img} alt="" />}
+        <img src={info} className={styles.img} alt="" />
       </div>
 
       {/* App Intro Page */}

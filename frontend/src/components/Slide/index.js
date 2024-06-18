@@ -6,19 +6,13 @@ import s2 from '../../assets/store/ss2.webp'
 import s3 from '../../assets/store/ss3.webp'
 
 function Slide() {
-  const images = [s1, s2, s3]
   return (
     <div className={styles.container}>
       <div className={styles.scroll}>
         <div className={styles.row}>
-          {images.map((image, index) => (
-            <img
-              key={index}
-              className={styles.img}
-              src={image}
-              alt={`Screenshot ${index + 1}`}
-            />
-          ))}
+          <img className={styles.img} src={s1} alt="" loading="lazy" />
+          <img className={styles.img} src={s2} alt="" loading="lazy" />
+          <img className={styles.img} src={s3} alt="" loading="lazy" />
         </div>
       </div>
     </div>

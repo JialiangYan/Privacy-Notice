@@ -1,13 +1,46 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const ProgressBarPlugin = require('webpackbar')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+        terserOptions: {
+          output: { comments: false, ascii_only: true },
+        },
+      }),
+      new CssMinimizerPlugin({
+        parallel: true,
+        minimizerOptions: {
+          processorOptions: {
+            map: {
+              inline: false,
+              annotation: false,
+            },
+          },
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true },
+              mergeLonghand: false,
+            },
+          ],
+        },
+      }),
+    ],
   },
   module: {
     rules: [
@@ -51,6 +84,7 @@ module.exports = {
       scriptLoading: 'blocking',
     }),
     new ProgressBarPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   devServer: {
     static: {

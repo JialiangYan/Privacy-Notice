@@ -3,7 +3,6 @@ import { createUser } from '../../utils/request'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import transition from '../../animation/transition'
 import { ToastContainer, Slide } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
 import throttle from 'lodash/throttle'
 

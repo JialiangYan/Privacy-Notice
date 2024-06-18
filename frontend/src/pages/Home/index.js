@@ -10,7 +10,6 @@ import { finishUser } from '../../utils/request'
 import news from '../../components/NewsContent/News'
 import pn1 from '../../assets/notice/pn1.png'
 import styles from './index.module.css'
-import 'react-toastify/dist/ReactToastify.css'
 
 function Home() {
   const navigate = useNavigate()

@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import PreventNavigation from './utils/PreventNavigation'
 import { AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
 
 const Error = lazy(() => import('./pages/Error'))

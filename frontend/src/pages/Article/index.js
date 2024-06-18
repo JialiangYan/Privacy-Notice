@@ -6,7 +6,6 @@ import Notice from '../../components/Notice'
 import news from '../../components/NewsContent/News'
 
 import { ToastContainer, Slide, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 import pn2 from '../../assets/notice/pn2.png'
 import styles from './index.module.css'
