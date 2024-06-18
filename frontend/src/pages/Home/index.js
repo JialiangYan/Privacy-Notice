@@ -107,9 +107,7 @@ function Home() {
             />
           </div>
         ))}
-        <div className={styles.footer}>
-          You have already seen all the news today.
-        </div>
+        <div className={styles.footer}>-- End --</div>
       </div>
     </div>
   )

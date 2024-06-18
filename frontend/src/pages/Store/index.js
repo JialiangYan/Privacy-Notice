@@ -172,14 +172,12 @@ function Store() {
       <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
         {/* Upper part */}
         <div className={styles.up}>
-          <LazyLoad>
-            <img
-              src={up}
-              className={styles.img}
-              style={{ marginTop: '5px' }}
-              alt=""
-            />
-          </LazyLoad>
+          <img
+            src={up}
+            className={styles.img}
+            style={{ marginTop: '5px' }}
+            alt=""
+          />
           <button
             className={`${styles.btn} btn`}
             onClick={get ? openApp : getApp}
