@@ -10,18 +10,15 @@ import Slide from '../../components/Slide'
 import Purchase from '../../components/Purchase'
 import DownloadAni from '../../components/DownloadAni'
 import LoadingAni from '../../components/LoadingAni'
+import Downpart from './Downpart'
 
 // import assets
 import up from '../../assets/store/up.png'
-import device from '../../assets/store/device.png'
-import review from '../../assets/store/1_Reviews.png'
 import privacy from '../../assets/store/2_App Privacy.png'
-import info from '../../assets/store/3_Information.png'
 
 function Store() {
   const navigate = useNavigate()
-  const condition = JSON.parse(localStorage.getItem('user')).condition || 9 // timing condition
-  const [more, openMore] = useState(false) // more description
+  const condition = JSON.parse(localStorage.getItem('user')).condition // timing condition
   const [get, setGet] = useState(false) // the content of button
   const [open, setOpen] = useState(false) // open the purchase
 
@@ -30,9 +27,6 @@ function Store() {
   const tlPage = gsap.timeline()
   const { contextSafe } = useGSAP({ scope: storeToapp })
 
-  const description = more
-    ? "QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
-    : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
   const btn = get ? 'Open' : 'Get'
 
   // animation for loading btn
@@ -192,23 +186,8 @@ function Store() {
         </div>
         {condition === 2 && <img src={privacy} className={styles.img} alt="" />}
         <Slide className={styles.slide} />
-        <div className={styles.down}>
-          <img src={device} className={styles.img} alt="" />
-          <div className={styles.description}>
-            {description}
-            <span
-              className={more ? styles.nomore : styles.more}
-              onClick={() => openMore(!more)}
-            >
-              more
-            </span>
-          </div>
-        </div>
-        <img src={review} className={styles.img} alt="" />
-        {condition !== 2 && <img src={privacy} className={styles.img} alt="" />}
-        <img src={info} className={styles.img} alt="" />
+        <Downpart condition={condition} />
       </div>
-
       {/* App Intro Page */}
       <div className={`${styles.app} app`}>
         <div className={styles.name}>QuickNews</div>

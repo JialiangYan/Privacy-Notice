@@ -24,6 +24,5 @@
   width: 25px;
   height: 25px;
   border-radius: 100%;
-  border: 2px solid transparent;
-  border-top-color: #007bff;
+  border: 2px solid #007bff;
 }

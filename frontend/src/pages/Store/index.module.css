@@ -79,19 +79,3 @@
   left: 39%;
   opacity: 0;
 }
-
-.down {
-  padding: 24px 21px 0;
-  background-color: white;
-  .description {
-    font-size: 15px;
-    line-height: 156%;
-    padding: 13px 0;
-    .more {
-      color: #3478f6;
-    }
-    .nomore {
-      display: none;
-    }
-  }
-}

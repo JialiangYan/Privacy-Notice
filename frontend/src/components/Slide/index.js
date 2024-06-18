@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './index.module.css'
 
 import s1 from '../../assets/store/ss1.webp'
@@ -19,4 +19,4 @@ function Slide() {
   )
 }
 
-export default Slide
+export default memo(Slide)

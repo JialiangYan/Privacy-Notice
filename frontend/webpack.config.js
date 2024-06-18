@@ -56,6 +56,11 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.svg$/,
+        type: 'asset',
+        use: 'svgo-loader',
+      },
+      {
         test: /\.(png|svg|jpg|jpeg|gif|ico|webp)$/,
         exclude: /node_modules/,
         use: [
