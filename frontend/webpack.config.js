@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ProgressBarPlugin = require('webpackbar')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
@@ -57,9 +56,6 @@ module.exports = {
       scriptLoading: 'blocking',
     }),
     new ProgressBarPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'styles.css',
-    }),
     new CompressionPlugin({
       test: /\.(js|css)$/,
       algorithm: 'gzip',

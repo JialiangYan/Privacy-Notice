@@ -50,8 +50,8 @@ function Article() {
 
   const handleBack = async () => {
     console.log('Time spent on page:', timeSpentOnPage)
-    if (timeSpentOnPage > 3) {
-      // for test
+    if (timeSpentOnPage > 40000) {
+      // 40 seconds
       if (user) {
         user.task[id] = true
         console.log(user)
@@ -63,7 +63,7 @@ function Article() {
       navigate('/home')
     } else {
       toast(
-        `Sorry, You have to read for at least 30 seconds. You have already read for ${
+        `Sorry, You have to read for at least 40 seconds. You have already read for ${
           timeSpentOnPage / 1000
         } seconds`
       )
@@ -100,6 +100,7 @@ function Article() {
         <div className={styles.title}>{article.title}</div>
         <div className={styles.info}>
           <div>{article.date}</div>
+          <div>{article.author}</div>
         </div>
         <img className={styles.aimg} src={article.image} alt="" />
         <div className={styles.text}>{article.component}</div>
