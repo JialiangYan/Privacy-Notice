@@ -101,12 +101,6 @@ const A6 = (
       you trust that offers clinical results and is dermatologist-recommended.
       Brighter, more luminous skin awaits!
     </p>
-    <img
-      src="/imagewriter?memberid=102462&articleid=42715"
-      border="0"
-      width="1"
-      height="1"
-    />
   </div>
 )
 

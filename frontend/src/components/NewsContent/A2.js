@@ -96,22 +96,16 @@ const A2 = (
       deliver therapy when it is needed, or receiving extra therapy when it is
       not needed.
     </p>
+    <hr />
     <div>
       <div id="ftn1">
         <p>
           <sup>1</sup> Tsao CW, Aday AW, Almarzooq ZI, Beaton AZ, Bittencourt
           MS, Boehme AK, et al. Heart Disease and Stroke Statistics&mdash;2023
-          Update: A Report From the American Heart Association. Circulation.
-          2023;147:e93&ndash;e621.
+          Update: A Report From the American Heart Association.
         </p>
       </div>
     </div>
-    <img
-      src="/imagewriter?memberid=102462&articleid=42993"
-      border="0"
-      width="1"
-      height="1"
-    />
   </div>
 )
 

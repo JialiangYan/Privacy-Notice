@@ -37,10 +37,10 @@ const A3 = (
       The 60-minute archived stream is available to view on World of Warships'{' '}
       Twitch channel.
     </p>
-    <div style={{ maxWidth: '600px', width: '600px' }}>
+    <div>
       <img
         src="https://www.brandpointcontent.com/images/1042914813.jpg"
-        width="600"
+        width="90%"
         border="0"
       />
     </div>
@@ -66,10 +66,10 @@ const A3 = (
       realistic ship mechanics and stunning visuals, World of Warships immerses
       players in epic naval combat across diverse environments.
     </p>
-    <div style={{ maxWidth: '600px', width: '600px' }}>
+    <div>
       <img
         src="https://www.brandpointcontent.com/images/1042914969.jpg"
-        width="600"
+        width="90%"
         border="0"
       />
     </div>
@@ -85,21 +85,6 @@ const A3 = (
       class battleship. Once complete, players will have the opportunity to
       captain the ship in naval battles independently and in group missions.
     </p>
-    <p>
-      To learn more about how you can visit the USS Wisconsin at Nauticus, visit{' '}
-      Nauticus.org/Battleship-Wisconsin-Turns-80/ . If you want to build your
-      own Wisconsin and captain the ship in history-altering battles, visit{' '}
-      WorldofWarships.com .
-    </p>
-    <p>
-      <em>Battleship Wisconsin photo courtesy Nauticus.</em>
-    </p>
-    <img
-      src="/imagewriter?memberid=102462&articleid=42914"
-      border="0"
-      width="1"
-      height="1"
-    />
   </div>
 )
 

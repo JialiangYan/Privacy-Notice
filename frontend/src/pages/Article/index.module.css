@@ -23,6 +23,11 @@
   justify-content: flex-start;
 }
 
+.imaContainer {
+  max-height: 40vh;
+  overflow: hidden;
+}
+
 .aimg {
   width: 100%;
 }

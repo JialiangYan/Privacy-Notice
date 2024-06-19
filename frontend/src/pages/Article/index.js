@@ -101,7 +101,9 @@ function Article() {
           <div>{article.date}</div>
           <div>{article.author}</div>
         </div>
-        <img className={styles.aimg} src={article.image} alt="" />
+        <div className={styles.imaContainer}>
+          <img className={styles.aimg} src={article.image} alt="" />
+        </div>
         <div className={styles.text}>{article.component}</div>
       </div>
     </>

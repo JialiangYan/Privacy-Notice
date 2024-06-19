@@ -106,15 +106,8 @@ const A4 = (
     </p>
     <p>
       Take care of your pipes and help reduce damage to the nation&rsquo;s
-      sewage systems by practicing smart flushing habits. To learn more about
-      the study, visit FlushSmart.org/CA-Collection-Study-Report .
+      sewage systems by practicing smart flushing habits.
     </p>
-    <img
-      src="/imagewriter?memberid=102462&articleid=42911"
-      border="0"
-      width="1"
-      height="1"
-    />
   </div>
 )
 

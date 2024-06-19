@@ -120,6 +120,7 @@ const A1 = (
       based on online survey responses from 2,204 Americans ages 18+ and fielded
       by Morning Consult from March 11-14, 2024.
     </p>
+    <hr />
     <p>
       1 U.S. Bureau of Labor Statistics Dec 2023. Quarterly Census of Employment
       and Wages.
@@ -128,7 +129,6 @@ const A1 = (
       2 Anonymized user data from the Empower Personal Dashboard&trade; as of
       March 2024.
     </p>
-    <p>RO3510881-0424</p>
   </div>
 )
 

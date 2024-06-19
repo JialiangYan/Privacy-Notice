@@ -81,12 +81,6 @@ const A5 = (
       history to life &mdash; what it felt like to fight, and survive, the Cold
       War,&rdquo; said Ostermann.
     </p>
-    <img
-      src="/imagewriter?memberid=102462&articleid=42998"
-      border="0"
-      width="1"
-      height="1"
-    />
   </div>
 )
 
