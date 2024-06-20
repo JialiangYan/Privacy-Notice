@@ -69,9 +69,8 @@ function Entry() {
         <p>
           The purpose of this study is to improve the user experience from app
           installation to app usage process. To do this, you will perform a
-          simulated app installation and usage task in our web app and then
-          answer a questionnaire. All these activities will take place in your
-          browser.
+          simulated app installation and usage task in our site and then answer
+          a questionnaire. All these activities will take place in your browser.
         </p>
         <p>
           You must meet the following criteria to participate in this study:
@@ -168,14 +167,22 @@ function Entry() {
         <p>
           I have read this form. I have been told whom to contact if I have
           questions, and I am able to print a copy of this consent form for
-          myself. I agree to participate in the research study described above
-          (You can use my data).
+          myself.
         </p>
         <form onSubmit={onSubmit}>
           <button type="submit" className={styles.btn}>
-            Consent
+            I agree to participate in the research study described above (You
+            can use my data)
           </button>
         </form>
+        <button
+          className={styles.btn}
+          onClick={() => {
+            window.location.href = 'https://www.prolific.com/'
+          }}
+        >
+          I do not want to participate (I want my data excluded)
+        </button>
       </div>
     </div>
   )
