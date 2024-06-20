@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Cloudinary } from '@cloudinary/url-gen'
+import { AdvancedImage } from '@cloudinary/react'
 
 import styles from './index.module.css'
 
@@ -11,9 +13,6 @@ import Purchase from '../../components/Purchase'
 import DownloadAni from '../../components/DownloadAni'
 import LoadingAni from '../../components/LoadingAni'
 import Downpart from './Downpart'
-
-// import assets
-import up from '../../assets/store/up.png'
 import privacy from '../../assets/store/2_App Privacy.png'
 
 function Store() {
@@ -28,6 +27,10 @@ function Store() {
   const { contextSafe } = useGSAP({ scope: storeToapp })
 
   const btn = get ? 'Open' : 'Get'
+
+  // image
+  const cld = new Cloudinary({ cloud: { cloudName: 'dfrapneyb' } })
+  const up = cld.image('up').format('auto').quality('auto:low')
 
   // animation for loading btn
   const getApp = contextSafe(() => {
@@ -165,12 +168,10 @@ function Store() {
       <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
         {/* Upper part */}
         <div className={styles.up}>
-          <img
-            src={up}
-            className={styles.img}
-            style={{ marginTop: '5px' }}
-            alt=""
-          />
+          <div className={styles.upContainer}>
+            <AdvancedImage className={styles.img} cldImg={up} />
+          </div>
+
           <button
             className={`${styles.btn} btn`}
             onClick={get ? openApp : getApp}

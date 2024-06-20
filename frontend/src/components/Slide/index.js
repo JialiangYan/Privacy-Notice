@@ -1,34 +1,27 @@
 import React, { memo } from 'react'
 import styles from './index.module.css'
+import { Cloudinary } from '@cloudinary/url-gen'
+import { AdvancedImage } from '@cloudinary/react'
 
 function Slide() {
+  const cld = new Cloudinary({ cloud: { cloudName: 'dfrapneyb' } })
+  const s1 = cld.image('s1').format('auto').quality('10')
+  const s2 = cld.image('s2').format('auto').quality('10')
+  const s3 = cld.image('s3').format('auto').quality('10')
+
   return (
     <div className={styles.container}>
       <div className={styles.scroll}>
         <div className={styles.row}>
-          <img
-            className={styles.img}
-            src={
-              'https://res.cloudinary.com/dfrapneyb/image/upload/v1718898988/s1.webp'
-            }
-            alt=""
-          />
-          <img
-            className={styles.img}
-            src={
-              'https://res.cloudinary.com/dfrapneyb/image/upload/v1718898989/s2.webp'
-            }
-            alt=""
-          />
-          <img
-            className={styles.img}
-            src={
-              'https://res.cloudinary.com/dfrapneyb/image/upload/v1718898988/s3.webp'
-            }
-            alt=""
-            priority="low"
-            loading="lazy"
-          />
+          <div className={styles.imgContainer}>
+            <AdvancedImage className={styles.img} cldImg={s2} />
+          </div>
+          <div className={styles.imgContainer}>
+            <AdvancedImage className={styles.img} cldImg={s3} />
+          </div>
+          <div className={styles.imgContainer}>
+            <AdvancedImage className={styles.img} cldImg={s1} loading="lazy" />
+          </div>
         </div>
       </div>
     </div>
