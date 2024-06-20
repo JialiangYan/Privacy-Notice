@@ -22,7 +22,7 @@ function Instruct() {
         <p>
           Our site will go through the steps of installation and use.
           Afterwards, we will be asking you questions about how well you thought
-          the app functions. Therefore we would like you to click through{' '}
+          the app functions. Therefore we would like you to read through{' '}
           <strong>three</strong> different news articles to ensure you have
           experienced what using the app is like.
         </p>
