@@ -102,9 +102,6 @@ function Home() {
         transition={Slide}
       />
       <div className={styles.main}>
-        {/* <div className={styles.tracker}>
-          <Tracker num={tnum} />
-        </div> */}
         <div className={styles.title}>
           <div>News</div>
           <div className={styles.time}>{formattedDate}</div>

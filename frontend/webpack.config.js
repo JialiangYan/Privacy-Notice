@@ -12,6 +12,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   optimization: {
     minimize: true,
@@ -78,8 +79,6 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      favicon: './public/favicon.png',
-      manifest: './public/manifest.json',
       inject: 'body',
       scriptLoading: 'blocking',
     }),
