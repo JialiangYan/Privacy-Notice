@@ -5,7 +5,7 @@ import transition from '../../animation/transition'
 import Notice from '../../components/Notice'
 import news from '../../components/NewsContent/News'
 
-import { ToastContainer, Slide, toast } from 'react-toastify'
+import { ToastContainer, Slide } from 'react-toastify'
 
 import pn2 from '../../assets/notice/pn2.png'
 import styles from './index.module.css'
@@ -15,6 +15,33 @@ function Article() {
   const [ack, setAck] = useState(false)
   const notify = JSON.parse(localStorage.getItem('notify'))
   const user = JSON.parse(localStorage.getItem('user'))
+  const [endTime, setEndTime] = useState(
+    localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
+  )
+
+  useEffect(() => {
+    if (!endTime) {
+      const startTime = new Date()
+      //   console.log('Get now: ', startTime)
+      const newEndTime = new Date(startTime.getTime() + 2 * 60000) // 2 minutes in milliseconds
+      setEndTime(newEndTime)
+      //   console.log('Set end: ', newEndTime)
+      localStorage.setItem('time', newEndTime)
+    }
+
+    const report = async () => {
+      await finishUser(user.pid)
+    }
+
+    const interval = setInterval(() => {
+      if (endTime && new Date() >= endTime) {
+        clearInterval(interval)
+        report()
+      }
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [endTime, user])
 
   useEffect(() => {
     // determine whether need to display notice
@@ -48,25 +75,8 @@ function Article() {
   }, [])
 
   const handleBack = async () => {
-    console.log('Time spent on page:', timeSpentOnPage)
-    if (timeSpentOnPage > 40000) {
-      // 40 seconds
-      if (user) {
-        user.task[id] = true
-        console.log(user)
-        localStorage.setItem('user', JSON.stringify(user))
-      } else {
-        console.error('User not found in localStorage')
-      }
-      await track(`Article${id}_Time`, { time: timeSpentOnPage }, user.pid)
-      navigate('/home')
-    } else {
-      toast(
-        `Sorry, You have to read for at least 40 seconds. You have already read for ${
-          timeSpentOnPage / 1000
-        } seconds`
-      )
-    }
+    await track(`Article${id}_Time`, { time: timeSpentOnPage }, user.pid)
+    navigate('/home')
   }
 
   return (

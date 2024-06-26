@@ -16,15 +16,21 @@ function Instruct() {
       <div className={styles.title1}>Study Instruction</div>
       <div className={styles.form}>
         <p>
-          The task we would like you to perform is to imagine you are installing
-          our app on your iphone.
+          Thank you for agreeing to participate in our study. The task we would
+          like you to perform is to imagine you are installing our news app on
+          your iPhone.
         </p>
         <p>
-          Our site will go through the steps of installation and use.
-          Afterwards, we will be asking you questions about how well you thought
-          the app functions. Therefore we would like you to read through{' '}
-          <strong>three</strong> different news articles to ensure you have
-          experienced what using the app is like.
+          Our site will go through the steps of installation and use. You will
+          have <strong>two minutes</strong> to interact with the app. After the
+          period, you will be <strong>automatically</strong> redirected to a
+          questionnaire to provide feedback on how well you thought the app
+          functions.
+        </p>
+        <p>
+          During the two minutes, please select and read the news articles you
+          are interested in. This will help us ensure that you have experienced
+          what using the app is like.
         </p>
         <form onSubmit={handleSubmit}>
           <p>

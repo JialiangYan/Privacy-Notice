@@ -25,7 +25,7 @@ export const finishUser = async (userId) => {
   try {
     const res = await apiClient.post('/users/finish', { id: userId })
     console.log(res.data.message)
-    // localStorage.clear()
+    localStorage.removeItem('time')
     toast(
       'You have finished the user study. You will be directed to the post-study questionnaire automatically.',
       {
@@ -49,7 +49,6 @@ export const createUser = async (userId, navigate) => {
       condition: 9, //for test
       permission: res.data.user.permission,
       newsOrder: res.data.user.news || [0, 1, 2, 3, 4, 5],
-      task: [false, false, false, false, false, false], // use news id to identify which news is read
     }
     const notify = {
       D1: false,

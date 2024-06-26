@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import { ToastContainer, Slide } from 'react-toastify'
 
+import { finishUser } from '../../utils/request'
 import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
-import Tracker from '../../components/Tracker'
-import { finishUser } from '../../utils/request'
 import news from '../../components/NewsContent/News'
 import pn1 from '../../assets/notice/pn1.png'
 import styles from './index.module.css'
@@ -19,8 +18,34 @@ function Home() {
     news.find((item) => item.id === id)
   )
   const [ack, setAck] = useState(false)
-  const [tnum, setTum] = useState(0) // number of read articles
   const [formattedDate, setFormattedDate] = useState('') // date
+  const [endTime, setEndTime] = useState(
+    localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
+  )
+
+  useEffect(() => {
+    if (!endTime) {
+      const startTime = new Date()
+      //   console.log('Get now: ', startTime)
+      const newEndTime = new Date(startTime.getTime() + 2 * 60000) // 2 minutes in milliseconds
+      setEndTime(newEndTime)
+      //   console.log('Set end: ', newEndTime)
+      localStorage.setItem('time', newEndTime)
+    }
+
+    const report = async () => {
+      await finishUser(user.pid)
+    }
+
+    const interval = setInterval(() => {
+      if (endTime && new Date() >= endTime) {
+        clearInterval(interval)
+        report()
+      }
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [endTime, user])
 
   // useEffects:
   useEffect(() => {
@@ -33,20 +58,6 @@ function Home() {
       setAck(true)
     }
   }, [notify, user, navigate])
-
-  useEffect(() => {
-    setTum(user.task.filter((task) => task === true).length)
-  }, [user])
-
-  useEffect(() => {
-    const report = async () => {
-      await finishUser(user.pid)
-    }
-
-    if (tnum >= 3) {
-      report()
-    }
-  }, [tnum, user.pid])
 
   useEffect(() => {
     // Get today's date
@@ -91,9 +102,9 @@ function Home() {
         transition={Slide}
       />
       <div className={styles.main}>
-        <div className={styles.tracker}>
+        {/* <div className={styles.tracker}>
           <Tracker num={tnum} />
-        </div>
+        </div> */}
         <div className={styles.title}>
           <div>News</div>
           <div className={styles.time}>{formattedDate}</div>

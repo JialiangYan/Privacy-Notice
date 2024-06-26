@@ -63,7 +63,7 @@ function Entry() {
           <p>
             <strong>Study title: </strong> Smartphone news app user study
           </p>
-          <p className={styles.container}>
+          <div className={styles.container}>
             <div className={styles.item}>
               <strong>Supervisor</strong>
               <br /> Bailey Kacsmar
@@ -76,7 +76,7 @@ function Entry() {
               <br /> University of Alberta
               <br /> jialian6@ualberta.ca
             </div>
-          </p>
+          </div>
           <p>
             The purpose of this study is to improve the user experience from app
             installation to app usage process. To do this, you will perform a
