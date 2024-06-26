@@ -79,10 +79,9 @@ function Entry() {
           </div>
           <p>
             The purpose of this study is to improve the user experience from app
-            installation to app usage process. To do this, you will perform a
-            simulated app installation and usage task in our site and then
-            answer a questionnaire. All these activities will take place in your
-            browser.
+            installation to app usage. To do this, you will perform a simulated
+            app installation and usage task in our site and then answer a
+            questionnaire. All these activities will take place in your browser.
           </p>
           <p>
             You must meet the following criteria to participate in this study:

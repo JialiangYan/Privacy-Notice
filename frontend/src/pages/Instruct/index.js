@@ -28,9 +28,12 @@ function Instruct() {
           functions.
         </p>
         <p>
-          During the two minutes, please select and read the news articles you
-          are interested in. This will help us ensure that you have experienced
-          what using the app is like.
+          During the two minutes,{' '}
+          <strong>
+            please select and read the news articles you are interested in.
+          </strong>{' '}
+          This will help us ensure that you have experienced what using the app
+          is like.
         </p>
         <form onSubmit={handleSubmit}>
           <p>
