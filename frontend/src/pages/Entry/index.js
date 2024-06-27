@@ -116,7 +116,7 @@ function Entry() {
           </p>
           <div className={styles.title2}>Remuneration/Compensation</div>
           <p>
-            To thank you for your time, you will be eligible to receive $8 after
+            To thank you for your time, you will be eligible to receive $6 after
             completing the study. Besides, we will be pleased to make a summary
             of the results available to you once they have been compiled.
           </p>
