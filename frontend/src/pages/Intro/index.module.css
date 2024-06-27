@@ -39,12 +39,12 @@
 .intro3Next {
   position: absolute;
   right: 5vw;
-  bottom: 6vh;
+  bottom: 12vh;
 }
 
 .intro2Back,
 .intro3Back {
   position: absolute;
   left: 5vw;
-  bottom: 6vh;
+  bottom: 12vh;
 }
