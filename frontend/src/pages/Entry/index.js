@@ -92,7 +92,7 @@ function Entry() {
             <li>Within North America</li>
             <li>iPhone user</li>
           </ul>
-          <p>Your participation should take around 20 minutes.</p>
+          <p>Your participation should take around 10 minutes.</p>
           <div className={styles.title2}>Benefits</div>
           <p>
             Other than the receipt of a small honorarium, you will not directly
