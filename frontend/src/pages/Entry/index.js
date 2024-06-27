@@ -122,14 +122,20 @@ function Entry() {
           </p>
           <div className={styles.title2}>Confidentiality & Anonymity</div>
           <p>
-            No one will be identified in this study and identifying personal
-            information will be removed. Reports and publications detailing the
-            results of this research will describe aggregate data. Where quotes
-            are included, we will take care to select quotes that will not
-            identify the speaker. All data and documents will be securely kept
-            for a period of at least 5 years after we have finished our research
+            No one will be identified in this study, except for the initial
+            collection of your prolific ID for processing remuneration. Once we
+            have processed your payment, we will delete your prolific ID from
+            our dataset. All data and documents will be securely kept for a
+            period of at least 5 years after we have finished our research
             activities. Data may be kept for even longer. If we decide not to
-            keep it after 5 years, it will be destroyed.
+            keep it after 5 years, it will be destroyed. Once data is submitted,
+            you may choose to withdraw some or all of your responses by
+            contacting Bailey Kacsmar within 24 hours of submitting your
+            responses. We are unable to remove your answers after that time
+            because we will have removed your prolific id from our dataset and
+            the researchers will no longer have a way of knowing which data
+            belongs to which participant. Reports and publications detailing the
+            results of this study will describe aggregate data.
           </p>
           <div className={styles.title2}>
             Voluntary Participation & Freedom to Withdraw
