@@ -1,0 +1,23 @@
+.exitButton {
+  margin-top: 0.5rem;
+  color: #007aff;
+  text-align: center;
+  line-height: 25px;
+}
+
+.Toastify__toast-container {
+  height: 100% !important;
+  width: 100% !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  position: fixed !important;
+}
+
+.Toastify__toast {
+  margin: 0 2rem !important;
+  top: 40% !important;
+  left: 0 !important;
+  align-items: center !important;
+  flex-direction: column !important;
+  border-radius: 1rem !important;
+  background-color: #f4f4f4 !important;
+}

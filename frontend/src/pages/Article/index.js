@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { track } from '../../utils/request'
 import transition from '../../animation/transition'
 import Notice from '../../components/Notice'
 import news from '../../components/NewsContent/News'
-
-import { ToastContainer, Slide } from 'react-toastify'
+import CustomToast from '../../components/CustomToast'
 
 import pn2 from '../../assets/notice/pn2.png'
 import styles from './index.module.css'
@@ -29,14 +29,10 @@ function Article() {
       localStorage.setItem('time', newEndTime)
     }
 
-    const report = async () => {
-      await finishUser(user.pid)
-    }
-
     const interval = setInterval(() => {
       if (endTime && new Date() >= endTime) {
         clearInterval(interval)
-        report()
+        toast('You have finished the user study.')
       }
     }, 1000)
 
@@ -88,18 +84,8 @@ function Article() {
       ) : (
         <></>
       )}
+      <CustomToast />
       <div className={styles.main}>
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          limit={1}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          theme="light"
-          transition={Slide}
-        />
         <div className={styles.topBar}>
           <div className={styles.bbtn} onClick={handleBack}>
             {'<'}

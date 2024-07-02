@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import transition from '../../animation/transition'
-import { ToastContainer, Slide } from 'react-toastify'
-
-import { finishUser } from '../../utils/request'
+import CustomToast from '../../components/CustomToast'
 import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
 import news from '../../components/NewsContent/News'
@@ -23,6 +22,16 @@ function Home() {
     localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
   )
 
+  // functions
+  const handleGet = () => {
+    setAck(!ack)
+    notify.D1 = true
+    localStorage.setItem('notify', JSON.stringify(notify))
+  }
+  const handleBlockClick = (id) => {
+    navigate(`/article/${id}`)
+  }
+
   useEffect(() => {
     if (!endTime) {
       const startTime = new Date()
@@ -33,14 +42,10 @@ function Home() {
       localStorage.setItem('time', newEndTime)
     }
 
-    const report = async () => {
-      await finishUser(user.pid)
-    }
-
     const interval = setInterval(() => {
       if (endTime && new Date() >= endTime) {
         clearInterval(interval)
-        report()
+        toast('You have finished the user study.')
       }
     }, 1000)
 
@@ -71,16 +76,6 @@ function Home() {
     setFormattedDate(newFormattedDate)
   }, [])
 
-  // functions
-  const handleGet = () => {
-    setAck(!ack)
-    notify.D1 = true
-    localStorage.setItem('notify', JSON.stringify(notify))
-  }
-  const handleBlockClick = (id) => {
-    navigate(`/article/${id}`)
-  }
-
   return (
     <div>
       {!ack ? (
@@ -90,17 +85,7 @@ function Home() {
       ) : (
         <></>
       )}
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        limit={1}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        theme="light"
-        transition={Slide}
-      />
+      <CustomToast />
       <div className={styles.main}>
         <div className={styles.title}>
           <div>News</div>
