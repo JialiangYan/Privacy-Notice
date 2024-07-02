@@ -76,13 +76,13 @@ function Article() {
   }
 
   return (
-    <>
+    <div>
       {!ack ? (
-        <>
+        <div>
           <Notice image={pn2} handleGet={handleGet} />
-        </>
+        </div>
       ) : (
-        <></>
+        <div></div>
       )}
       <CustomToast />
       <div className={styles.main}>
@@ -102,7 +102,7 @@ function Article() {
         </div>
         <div className={styles.text}>{article.component}</div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -43,7 +43,7 @@ function Entry() {
   }
 
   return (
-    <>
+    <div>
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -194,7 +194,7 @@ function Entry() {
           </button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -79,11 +79,11 @@ function Home() {
   return (
     <div>
       {!ack ? (
-        <>
+        <div>
           <Notice image={pn1} handleGet={handleGet} />
-        </>
+        </div>
       ) : (
-        <></>
+        <div></div>
       )}
       <CustomToast />
       <div className={styles.main}>

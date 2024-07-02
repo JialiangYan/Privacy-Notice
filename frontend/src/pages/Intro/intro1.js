@@ -18,14 +18,14 @@ function Intro1() {
   }
 
   return (
-    <>
+    <div>
       <div className={`${styles.intro1} intro1`}>
         <img src={i1} alt="intro" className={`${styles.introImg}`} />
         <button className={styles.intro1Next} onClick={handleNext1}>
           Next
         </button>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function Notice({ image, handleGet }) {
   return (
-    <>
+    <div>
       <div className={styles.overlay}>
         <motion.div
           initial={{ opacity: 0, y: -200 }}
@@ -22,6 +22,6 @@ export default function Notice({ image, handleGet }) {
           </button> */}
         </motion.div>
       </div>
-    </>
+    </div>
   )
 }

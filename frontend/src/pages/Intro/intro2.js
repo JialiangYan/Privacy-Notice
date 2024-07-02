@@ -28,7 +28,7 @@ function Intro2() {
   }
 
   return (
-    <>
+    <div>
       <div className={`${styles.intro1} intro1`}>
         <img src={i2} alt="intro" className={`${styles.introImg}`} />
         <button className={styles.intro1Next} onClick={handleNext2}>
@@ -38,7 +38,7 @@ function Intro2() {
           Back
         </button>
       </div>
-    </>
+    </div>
   )
 }
 
