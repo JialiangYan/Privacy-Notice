@@ -180,8 +180,8 @@ function Entry() {
           </p>
           <form onSubmit={onSubmit}>
             <button type="submit" className={styles.icbtn}>
-              <strong>agree to participate</strong> in the research study
-              described above (You can use my data)
+              agree to participate in the research study described above (You
+              can use my data)
             </button>
           </form>
           <button
@@ -190,8 +190,7 @@ function Entry() {
               window.location.href = 'https://www.prolific.com/'
             }}
           >
-            <strong>do not want to participate</strong> (I want my data
-            excluded)
+            do not want to participate (I want my data excluded)
           </button>
         </div>
       </div>

@@ -36,13 +36,15 @@
 
 .icbtn {
   display: block;
-  background-color: #fff !important;
-  text-decoration: none !important;
-  margin: 1.6rem auto;
-  border: 2px solid black;
-  border-radius: 1rem;
+  margin: 1.4rem auto;
+
+  background-color: #007aff;
+  border: none;
+  width: 360px;
+  height: 60px;
+  border-radius: 18px;
+
+  color: white;
+  font-size: 18px;
   text-align: center;
-  width: 84vw;
-  height: 5.2vh;
-  font-size: 0.95rem;
 }
