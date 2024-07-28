@@ -29,12 +29,8 @@ function Intro3() {
 
   const handleNext3 = async () => {
     console.log('Time spent on page:', timeSpentOnPage)
-    await track('Intro3_Time', { time: timeSpentOnPage }, user.pid)
+    await track('Notice_C', { time: timeSpentOnPage }, user.pid)
     navigate('/home')
-  }
-
-  const handleBack3 = () => {
-    navigate('/intro2')
   }
 
   return (
@@ -42,10 +38,7 @@ function Intro3() {
       <div className={`${styles.intro1} intro1`}>
         <img src={i3} alt="intro" className={`${styles.introImg}`} />
         <button className={styles.intro1Next} onClick={handleNext3}>
-          Agree
-        </button>
-        <button className={styles.intro3Back} onClick={handleBack3}>
-          Disagree
+          Next
         </button>
       </div>
     </div>

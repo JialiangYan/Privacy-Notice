@@ -15,6 +15,9 @@ function Article() {
   const [ack, setAck] = useState(false)
   const notify = JSON.parse(localStorage.getItem('notify'))
   const user = JSON.parse(localStorage.getItem('user'))
+  const condition = user.condition
+  const displayNotice =
+    condition === 5 || condition === 7 || condition === 8 || condition === 9
   const [endTime, setEndTime] = useState(
     localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
   )
@@ -30,7 +33,11 @@ function Article() {
     }
 
     const interval = setInterval(() => {
-      if (endTime && new Date() >= endTime) {
+      if (
+        endTime &&
+        new Date() >= endTime &&
+        (!displayNotice || (notify.D1 && notify.D2))
+      ) {
         clearInterval(interval)
         toast('You have finished the user study.')
       }
@@ -71,7 +78,7 @@ function Article() {
   }, [])
 
   const handleBack = async () => {
-    await track(`Article${id}_Time`, { time: timeSpentOnPage }, user.pid)
+    await track(`Article${id}`, { time: timeSpentOnPage }, user.pid)
     navigate('/home')
   }
 

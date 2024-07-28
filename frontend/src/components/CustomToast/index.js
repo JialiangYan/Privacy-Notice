@@ -5,9 +5,6 @@ import { finishUser } from '../../utils/request'
 import './customToastify.css'
 
 const CloseButton = () => {
-  const user = JSON.parse(localStorage.getItem('user'))
-  const pid = user.pid
-
   const throttledExit = throttle(async (pid) => {
     const id = await finishUser(pid)
     localStorage.clear()
@@ -18,7 +15,7 @@ const CloseButton = () => {
     <div
       className="exitButton"
       onClick={() => {
-        throttledExit(pid)
+        throttledExit(JSON.parse(localStorage.getItem('user')).pid)
       }}
     >
       Enter Exit Survey

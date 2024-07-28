@@ -15,13 +15,12 @@
 /* appearance of buttons */
 .intro1Next,
 .intro2Next,
-.intro3Next,
-.intro2Back,
-.intro3Back {
+.intro3Next {
   width: 98px;
   height: 32px;
   border: 1px solid black;
   border-radius: 20px;
+  background-color: #fff;
 
   letter-spacing: 0.8px;
   transform: scaleY(0.9);
@@ -32,19 +31,8 @@
   text-align: center;
   display: block;
   box-shadow: 5px 2px 0 rgba(0, 0, 0, 1); /* 右侧阴影 */
-}
 
-.intro1Next,
-.intro2Next,
-.intro3Next {
   position: absolute;
   right: 5vw;
-  bottom: 12vh;
-}
-
-.intro2Back,
-.intro3Back {
-  position: absolute;
-  left: 5vw;
-  bottom: 12vh;
+  bottom: 9vh;
 }

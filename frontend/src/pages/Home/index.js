@@ -12,6 +12,9 @@ import styles from './index.module.css'
 function Home() {
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'))
+  const condition = user.condition
+  const displayNotice =
+    condition === 5 || condition === 7 || condition === 8 || condition === 9
   const notify = JSON.parse(localStorage.getItem('notify'))
   const orderNews = user.newsOrder.map((id) =>
     news.find((item) => item.id === id)
@@ -43,7 +46,11 @@ function Home() {
     }
 
     const interval = setInterval(() => {
-      if (endTime && new Date() >= endTime) {
+      if (
+        endTime &&
+        new Date() >= endTime &&
+        (!displayNotice || (notify.D1 && notify.D2))
+      ) {
         clearInterval(interval)
         toast('You have finished the user study.')
       }
@@ -55,9 +62,6 @@ function Home() {
   // useEffects:
   useEffect(() => {
     // determine whether need to display notice
-    let condition = JSON.parse(localStorage.getItem('user')).condition
-    let displayNotice =
-      condition === 5 || condition === 7 || condition === 8 || condition === 9
     if (notify.D1 || !displayNotice) {
       // don't need to display
       setAck(true)

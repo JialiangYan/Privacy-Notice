@@ -11,13 +11,13 @@ function Slide() {
       <div className={styles.scroll}>
         <div className={styles.row}>
           <div className={styles.imgContainer}>
+            <img className={styles.img} src={s1} alt="" />
+          </div>
+          <div className={styles.imgContainer}>
             <img className={styles.img} src={s2} alt="" />
           </div>
           <div className={styles.imgContainer}>
-            <img className={styles.img} src={s3} alt="" />
-          </div>
-          <div className={styles.imgContainer}>
-            <img className={styles.img} src={s1} alt="" loading="lazy" />
+            <img className={styles.img} src={s3} alt="" loading="lazy" />
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import transition from '../../animation/transition'
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.module.css'
 
@@ -23,9 +22,6 @@ function Intro2() {
       navigate('/home')
     }
   }
-  const handleBack2 = () => {
-    navigate('/intro1')
-  }
 
   return (
     <div>
@@ -33,9 +29,6 @@ function Intro2() {
         <img src={i2} alt="intro" className={`${styles.introImg}`} />
         <button className={styles.intro1Next} onClick={handleNext2}>
           Next
-        </button>
-        <button className={styles.intro2Back} onClick={handleBack2}>
-          Back
         </button>
       </div>
     </div>

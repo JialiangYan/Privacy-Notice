@@ -6,13 +6,17 @@ import { useGSAP } from '@gsap/react'
 
 import styles from './index.module.css'
 
+import useOnScreen from '../../utils/useOnScreen'
+import { track } from '../../utils/request'
 import Slide from '../../components/Slide'
 import Purchase from '../../components/Purchase'
 import DownloadAni from '../../components/DownloadAni'
 import LoadingAni from '../../components/LoadingAni'
-import Downpart from './Downpart'
 
 import up from '../../assets/store/up.png'
+import device from '../../assets/store/device.png'
+import review from '../../assets/store/1_Reviews.png'
+import info from '../../assets/store/3_Information.png'
 import privacy from '../../assets/store/2_App Privacy.png'
 
 function Store() {
@@ -20,7 +24,19 @@ function Store() {
   const condition = JSON.parse(localStorage.getItem('user')).condition // timing condition
   const [get, setGet] = useState(false) // the content of button
   const [open, setOpen] = useState(false) // open the purchase
+  const [timeA, setTimeA] = useState(0)
+  const [timeB, setTimeB] = useState(0)
 
+  // track time
+  const refp1 = useRef(null)
+  const refp2 = useRef(null)
+  const naturalSetting = condition != 2
+  const isVisible = useOnScreen(naturalSetting ? refp1 : refp2)
+
+  const [more, openMore] = useState(false) // more description
+  const description = more
+    ? "QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
+    : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
   const storeToapp = useRef()
   const tlBtn = gsap.timeline()
   const tlPage = gsap.timeline()
@@ -179,9 +195,29 @@ function Store() {
             <LoadingAni />
           </div>
         </div>
-        {condition === 2 && <img src={privacy} className={styles.img} alt="" />}
+        {!naturalSetting && (
+          <img src={privacy} ref={refPrivacy1} className={styles.img} alt="" />
+        )}
         <Slide className={styles.slide} />
-        <Downpart condition={condition} />
+        <div>
+          <div className={styles.down}>
+            <img src={device} className={styles.img} alt="" />
+            <div className={styles.description}>
+              {description}
+              <span
+                className={more ? styles.nomore : styles.more}
+                onClick={() => openMore(!more)}
+              >
+                more
+              </span>
+            </div>
+          </div>
+          <img src={review} className={styles.img} alt="" />
+          {naturalSetting && (
+            <img ref={refp1} src={privacy} className={styles.img} alt="" />
+          )}
+          <img src={info} className={styles.img} alt="" />
+        </div>
       </div>
       {/* App Intro Page */}
       <div className={`${styles.app} app`}>

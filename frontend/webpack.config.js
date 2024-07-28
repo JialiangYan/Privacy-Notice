@@ -6,6 +6,7 @@ const BundleAnalyzerPlugin =
 const ProgressBarPlugin = require('webpackbar')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -76,6 +77,9 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
+    new CompressionPlugin({
+      algorithm: 'gzip',
+    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
