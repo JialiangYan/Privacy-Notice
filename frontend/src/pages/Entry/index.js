@@ -179,18 +179,19 @@ function Entry() {
             myself.
           </p>
           <form onSubmit={onSubmit}>
-            <button type="submit" className={styles.btn}>
-              I agree to participate in the research study described above (You
-              can use my data)
+            <button type="submit" className={styles.icbtn}>
+              <strong>agree to participate</strong> in the research study
+              described above (You can use my data)
             </button>
           </form>
           <button
-            className={styles.btn}
+            className={styles.icbtn}
             onClick={() => {
               window.location.href = 'https://www.prolific.com/'
             }}
           >
-            I do not want to participate (I want my data excluded)
+            <strong>do not want to participate</strong> (I want my data
+            excluded)
           </button>
         </div>
       </div>

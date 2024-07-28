@@ -34,15 +34,15 @@
   padding-left: 15px;
 }
 
-.btn {
+.icbtn {
   display: block;
   background-color: #fff !important;
   text-decoration: none !important;
-  margin: 1rem auto;
-  border: 2px solid rgb(204, 202, 202);
+  margin: 1.6rem auto;
+  border: 2px solid black;
   border-radius: 1rem;
   text-align: center;
   width: 84vw;
-  height: 6vh;
+  height: 5.2vh;
   font-size: 0.95rem;
 }
