@@ -36,11 +36,13 @@
 
 .btn {
   display: block;
+  background-color: #fff !important;
+  text-decoration: none !important;
   margin: 1rem auto;
-  border: 1px solid gainsboro;
+  border: 2px solid rgb(204, 202, 202);
   border-radius: 1rem;
   text-align: center;
-  width: 90vw;
-  height: 50px;
+  width: 84vw;
+  height: 6vh;
   font-size: 0.95rem;
 }
