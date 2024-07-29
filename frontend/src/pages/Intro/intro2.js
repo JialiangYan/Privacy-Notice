@@ -1,12 +1,14 @@
 import transition from '../../animation/transition'
 import { useNavigate } from 'react-router-dom'
+import { track } from '../../utils/request'
 import styles from './index.module.css'
 
 import i2 from '../../assets/app/2.2.png'
 
 function Intro2() {
   const navigate = useNavigate()
-  const condition = JSON.parse(localStorage.getItem('user')).condition
+  const user = JSON.parse(localStorage.getItem('user'))
+  const condition = user.condition
   const displayNext3 = condition === 4 || condition === 6 || condition === 9
 
   // useEffect(() => {
@@ -15,10 +17,11 @@ function Intro2() {
   //   }
   // }, [navigate])
 
-  const handleNext2 = () => {
+  const handleNext2 = async () => {
     if (displayNext3) {
       navigate('/intro3')
     } else {
+      await track('Notice_C', { time: 0 }, user.pid)
       navigate('/home')
     }
   }

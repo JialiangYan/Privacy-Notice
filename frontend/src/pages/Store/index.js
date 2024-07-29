@@ -37,35 +37,36 @@ function Store() {
 
   const btn = get ? 'Open' : 'Get'
 
-  // track time
+  // track timeA
   const refp1 = useRef(null)
   const refp2 = useRef(null)
   const naturalSetting = condition != 2
   const isVisible = useOnScreen(naturalSetting ? refp1 : refp2)
   const [timeA, setTimeA] = useState(0)
-  const startTimeRef = useRef(null)
+  const startTimeA = useRef(null)
+  const startTimeB = useRef(null)
 
   useEffect(() => {
     if (isVisible) {
-      startTimeRef.current = Date.now()
+      startTimeA.current = Date.now()
     } else {
-      if (startTimeRef.current !== null) {
+      if (startTimeA.current !== null) {
         const endTime = Date.now()
-        const duration = endTime - startTimeRef.current
+        const duration = endTime - startTimeA.current
         setTimeA(timeA + duration)
-        startTimeRef.current = null
+        startTimeA.current = null
       }
     }
     return () => {
-      if (isVisible && startTimeRef.current !== null) {
+      if (isVisible && startTimeA.current !== null) {
         const endTime = Date.now()
-        const duration = endTime - startTimeRef.current
+        const duration = endTime - startTimeA.current
         setTimeA(timeA + duration)
       }
     }
   }, [isVisible])
 
-  // Test
+  // Test timeA
   // useEffect(() => {
   //   // Define a function to log the value of timeA
   //   const logTimeA = () => {
@@ -102,6 +103,7 @@ function Store() {
         },
         '+=0'
       )
+    startTimeB.current = Date.now()
   })
 
   const close = () => {
@@ -119,8 +121,19 @@ function Store() {
       })
   }
 
-  const confirm = () => {
+  const confirm = async () => {
     setOpen(!open)
+
+    if (condition == 3 || condition == 6 || condition == 8 || condition == 9) {
+      await track(
+        'Notice_B',
+        { time: Date.now() - startTimeB.current },
+        user.pid
+      )
+    } else {
+      await track('Notice_B', { time: 0 }, user.pid)
+    }
+
     tlBtn
       .to(
         '.loading',

@@ -15,12 +15,10 @@ function Article() {
   const [ack, setAck] = useState(false)
   const notify = JSON.parse(localStorage.getItem('notify'))
   const user = JSON.parse(localStorage.getItem('user'))
-  const condition = user.condition
-  const displayNotice =
-    condition === 5 || condition === 7 || condition === 8 || condition === 9
   const [endTime, setEndTime] = useState(
     localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
   )
+  const startTimeD2 = Date.now()
 
   useEffect(() => {
     if (!endTime) {
@@ -33,11 +31,7 @@ function Article() {
     }
 
     const interval = setInterval(() => {
-      if (
-        endTime &&
-        new Date() >= endTime &&
-        (!displayNotice || (notify.D1 && notify.D2))
-      ) {
+      if (endTime && new Date() >= endTime && notify.D1 && notify.D2) {
         clearInterval(interval)
         toast('You have finished the user study.')
       }
@@ -48,19 +42,17 @@ function Article() {
 
   useEffect(() => {
     // determine whether need to display notice
-    let condition = JSON.parse(localStorage.getItem('user')).condition
-    let displayNotice =
-      condition === 5 || condition === 7 || condition === 8 || condition === 9
-    if (notify.D2 || !displayNotice) {
+    if (notify.D2) {
       // don't need to display
       setAck(true)
     }
   }, [notify])
 
-  const handleGet = () => {
+  const handleGet = async () => {
     setAck(!ack)
     notify.D2 = true
     localStorage.setItem('notify', JSON.stringify(notify))
+    await track('Notice_D2', { time: Date.now() - startTimeD2 }, user.pid)
   }
 
   const { id } = useParams()

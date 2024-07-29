@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { track } from '../../utils/request'
 import transition from '../../animation/transition'
 import CustomToast from '../../components/CustomToast'
 import Notice from '../../components/Notice'
@@ -12,9 +13,6 @@ import styles from './index.module.css'
 function Home() {
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'))
-  const condition = user.condition
-  const displayNotice =
-    condition === 5 || condition === 7 || condition === 8 || condition === 9
   const notify = JSON.parse(localStorage.getItem('notify'))
   const orderNews = user.newsOrder.map((id) =>
     news.find((item) => item.id === id)
@@ -24,6 +22,7 @@ function Home() {
   const [endTime, setEndTime] = useState(
     localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
   )
+  const startTimeD1 = Date.now()
 
   // functions
   const handleGet = () => {
@@ -31,9 +30,26 @@ function Home() {
     notify.D1 = true
     localStorage.setItem('notify', JSON.stringify(notify))
   }
-  const handleBlockClick = (id) => {
+  const handleBlockClick = async (id) => {
+    await track('Notice_D1', { time: Date.now() - startTimeD1 }, user.pid)
     navigate(`/article/${id}`)
   }
+
+  useEffect(() => {
+    async function report() {
+      let condition = user.condition
+      if (
+        condition != 5 &&
+        condition != 7 &&
+        condition != 8 &&
+        condition != 9
+      ) {
+        await track('Notice_D1', { time: 0 }, user.pid)
+        await track('Notice_D2', { time: 0 }, user.pid)
+      }
+    }
+    report()
+  }, [])
 
   useEffect(() => {
     if (!endTime) {
@@ -46,23 +62,18 @@ function Home() {
     }
 
     const interval = setInterval(() => {
-      if (
-        endTime &&
-        new Date() >= endTime &&
-        (!displayNotice || (notify.D1 && notify.D2))
-      ) {
+      if (endTime && new Date() >= endTime && notify.D1 && notify.D2) {
         clearInterval(interval)
         toast('You have finished the user study.')
       }
     }, 1000)
-
     return () => clearInterval(interval)
   }, [endTime, user])
 
   // useEffects:
   useEffect(() => {
     // determine whether need to display notice
-    if (notify.D1 || !displayNotice) {
+    if (notify.D1) {
       // don't need to display
       setAck(true)
     }

@@ -35,16 +35,18 @@ export const createUser = async (userId, navigate) => {
   try {
     const res = await apiClient.post('/users/createUser', { id: userId })
     console.log(res.data.message, res.data.user.id)
+    const cond = res.data.user.condition
     const user = {
       pid: res.data.user.id,
-      // condition: res.data.user.condition,
+      // condition: cond,
       condition: 9, //for test
       permission: res.data.user.permission,
       newsOrder: res.data.user.news || [0, 1, 2, 3, 4, 5],
     }
+    const noticeSwitch = cond == 5 || cond == 7 || cond == 8 || cond == 9
     const notify = {
-      D1: false,
-      D2: false,
+      D1: !noticeSwitch,
+      D2: !noticeSwitch,
     }
     localStorage.setItem('notify', JSON.stringify(notify))
     localStorage.setItem('user', JSON.stringify(user))
