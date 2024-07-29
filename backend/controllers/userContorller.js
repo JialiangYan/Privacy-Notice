@@ -1,7 +1,10 @@
 const asyncHandler = require('express-async-handler')
+const mongoose = require('mongoose')
 const User = require('../models/userModel')
+const Counter = require('../models/counterModel')
 
 // Helper functions
+
 const returnNews = () => {
   function shuffleArray(array) {
     const shuffledArray = [...array]
@@ -27,8 +30,23 @@ const createUser = asyncHandler(async (req, res) => {
     throw new Error('ID is required')
   }
 
+  const session = await mongoose.startSession()
   try {
-    const condition = Math.floor(Math.random() * 9) + 1
+    // generate condition
+    session.startTransaction()
+    let counter = await Counter.findOne().session(session)
+    if (!counter) {
+      counter = new Counter({ number: 1 })
+      await counter.save({ session })
+    } else {
+      counter.number++
+      if (counter.number > 9) {
+        counter.number = 1
+      }
+      await counter.save({ session })
+    }
+    const condition = counter.number
+
     const news = [...returnNews()]
     const user = new User({ id, condition, news })
     await user.save()
@@ -36,12 +54,17 @@ const createUser = asyncHandler(async (req, res) => {
   } catch (error) {
     if (error.code === 11000) {
       res.status(409)
+      await session.abortTransaction()
       throw new Error('User id already exits')
     } else {
       res.status(500)
+      await session.abortTransaction()
       throw new Error('Error creating user')
     }
   }
+
+  await session.commitTransaction()
+  session.endSession()
 })
 
 const finishParticipation = asyncHandler(async (req, res) => {
