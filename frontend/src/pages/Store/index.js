@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import gsap from 'gsap'
@@ -21,17 +21,10 @@ import privacy from '../../assets/store/2_App Privacy.png'
 
 function Store() {
   const navigate = useNavigate()
-  const condition = JSON.parse(localStorage.getItem('user')).condition // timing condition
+  const user = JSON.parse(localStorage.getItem('user'))
+  const condition = user.condition // timing condition
   const [get, setGet] = useState(false) // the content of button
   const [open, setOpen] = useState(false) // open the purchase
-  const [timeA, setTimeA] = useState(0)
-  const [timeB, setTimeB] = useState(0)
-
-  // track time
-  const refp1 = useRef(null)
-  const refp2 = useRef(null)
-  const naturalSetting = condition != 2
-  const isVisible = useOnScreen(naturalSetting ? refp1 : refp2)
 
   const [more, openMore] = useState(false) // more description
   const description = more
@@ -43,6 +36,50 @@ function Store() {
   const { contextSafe } = useGSAP({ scope: storeToapp })
 
   const btn = get ? 'Open' : 'Get'
+
+  // track time
+  const refp1 = useRef(null)
+  const refp2 = useRef(null)
+  const naturalSetting = condition != 2
+  const isVisible = useOnScreen(naturalSetting ? refp1 : refp2)
+  const [timeA, setTimeA] = useState(0)
+  const startTimeRef = useRef(null)
+
+  useEffect(() => {
+    if (isVisible) {
+      startTimeRef.current = Date.now()
+    } else {
+      if (startTimeRef.current !== null) {
+        const endTime = Date.now()
+        const duration = endTime - startTimeRef.current
+        setTimeA(timeA + duration)
+        startTimeRef.current = null
+      }
+    }
+    return () => {
+      if (isVisible && startTimeRef.current !== null) {
+        const endTime = Date.now()
+        const duration = endTime - startTimeRef.current
+        setTimeA(timeA + duration)
+      }
+    }
+  }, [isVisible])
+
+  // Test
+  // useEffect(() => {
+  //   // Define a function to log the value of timeA
+  //   const logTimeA = () => {
+  //     console.log(`Current value of timeA: ${timeA}`)
+  //   }
+
+  //   // Set an interval to call logTimeA every 1000 milliseconds (1 second)
+  //   const intervalId = setInterval(logTimeA, 1000)
+
+  //   // Clean up the interval when the component unmounts
+  //   return () => {
+  //     clearInterval(intervalId)
+  //   }
+  // }, [timeA])
 
   // animation for loading btn
   const getApp = contextSafe(() => {
@@ -125,7 +162,7 @@ function Store() {
   }
 
   // animation for page transition
-  const openApp = contextSafe(() => {
+  const openApp = contextSafe(async () => {
     tlPage
       .to(['.store', '.app'], {
         borderRadius: '4rem',
@@ -163,6 +200,12 @@ function Store() {
         },
         '+=0.3'
       )
+
+    if (naturalSetting) {
+      await track('Notice_A1', { time: timeA }, user.pid)
+    } else {
+      await track('Notice_A2', { time: timeA }, user.pid)
+    }
 
     setTimeout(() => {
       navigate('/intro1')
