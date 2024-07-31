@@ -237,7 +237,9 @@ function Store() {
   return (
     <div className={styles.main} ref={storeToapp}>
       {loading ? (
-        <div className={styles.loader}></div>
+        <div className={styles.loadcontainer}>
+          <div className={styles.loader}></div>
+        </div>
       ) : (
         <>
           {/* Purchase Model */}
