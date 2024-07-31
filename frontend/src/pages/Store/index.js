@@ -21,6 +21,7 @@ import privacy from '../../assets/store/2_App Privacy.png'
 
 function Store() {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
   const user = JSON.parse(localStorage.getItem('user'))
   const condition = user.condition // timing condition
   const [get, setGet] = useState(false) // the content of button
@@ -36,6 +37,14 @@ function Store() {
   const { contextSafe } = useGSAP({ scope: storeToapp })
 
   const btn = get ? 'Open' : 'Get'
+
+  // loading
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }, [])
 
   // track timeA
   const refp1 = useRef(null)
@@ -227,58 +236,74 @@ function Store() {
 
   return (
     <div className={styles.main} ref={storeToapp}>
-      {/* Purchase Model */}
-      {open && (
-        <Purchase confirm={confirm} close={close} condition={condition} />
-      )}
-
-      {/* Store Page */}
-      <div className={`${styles.store} store ${open ? styles.fullStore : ''}`}>
-        {/* Upper part */}
-        <div className={styles.up}>
-          <img className={styles.img} src={up} style={{ marginTop: '5px' }} />
-
-          <button
-            className={`${styles.btn} btn`}
-            onClick={get ? openApp : getApp}
+      {loading ? (
+        <div className={styles.loader}></div>
+      ) : (
+        <>
+          {/* Purchase Model */}
+          {open && (
+            <Purchase confirm={confirm} close={close} condition={condition} />
+          )}
+          {/* Store Page */}
+          <div
+            className={`${styles.store} store ${open ? styles.fullStore : ''}`}
           >
-            {btn}
-          </button>
-          <div className={`${styles.downloading} downloading`}>
-            <DownloadAni />
-          </div>
-          <div className={`${styles.loading} loading`}>
-            <LoadingAni />
-          </div>
-        </div>
-        {!naturalSetting && (
-          <img src={privacy} ref={refPrivacy1} className={styles.img} alt="" />
-        )}
-        <Slide className={styles.slide} />
-        <div>
-          <div className={styles.down}>
-            <img src={device} className={styles.img} alt="" />
-            <div className={styles.description}>
-              {description}
-              <span
-                className={more ? styles.nomore : styles.more}
-                onClick={() => openMore(!more)}
+            {/* Upper part */}
+            <div className={styles.up}>
+              <img
+                className={styles.img}
+                src={up}
+                style={{ marginTop: '5px' }}
+              />
+
+              <button
+                className={`${styles.btn} btn`}
+                onClick={get ? openApp : getApp}
               >
-                more
-              </span>
+                {btn}
+              </button>
+              <div className={`${styles.downloading} downloading`}>
+                <DownloadAni />
+              </div>
+              <div className={`${styles.loading} loading`}>
+                <LoadingAni />
+              </div>
+            </div>
+            {!naturalSetting && (
+              <img
+                src={privacy}
+                ref={refPrivacy1}
+                className={styles.img}
+                alt=""
+              />
+            )}
+            <Slide className={styles.slide} />
+            <div>
+              <div className={styles.down}>
+                <img src={device} className={styles.img} alt="" />
+                <div className={styles.description}>
+                  {description}
+                  <span
+                    className={more ? styles.nomore : styles.more}
+                    onClick={() => openMore(!more)}
+                  >
+                    more
+                  </span>
+                </div>
+              </div>
+              <img src={review} className={styles.img} alt="" />
+              {naturalSetting && (
+                <img ref={refp1} src={privacy} className={styles.img} alt="" />
+              )}
+              <img src={info} className={styles.img} alt="" />
             </div>
           </div>
-          <img src={review} className={styles.img} alt="" />
-          {naturalSetting && (
-            <img ref={refp1} src={privacy} className={styles.img} alt="" />
-          )}
-          <img src={info} className={styles.img} alt="" />
-        </div>
-      </div>
-      {/* App Intro Page */}
-      <div className={`${styles.app} app`}>
-        <div className={styles.name}>QuickNews</div>
-      </div>
+          {/* App Intro Page */}
+          <div className={`${styles.app} app`}>
+            <div className={styles.name}>QuickNews</div>
+          </div>
+        </>
+      )}
     </div>
   )
 }

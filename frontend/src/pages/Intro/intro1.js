@@ -1,4 +1,5 @@
 import transition from '../../animation/transition'
+import { startTransition } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.module.css'
 
@@ -14,7 +15,9 @@ function Intro1() {
   // }, [navigate])
 
   const handleNext1 = () => {
-    navigate('/intro2')
+    startTransition(() => {
+      navigate('/intro2')
+    })
   }
 
   return (

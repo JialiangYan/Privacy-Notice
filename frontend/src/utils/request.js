@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { startTransition } from 'react'
 
 const apiClient = axios.create({
   baseURL: 'https://privacy-notice.onrender.com/api',
@@ -50,7 +51,9 @@ export const createUser = async (userId, navigate) => {
     }
     localStorage.setItem('notify', JSON.stringify(notify))
     localStorage.setItem('user', JSON.stringify(user))
-    navigate('/instruction')
+    startTransition(() => {
+      navigate('/instruct')
+    })
   } catch (error) {
     console.error('Error create user', error)
     if (error.response && error.response.status === 409) {

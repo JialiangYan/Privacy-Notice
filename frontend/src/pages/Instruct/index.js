@@ -1,4 +1,4 @@
-import React from 'react'
+import { startTransition } from 'react'
 import { useNavigate } from 'react-router-dom'
 import transition from '../../animation/transition'
 import styles from './index.module.css'
@@ -8,7 +8,9 @@ function Instruct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    navigate('/appstore')
+    startTransition(() => {
+      navigate('/appstore')
+    })
   }
 
   return (

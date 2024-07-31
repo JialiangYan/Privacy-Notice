@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, startTransition } from 'react'
 import { createUser } from '../../utils/request'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import transition from '../../animation/transition'

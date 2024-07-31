@@ -1,4 +1,5 @@
 import transition from '../../animation/transition'
+import { startTransition } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { track } from '../../utils/request'
@@ -9,12 +10,6 @@ import i3 from '../../assets/app/2.3.png'
 function Intro3() {
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'))
-
-  // useEffect(() => {
-  //   if (!localStorage.getItem('user')) {
-  //     navigate('/error')
-  //   }
-  // }, [navigate])
 
   // analytics
   const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)
@@ -28,9 +23,10 @@ function Intro3() {
   }, [])
 
   const handleNext3 = async () => {
-    console.log('Time spent on page:', timeSpentOnPage)
     await track('Notice_C', { time: timeSpentOnPage }, user.pid)
-    navigate('/home')
+    startTransition(() => {
+      navigate('/home')
+    })
   }
 
   return (

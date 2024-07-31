@@ -1,4 +1,5 @@
 import transition from '../../animation/transition'
+import { startTransition } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { track } from '../../utils/request'
 import styles from './index.module.css'
@@ -19,10 +20,14 @@ function Intro2() {
 
   const handleNext2 = async () => {
     if (displayNext3) {
-      navigate('/intro3')
+      startTransition(() => {
+        navigate('/intro3')
+      })
     } else {
       await track('Notice_C', { time: 0 }, user.pid)
-      navigate('/home')
+      startTransition(() => {
+        navigate('/home')
+      })
     }
   }
 

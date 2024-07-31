@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, startTransition } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { track } from '../../utils/request'
@@ -32,7 +32,9 @@ function Home() {
   }
   const handleBlockClick = async (id) => {
     await track('Notice_D1', { time: Date.now() - startTimeD1 }, user.pid)
-    navigate(`/article/${id}`)
+    startTransition(() => {
+      navigate(`/article/${id}`)
+    })
   }
 
   useEffect(() => {

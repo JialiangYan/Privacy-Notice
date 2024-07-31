@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, startTransition } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { track } from '../../utils/request'
@@ -71,7 +71,9 @@ function Article() {
 
   const handleBack = async () => {
     await track(`Article${id}`, { time: timeSpentOnPage }, user.pid)
-    navigate('/home')
+    startTransition(() => {
+      navigate('/home')
+    })
   }
 
   return (
