@@ -25,9 +25,8 @@ function Instruct() {
         <p>
           Our site will go through the steps of installation and use. You will
           have <strong>two minutes</strong> to interact with the app. After the
-          period, you will be <strong>automatically</strong> redirected to a
-          questionnaire to provide feedback on how well you thought the app
-          functions.
+          period, you will be redirected to a questionnaire to provide feedback
+          on how well you thought the app functions.
         </p>
         <p>
           During the two minutes,{' '}
