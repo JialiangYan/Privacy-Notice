@@ -74,11 +74,11 @@ function Article() {
     }
   }, [])
 
-  const handleBack = async () => {
-    await track(`Article${id}`, { time: timeSpentOnPage }, user.pid)
-    startTransition(() => {
-      navigate('/quicknews/home', { state: { valid: true } })
+  const handleBack = () => {
+    startTransition(async () => {
+      await track(`Article${id}`, { time: timeSpentOnPage }, user.pid)
     })
+    navigate('/quicknews/home', { state: { valid: true } })
   }
 
   return (
