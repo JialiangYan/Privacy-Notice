@@ -39,7 +39,7 @@ const A3 = (
     </p>
     <div>
       <img
-        src="https://www.brandpointcontent.com/images/1042914813.jpg"
+        src="https://res.cloudinary.com/dfrapneyb/image/upload/v1722788999/A3_1_qrl7ws.webp"
         width="90%"
         border="0"
       />
@@ -68,7 +68,7 @@ const A3 = (
     </p>
     <div>
       <img
-        src="https://www.brandpointcontent.com/images/1042914969.jpg"
+        src="https://res.cloudinary.com/dfrapneyb/image/upload/v1722788998/A3_2_bglbjy.webp"
         width="90%"
         border="0"
       />

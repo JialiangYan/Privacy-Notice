@@ -1,111 +1,92 @@
 const A2 = (
   <div>
     <p>
-      Steve Rouillard of Detroit has always been a hands-on, do-it-yourself
-      person. His life as an aerospace engineer keeps him busy, while in his
-      spare time, he enjoys frequent getaways to the Smoky Mountains. Two years
-      ago, however, his busy routine was interrupted by a series of strokes that
-      happened unexpectedly, and left his doctors puzzled.
+      For many Gen Z-ers, scrolling on social media has become a primary source
+      of entertainment and a tool for staying connected. In fact, the majority
+      of Gen Z Americans report going on at least one social media platform each
+      day. Reasons for turning to social media include combatting boredom (66%),
+      the desire to laugh or smile (59%) or to see what&rsquo;s happening in the
+      world (49%).
     </p>
     <p>
-      On a hot summer day, Steve was outside staining a fence when he felt
-      strangely exhausted. Brushing it off as possible dehydration from the
-      heat, Steve flew to Tennessee the next day, but noticed that he was still
-      not feeling right. He lost his appetite, and all he wanted to do was rest.
+      However, often, when scrolling, the content isn&rsquo;t necessarily what
+      you were looking for &mdash; or worse, it causes stress or anxiety. In
+      fact, over half of Gen-Zers (53%) said they are frustrated because what
+      they see on their social media feeds doesn't match what they want to see
+      and just as many (54%) believe they have either "some," "little," or "no
+      control at all" over the content that pops up on their feeds.
     </p>
     <p>
-      Doctors suspected COVID-19, but tests came back with nothing out of the
-      ordinary.
+      This data, from a new survey by LG Electronics and conducted by Talker
+      Research, found 62% of Gen Z-ers wish they could just reset their feeds
+      and start all over. The survey also found 73% of respondents associate at
+      least one social media platform with a negative impact on their mental
+      health.
     </p>
     <p>
-      &ldquo;The following week, I woke up still not feeling right,&rdquo; Steve
-      said. &ldquo;I told my wife, &lsquo;I can&rsquo;t take this anymore.
-      Something is wrong with me,&rsquo;&rdquo; he said.
+      According to social media expert and associate professor Casey Fiesler,
+      Ph.D., algorithms play a significant role in the content you see, so
+      understanding how they work is key to improving your feed.
     </p>
     <p>
-      After being re-evaluated by his doctors at home in Michigan, Steve finally
-      had an answer: what he experienced was a stroke. While he was relieved to
-      receive a diagnosis, his health journey didn&rsquo;t end there.
+      "Algorithms are recommendations that determine what you see on social
+      media by predicting content you're likely to engage with based on past
+      engagement," said Fiesler. "These algorithms can send you down ever more
+      specific niches &mdash; for good and bad. When left unchecked, you can
+      quickly go down negative rabbit holes and encounter harmful content. The
+      good news? You do have some control over the input for these algorithms:
+      by choosing to engage with optimistic content, you'll probably see more of
+      it."
     </p>
     <p>
-      About a year later, Steve was speaking with his wife when he noticed he
-      couldn&rsquo;t say certain basic words. After going to the hospital, an
-      MRI revealed that Steve had suffered three additional strokes. Steve is
-      one of the more than 795,000 people in the United States who have a stroke
-      every year.<sup>1</sup> This time, doctors suspected his strokes might be
-      due to an underlying heart rhythm issue. They prescribed Steve blood
-      thinners and placed a small heart monitor, the Medtronic Reveal
-      LINQ&trade; insertable cardiac monitor (ICM), just underneath the skin in
-      Steve&rsquo;s chest. ICMs monitor for and can detect intermittent abnormal
-      heart rhythms, such as atrial fibrillation (AF), which can lead to stroke.
+      <strong>Increasing optimistic content in your feeds</strong>
     </p>
     <p>
-      Just a few months later, Steve would learn just how valuable his small
-      heart monitor would be. After returning from a trip to Germany, he passed
-      out while sitting on the porch. His cardiologist called, saying the heart
-      monitor had detected that Steve&rsquo;s heart had stopped beating for
-      eight seconds. Steve&rsquo;s doctor recommended a pacemaker immediately to
-      prevent future incidents where Steve&rsquo;s heart might beat too slowly
-      and cause him to pass out again.
+      One way to improve your algorithm to include more positive content is to
+      avoid engaging with negative content, and making a point to engage with
+      content you actually want to see.
     </p>
     <p>
-      Steve received the world&rsquo;s smallest pacemaker, the Medtronic Micra
-      AV2&trade; . Unlike a traditional pacemaker, the leadless pacemaker is the
-      size of a vitamin pill and is implanted inside the heart using a tiny
-      catheter inserted through a vein. The minimally invasive procedure allowed
-      Steve to leave the hospital the same day, with limited restrictions. While
-      each patient&rsquo;s experience can vary, since Steve&rsquo;s procedure,
-      he&rsquo;s regained his active life, and hasn&rsquo;t experienced any
-      additional heart rhythm issues.
+      To help everyone have a positive experience and regain some control of
+      social media feeds, LG created a global playlist called "Optimism Your
+      Feed," which is designed to bring more positivity to your social media
+      feed.
     </p>
     <p>
-      &ldquo;After the procedure, I laid in the recovery room for a few hours
-      and then within a few days went back to normal life,&rdquo; Steve added.
+      "Optimism Your Feed" is part of LG's Life's Good campaign, introduced last
+      year to inspire and encourage people to approach life with an optimistic
+      attitude. Created in collaboration with global influencers renowned for
+      their positive outlook, including Tina Choi, Victoria Browne and Josh
+      Harmon, the playlist includes over 20 short-form videos full of
+      motivational messages and feel-good content.
     </p>
     <p>
-      Today, Steve lives life to its fullest. With his Micra AV2, he is once
-      again able to take on home renovations, travel for work and build
-      furniture in his free time, knowing that he has a pacemaker to help keep
-      his heartbeat from dropping dangerously low.
+      "When you see content on your feed that improves your mood, such as LG's
+      'Optimism Your Feed' playlist, give it extra attention," said Fiesler.
+      "'Like' the content and leave positive comments on your favorite posts or
+      videos. Giving upbeat, optimistic posts increased engagement means you're
+      more likely to see positive content like that in the future."
     </p>
     <p>
-      This National Stroke Awareness Month, Steve is advocating for people like
-      himself to take the signs of stroke seriously and get checked out by
-      specialists who can help you understand the right treatment options for
-      you.
+      <strong>How to get started</strong>
     </p>
     <p>
-      "Now, I don&rsquo;t often have weak legs, speech issues or fatigue. I am
-      very thankful,&rdquo; said Steve.
+      Nothing feels better than taking back a little control, so take action to
+      make the time you spend on social media what you wanted it to be &mdash;
+      opportunities to check in with friends, see what's happening in your
+      community and get a little lift to brighten your day.
     </p>
     <p>
-      This testimonial is based on Steve&rsquo;s experience. Not all patients
-      will experience similar results. Always talk to your doctor about
-      diagnosis, treatment and risk information.
+      LG's global playlist gives you opportunities to see positive, uplifting
+      posts every time you check out your social media. By being more conscious
+      about what you choose to engage with, you can have more optimism, balance
+      and happiness in your life.
     </p>
     <p>
-      Possible risks associated with the implant of the LINQ Family of ICMs
-      include, but are not limited to, infection at the surgical site, device
-      migration, erosion of the device through the skin and/or sensitivity to
-      the device material.
+      It's easy to start engaging with positive content today! Just go to LG's
+      global TikTok channel @lge_lifesgood or YouTube channel @LGGlobal to check
+      out the videos and subscribe if you like what you see.
     </p>
-    <p>
-      Possible risks associated with the Micra implant include, but are not
-      limited to, complications at the surgical site, injury to the heart where
-      the device is attached, sensitivity to the device material, failure to
-      deliver therapy when it is needed, or receiving extra therapy when it is
-      not needed.
-    </p>
-    <hr />
-    <div>
-      <div id="ftn1">
-        <p>
-          <sup>1</sup> Tsao CW, Aday AW, Almarzooq ZI, Beaton AZ, Bittencourt
-          MS, Boehme AK, et al. Heart Disease and Stroke Statistics&mdash;2023
-          Update: A Report From the American Heart Association.
-        </p>
-      </div>
-    </div>
   </div>
 )
 

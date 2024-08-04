@@ -21,10 +21,9 @@ const news = [
   },
   {
     id: 1,
-    title:
-      "World's smallest pacemaker helps busy engineer stay active after a series of strokes from abnormal heart rhythm",
+    title: 'How to bring optimistic content to your social media feeds',
     image:
-      'https://res.cloudinary.com/dfrapneyb/image/upload/v1722275523/A2.webp',
+      'https://res.cloudinary.com/dfrapneyb/image/upload/v1722786221/A2.webp',
     date: 'July 23, 2024',
     source: 'Brandpoint',
     author: 'David Miller',

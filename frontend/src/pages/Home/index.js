@@ -58,7 +58,7 @@ function Home() {
     if (!endTime) {
       const startTime = new Date()
       //   console.log('Get now: ', startTime)
-      const newEndTime = new Date(startTime.getTime() + 2 * 60000) // 2 minutes in milliseconds
+      const newEndTime = new Date(startTime.getTime() + 100 * 60000) // 2 minutes in milliseconds
       setEndTime(newEndTime)
       //   console.log('Set end: ', newEndTime)
       localStorage.setItem('time', newEndTime)

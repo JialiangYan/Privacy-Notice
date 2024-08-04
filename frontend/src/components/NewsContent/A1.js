@@ -2,14 +2,13 @@ const A1 = (
   <div>
     <p>
       Time is money, and there&rsquo;s a premium: Americans say their time is
-      worth $240 per hour, on average, according to{' '}
-      <strong>new research from Empower</strong>, a financial services company.
-      Based on a standard 40-hour week, that puts the perceived value at
-      $499,200 per year &mdash; nearly eight times higher than the average U.S.
-      salary of $59,384.<sup>1</sup> One third of people set the price at under
-      $50 per hour, though 1 in 4 Millennials value their time at over $500 per
-      hour &mdash; the highest of any generation (just 6% of Boomers name that
-      rate).
+      worth $240 per hour, on average, according to new research from Empower, a
+      financial services company. Based on a standard 40-hour week, that puts
+      the perceived value at $499,200 per year &mdash; nearly eight times higher
+      than the average U.S. salary of $59,384. One third of people set the price
+      at under $50 per hour, though 1 in 4 Millennials value their time at over
+      $500 per hour &mdash; the highest of any generation (just 6% of Boomers
+      name that rate).
     </p>
     <p>
       Many Americans are racing against the clock when it comes to financial
@@ -23,8 +22,8 @@ const A1 = (
       People may be further along than they think. According to Empower Personal
       Dashboard&trade; data, the average 401(k) balance clocks in at $291,810
       and for people in their 50s approaching retirement age, the number jumps
-      to $580,259<sup>2</sup> &mdash; one key measure of overall personal
-      savings and investments.
+      to $580,259 &mdash; one key measure of overall personal savings and
+      investments.
     </p>
     <p>Additional key findings:</p>
     <ul>
@@ -119,15 +118,6 @@ const A1 = (
       Empower commissioned the &ldquo;Time is Money&rdquo; survey, which is
       based on online survey responses from 2,204 Americans ages 18+ and fielded
       by Morning Consult from March 11-14, 2024.
-    </p>
-    <hr />
-    <p>
-      1 U.S. Bureau of Labor Statistics Dec 2023. Quarterly Census of Employment
-      and Wages.
-    </p>
-    <p>
-      2 Anonymized user data from the Empower Personal Dashboard&trade; as of
-      March 2024.
     </p>
   </div>
 )
