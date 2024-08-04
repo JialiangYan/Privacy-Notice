@@ -36,11 +36,11 @@ export const createUser = async (userId, navigate) => {
   try {
     const res = await apiClient.post('/users/createUser', { id: userId })
     console.log(res.data.message, res.data.user.id)
-    const cond = res.data.user.condition
+    // const cond = res.data.user.condition // real condition
+    const cond = 9 // for test
     const user = {
       pid: res.data.user.id,
-      // condition: cond,
-      condition: 9, //for test
+      condition: cond,
       permission: res.data.user.permission,
       newsOrder: res.data.user.news || [0, 1, 2, 3, 4, 5],
     }
