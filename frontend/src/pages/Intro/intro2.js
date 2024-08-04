@@ -1,6 +1,7 @@
 import transition from '../../animation/transition'
 import { startTransition, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import withAuthorization from '../../utils/withAuthorization'
 import { track } from '../../utils/request'
 import styles from './index.module.css'
 
@@ -12,15 +13,19 @@ function Intro2() {
   const condition = user.condition
   const displayNext3 = condition === 4 || condition === 6 || condition === 9
 
+  useEffect(() => {
+    localStorage.setItem('prestate', '/quicknews/intro2')
+  }, [])
+
   const handleNext2 = async () => {
     if (displayNext3) {
       startTransition(() => {
-        navigate('/quicknews/intro3')
+        navigate('/quicknews/intro3', { state: { valid: true } })
       })
     } else {
       await track('Notice_C', { time: 0 }, user.pid)
       startTransition(() => {
-        navigate('/home')
+        navigate('/home', { state: { valid: true } })
       })
     }
   }
@@ -37,4 +42,4 @@ function Intro2() {
   )
 }
 
-export default transition(Intro2)
+export default withAuthorization(transition(Intro2))

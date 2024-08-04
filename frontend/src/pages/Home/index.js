@@ -7,6 +7,7 @@ import CustomToast from '../../components/CustomToast'
 import Notice from '../../components/Notice'
 import NewsBlock from '../../components/NewsBlock'
 import news from '../../components/NewsContent/News'
+import withAuthorization from '../../utils/withAuthorization'
 import pn1 from '../../assets/notice/pn1.png'
 import styles from './index.module.css'
 
@@ -33,7 +34,7 @@ function Home() {
   const handleBlockClick = async (id) => {
     await track('Notice_D1', { time: Date.now() - startTimeD1 }, user.pid)
     startTransition(() => {
-      navigate(`/quicknews/article/${id}`)
+      navigate(`/quicknews/article/${id}`, { state: { valid: true } })
     })
   }
 
@@ -73,6 +74,10 @@ function Home() {
   }, [endTime, user])
 
   // useEffects:
+  useEffect(() => {
+    localStorage.setItem('prestate', '/quicknews/home')
+  }, [])
+
   useEffect(() => {
     // determine whether need to display notice
     if (notify.D1) {
@@ -122,4 +127,4 @@ function Home() {
   )
 }
 
-export default transition(Home)
+export default withAuthorization(transition(Home))

@@ -1,15 +1,20 @@
-import { startTransition } from 'react'
+import { startTransition, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import withAuthorization from '../../utils/withAuthorization'
 import transition from '../../animation/transition'
 import styles from './index.module.css'
 
 function Instruct() {
   const navigate = useNavigate()
 
+  useEffect(() => {
+    localStorage.setItem('prestate', '/inst')
+  }, [])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     startTransition(() => {
-      navigate('/appstore')
+      navigate('/appstore', { state: { valid: true } })
     })
   }
 
@@ -50,4 +55,4 @@ function Instruct() {
   )
 }
 
-export default transition(Instruct)
+export default withAuthorization(transition(Instruct))

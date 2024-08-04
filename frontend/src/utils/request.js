@@ -51,8 +51,9 @@ export const createUser = async (userId, navigate) => {
     }
     localStorage.setItem('notify', JSON.stringify(notify))
     localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('prestate', `/?PROLIFIC_PID=${user.pid}`)
     startTransition(() => {
-      navigate('/inst')
+      navigate('/inst', { state: { valid: true } })
     })
   } catch (error) {
     console.error('Error create user', error)

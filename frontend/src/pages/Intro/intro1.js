@@ -1,5 +1,6 @@
 import transition from '../../animation/transition'
-import { startTransition } from 'react'
+import { startTransition, useEffect } from 'react'
+import withAuthorization from '../../utils/withAuthorization'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.module.css'
 
@@ -8,15 +9,13 @@ import i1 from '../../assets/app/2.1.png'
 function Intro1() {
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem('user')) {
-  //     navigate('/error')
-  //   }
-  // }, [navigate])
+  useEffect(() => {
+    localStorage.setItem('prestate', '/quicknews/intro1')
+  }, [])
 
   const handleNext1 = () => {
     startTransition(() => {
-      navigate('/quicknews/intro2')
+      navigate('/quicknews/intro2', { state: { valid: true } })
     })
   }
 
@@ -32,4 +31,4 @@ function Intro1() {
   )
 }
 
-export default transition(Intro1)
+export default withAuthorization(transition(Intro1))

@@ -1,7 +1,7 @@
 import transition from '../../animation/transition'
-import { startTransition } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, startTransition } from 'react'
+import withAuthorization from '../../utils/withAuthorization'
 import { track } from '../../utils/request'
 import styles from './index.module.css'
 
@@ -22,10 +22,14 @@ function Intro3() {
     }
   }, [])
 
+  useEffect(() => {
+    localStorage.setItem('prestate', '/quicknews/intro3')
+  }, [])
+
   const handleNext3 = async () => {
     await track('Notice_C', { time: timeSpentOnPage }, user.pid)
     startTransition(() => {
-      navigate('/quicknews/home')
+      navigate('/quicknews/home', { state: { valid: true } })
     })
   }
 
@@ -41,4 +45,4 @@ function Intro3() {
   )
 }
 
-export default transition(Intro3)
+export default withAuthorization(transition(Intro3))

@@ -6,6 +6,7 @@ import transition from '../../animation/transition'
 import Notice from '../../components/Notice'
 import news from '../../components/NewsContent/News'
 import CustomToast from '../../components/CustomToast'
+import withAuthorization from '../../utils/withAuthorization'
 
 import pn2 from '../../assets/notice/pn2.png'
 import styles from './index.module.css'
@@ -58,6 +59,10 @@ function Article() {
   const { id } = useParams()
   const article = news[id]
 
+  useEffect(() => {
+    localStorage.setItem('prestate', `/quicknews/article/:${id}`)
+  }, [])
+
   // analytics
   const [timeSpentOnPage, setTimeSpentOnPage] = useState(0)
   useEffect(() => {
@@ -72,7 +77,7 @@ function Article() {
   const handleBack = async () => {
     await track(`Article${id}`, { time: timeSpentOnPage }, user.pid)
     startTransition(() => {
-      navigate('/quicknews/home')
+      navigate('/quicknews/home', { state: { valid: true } })
     })
   }
 
@@ -107,4 +112,4 @@ function Article() {
   )
 }
 
-export default transition(Article)
+export default withAuthorization(transition(Article))

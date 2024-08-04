@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react'
 
 import styles from './index.module.css'
 
+import withAuthorization from '../../utils/withAuthorization'
 import useOnScreen from '../../utils/useOnScreen'
 import { track } from '../../utils/request'
 import Slide from '../../components/Slide'
@@ -38,6 +39,10 @@ function Store() {
   const { contextSafe } = useGSAP({ scope: storeToapp })
 
   const btn = get ? 'Open' : 'Get'
+
+  useEffect(() => {
+    localStorage.setItem('prestate', '/appstore')
+  }, [])
 
   // loading
   useEffect(() => {
@@ -231,7 +236,7 @@ function Store() {
     }
 
     setTimeout(() => {
-      navigate('/quicknews/intro1')
+      navigate('/quicknews/intro1', { state: { valid: true } })
     }, 3000)
   })
 
@@ -309,4 +314,4 @@ function Store() {
   )
 }
 
-export default transition(Store)
+export default withAuthorization(transition(Store))
