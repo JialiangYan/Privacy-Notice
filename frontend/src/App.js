@@ -1,10 +1,10 @@
-import React, { lazy } from 'react'
-import PreventNavigation from './utils/PreventNavigation'
+import React, { Suspense, lazy } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
 
+const Loading = lazy(() => import('./components/Loading'))
 const Error = lazy(() => import('./pages/Error'))
 const Entry = lazy(() => import('./pages/Entry'))
 const Store = lazy(() => import('./pages/Store'))
@@ -14,6 +14,45 @@ const Intro2 = lazy(() => import('./pages/Intro/intro2'))
 const Intro3 = lazy(() => import('./pages/Intro/intro3'))
 const Article = lazy(() => import('./pages/Article'))
 const Instruct = lazy(() => import('./pages/Instruct'))
+
+const router = createBrowserRouter([
+  {
+    element: <Entry />,
+    path: '/',
+  },
+  {
+    element: <Instruct />,
+    path: '/inst',
+  },
+  {
+    element: <Store />,
+    path: '/appstore',
+  },
+  {
+    element: <Intro1 />,
+    path: '/quicknews/intro1',
+  },
+  {
+    element: <Intro2 />,
+    path: '/quicknews/intro2',
+  },
+  {
+    element: <Intro3 />,
+    path: '/quicknews/intro3',
+  },
+  {
+    element: <Home />,
+    path: '/quicknews/home',
+  },
+  {
+    element: <Article />,
+    path: '/quicknews/article/:id',
+  },
+  {
+    path: '*', // 404 NOTFOUND
+    element: <Error />,
+  },
+])
 
 export default function App() {
   const isMobileDevice = () => {
@@ -27,32 +66,21 @@ export default function App() {
   }
 
   if (!isMobileDevice()) {
-    // forbidden
     return (
       <div id="forbid">
-        <h1 id="forbid-info">Sorry, please use iPhone to start the study</h1>
+        <h1 id="forbid-info">
+          Sorry, please use iPhone to participate in the study
+        </h1>
       </div>
     )
   }
-
   return (
-    <BrowserRouter>
-      <PreventNavigation>
-        <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<Entry />} />
-            <Route path="/instruct" element={<Instruct />} />
-            <Route path="/appstore" element={<Store />} />
-            <Route path="/intro1" element={<Intro1 />} />
-            <Route path="/intro2" element={<Intro2 />} />
-            <Route path="/intro3" element={<Intro3 />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/article/:id" element={<Article />} />
-            <Route path="/error" element={<Error />} />
-            <Route path="*" element={<Navigate to="/error" replace />} />
-          </Routes>
-        </AnimatePresence>
-      </PreventNavigation>
-    </BrowserRouter>
+    <div>
+      <AnimatePresence mode="wait">
+        <Suspense fallback={<Loading />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </AnimatePresence>
+    </div>
   )
 }

@@ -14,7 +14,7 @@ const news = [
       'Americans say an hour of their time is worth $240, according to new Empower research',
     image:
       'https://res.cloudinary.com/dfrapneyb/image/upload/v1722275523/A1.webp',
-    date: 'May 01, 2024',
+    date: 'August 01, 2024',
     source: 'Brandpoint',
     author: 'Sophia Garcia',
     component: A1,
@@ -25,7 +25,7 @@ const news = [
       "World's smallest pacemaker helps busy engineer stay active after a series of strokes from abnormal heart rhythm",
     image:
       'https://res.cloudinary.com/dfrapneyb/image/upload/v1722275523/A2.webp',
-    date: 'May 23, 2024',
+    date: 'July 23, 2024',
     source: 'Brandpoint',
     author: 'David Miller',
     component: A2,
@@ -36,7 +36,7 @@ const news = [
       'USS Wisconsin commemorates 80th anniversary with World of Warships collaboration',
     image:
       'https://res.cloudinary.com/dfrapneyb/image/upload/v1722275524/A3.webp',
-    date: 'April 02, 2024',
+    date: 'August 02, 2024',
     source: 'Brandpoint',
     author: 'Michael Anderson',
     component: A3,
@@ -47,7 +47,7 @@ const news = [
       'New study shows 99% of materials causing sewage clogs should never have been flushed',
     image:
       'https://res.cloudinary.com/dfrapneyb/image/upload/v1722275524/A4.webp',
-    date: 'April 16, 2024',
+    date: 'July 16, 2024',
     source: 'Brandpoint',
     author: 'Olivia Jones',
     component: A4,
@@ -57,7 +57,7 @@ const news = [
     title: 'Why you should care about the Cold War',
     image:
       'https://res.cloudinary.com/dfrapneyb/image/upload/v1722275524/A5.webp',
-    date: 'March 21, 2024',
+    date: 'June 21, 2024',
     source: 'Brandpoint',
     author: 'Liam Davies',
     component: A5,
@@ -68,7 +68,7 @@ const news = [
       'Not getting results from your Vitamin C serum? Here are 4 reasons why',
     image:
       'https://res.cloudinary.com/dfrapneyb/image/upload/v1722275524/A6.webp',
-    date: 'May 21, 2024',
+    date: 'July 21, 2024',
     source: 'Brandpoint',
     author: 'Charlotte Moore',
     component: A6,

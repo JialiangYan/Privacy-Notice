@@ -16,7 +16,7 @@ function Intro1() {
 
   const handleNext1 = () => {
     startTransition(() => {
-      navigate('/intro2')
+      navigate('/quicknews/intro2')
     })
   }
 

@@ -12,6 +12,7 @@ import Slide from '../../components/Slide'
 import Purchase from '../../components/Purchase'
 import DownloadAni from '../../components/DownloadAni'
 import LoadingAni from '../../components/LoadingAni'
+import Loading from '../../components/Loading'
 
 import up from '../../assets/store/up.png'
 import device from '../../assets/store/device.png'
@@ -230,18 +231,16 @@ function Store() {
     }
 
     setTimeout(() => {
-      navigate('/intro1')
+      navigate('/quicknews/intro1')
     }, 3000)
   })
 
   return (
     <div className={styles.main} ref={storeToapp}>
       {loading ? (
-        <div className={styles.loadcontainer}>
-          <div className={styles.loader}></div>
-        </div>
+        <Loading />
       ) : (
-        <>
+        <div>
           {/* Purchase Model */}
           {open && (
             <Purchase confirm={confirm} close={close} condition={condition} />
@@ -304,7 +303,7 @@ function Store() {
           <div className={`${styles.app} app`}>
             <div className={styles.name}>QuickNews</div>
           </div>
-        </>
+        </div>
       )}
     </div>
   )

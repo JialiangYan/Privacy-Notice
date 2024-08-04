@@ -52,7 +52,7 @@ export const createUser = async (userId, navigate) => {
     localStorage.setItem('notify', JSON.stringify(notify))
     localStorage.setItem('user', JSON.stringify(user))
     startTransition(() => {
-      navigate('/instruct')
+      navigate('/inst')
     })
   } catch (error) {
     console.error('Error create user', error)

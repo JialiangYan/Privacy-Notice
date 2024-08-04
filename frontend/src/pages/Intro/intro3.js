@@ -25,7 +25,7 @@ function Intro3() {
   const handleNext3 = async () => {
     await track('Notice_C', { time: timeSpentOnPage }, user.pid)
     startTransition(() => {
-      navigate('/home')
+      navigate('/quicknews/home')
     })
   }
 

@@ -1,6 +1,6 @@
 import transition from '../../animation/transition'
-import { startTransition } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { startTransition, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { track } from '../../utils/request'
 import styles from './index.module.css'
 
@@ -12,16 +12,10 @@ function Intro2() {
   const condition = user.condition
   const displayNext3 = condition === 4 || condition === 6 || condition === 9
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem('user')) {
-  //     navigate('/error')
-  //   }
-  // }, [navigate])
-
   const handleNext2 = async () => {
     if (displayNext3) {
       startTransition(() => {
-        navigate('/intro3')
+        navigate('/quicknews/intro3')
       })
     } else {
       await track('Notice_C', { time: 0 }, user.pid)

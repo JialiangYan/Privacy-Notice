@@ -72,7 +72,7 @@ function Article() {
   const handleBack = async () => {
     await track(`Article${id}`, { time: timeSpentOnPage }, user.pid)
     startTransition(() => {
-      navigate('/home')
+      navigate('/quicknews/home')
     })
   }
 

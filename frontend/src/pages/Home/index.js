@@ -33,7 +33,7 @@ function Home() {
   const handleBlockClick = async (id) => {
     await track('Notice_D1', { time: Date.now() - startTimeD1 }, user.pid)
     startTransition(() => {
-      navigate(`/article/${id}`)
+      navigate(`/quicknews/article/${id}`)
     })
   }
 
