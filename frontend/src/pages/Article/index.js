@@ -25,7 +25,7 @@ function Article() {
     if (!endTime) {
       const startTime = new Date()
       //   console.log('Get now: ', startTime)
-      const newEndTime = new Date(startTime.getTime() + 100 * 60000) // 2 minutes in milliseconds
+      const newEndTime = new Date(startTime.getTime() + 2 * 60000) // 2 minutes in milliseconds
       setEndTime(newEndTime)
       //   console.log('Set end: ', newEndTime)
       localStorage.setItem('time', newEndTime)
@@ -49,11 +49,13 @@ function Article() {
     }
   }, [notify])
 
-  const handleGet = async () => {
+  const handleGet = () => {
+    startTransition(async () => {
+      await track('Notice_D2', { time: Date.now() - startTimeD2 }, user.pid)
+    })
     setAck(!ack)
     notify.D2 = true
     localStorage.setItem('notify', JSON.stringify(notify))
-    await track('Notice_D2', { time: Date.now() - startTimeD2 }, user.pid)
   }
 
   const { id } = useParams()

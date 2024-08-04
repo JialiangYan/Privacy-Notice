@@ -31,11 +31,11 @@ function Home() {
     notify.D1 = true
     localStorage.setItem('notify', JSON.stringify(notify))
   }
-  const handleBlockClick = async (id) => {
-    await track('Notice_D1', { time: Date.now() - startTimeD1 }, user.pid)
-    startTransition(() => {
-      navigate(`/quicknews/article/${id}`, { state: { valid: true } })
+  const handleBlockClick = (id) => {
+    startTransition(async () => {
+      await track('Notice_D1', { time: Date.now() - startTimeD1 }, user.pid)
     })
+    navigate(`/quicknews/article/${id}`, { state: { valid: true } })
   }
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function Home() {
     if (!endTime) {
       const startTime = new Date()
       //   console.log('Get now: ', startTime)
-      const newEndTime = new Date(startTime.getTime() + 100 * 60000) // 2 minutes in milliseconds
+      const newEndTime = new Date(startTime.getTime() + 2 * 60000) // 2 minutes in milliseconds
       setEndTime(newEndTime)
       //   console.log('Set end: ', newEndTime)
       localStorage.setItem('time', newEndTime)
