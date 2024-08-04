@@ -27,14 +27,14 @@ function Home() {
 
   // functions
   const handleGet = () => {
+    startTransition(async () => {
+      await track('Notice_D1', { time: Date.now() - startTimeD1 }, user.pid)
+    })
     setAck(!ack)
     notify.D1 = true
     localStorage.setItem('notify', JSON.stringify(notify))
   }
   const handleBlockClick = (id) => {
-    startTransition(async () => {
-      await track('Notice_D1', { time: Date.now() - startTimeD1 }, user.pid)
-    })
     navigate(`/quicknews/article/${id}`, { state: { valid: true } })
   }
 
