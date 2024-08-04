@@ -49,6 +49,7 @@ export const createUser = async (userId, navigate) => {
       D1: !noticeSwitch,
       D2: !noticeSwitch,
     }
+    localStorage.clear()
     localStorage.setItem('notify', JSON.stringify(notify))
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('prestate', `/?PROLIFIC_PID=${user.pid}`)

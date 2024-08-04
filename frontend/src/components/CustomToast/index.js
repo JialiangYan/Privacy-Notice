@@ -7,7 +7,6 @@ import './customToastify.css'
 const CloseButton = () => {
   const throttledExit = throttle(async (pid) => {
     const id = await finishUser(pid)
-    localStorage.clear()
     window.location.href = `https://ualbertauw.qualtrics.com/jfe/form/SV_3R8gIdZxs3lKR6u/?PROLIFIC_PID=${id}`
   }, 10000)
 
