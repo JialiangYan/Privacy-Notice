@@ -38,21 +38,21 @@ function Home() {
     navigate(`/quicknews/article/${id}`, { state: { valid: true } })
   }
 
-  useEffect(() => {
-    async function report() {
-      let condition = user.condition
-      if (
-        condition != 5 &&
-        condition != 7 &&
-        condition != 8 &&
-        condition != 9
-      ) {
-        await track('Notice_D1', { time: 0 }, user.pid)
-        await track('Notice_D2', { time: 0 }, user.pid)
-      }
-    }
-    report()
-  }, [])
+  // useEffect(() => {
+  //   async function report() {
+  //     let condition = user.condition
+  //     if (
+  //       condition != 5 &&
+  //       condition != 7 &&
+  //       condition != 8 &&
+  //       condition != 9
+  //     ) {
+  //       await track('Notice_D1', { time: 0 }, user.pid)
+  //       await track('Notice_D2', { time: 0 }, user.pid)
+  //     }
+  //   }
+  //   report()
+  // }, [])
 
   useEffect(() => {
     if (!endTime) {

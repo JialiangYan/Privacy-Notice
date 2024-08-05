@@ -276,12 +276,7 @@ function Store() {
               </div>
             </div>
             {!naturalSetting && (
-              <img
-                src={privacy}
-                ref={refPrivacy1}
-                className={styles.img}
-                alt=""
-              />
+              <img src={privacy} ref={refp2} className={styles.img} alt="" />
             )}
             <Slide className={styles.slide} />
             <div>
