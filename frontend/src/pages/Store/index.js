@@ -20,6 +20,7 @@ import device from '../../assets/store/device.png'
 import review from '../../assets/store/1_Reviews.png'
 import info from '../../assets/store/3_Information.png'
 import privacy from '../../assets/store/2_App Privacy.png'
+import preview from '../../assets/store/preview.png'
 
 function Store() {
   const navigate = useNavigate()
@@ -31,8 +32,8 @@ function Store() {
 
   const [more, openMore] = useState(false) // more description
   const description = more
-    ? "QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
-    : 'QuickNews helps you discover balanced, unbiased stories -- for free. Connect with the world around you through editor curation and state-of-the-art '
+    ? "QuickNews helps you discover balanced, unbiased stories for free. Connect with the world around you through editor curation and state-of-the-art algorithms. Whether it's politics, local coverage, sports, or entertainment, felling good about being informed has never been easier."
+    : 'QuickNews helps you discover balanced, unbiased stories for free. Connect with the world around you through editor curation and state-of-the-art '
   const storeToapp = useRef()
   const tlBtn = gsap.timeline()
   const tlPage = gsap.timeline()
@@ -276,7 +277,10 @@ function Store() {
               </div>
             </div>
             {!naturalSetting && (
-              <img src={privacy} ref={refp2} className={styles.img} alt="" />
+              <div>
+                <img src={privacy} ref={refp2} className={styles.img} alt="" />
+                <img src={preview} className={styles.img} alt="" />
+              </div>
             )}
             <Slide className={styles.slide} />
             <div>
