@@ -73,7 +73,7 @@ function Article() {
   const article = news[id]
 
   useEffect(() => {
-    localStorage.setItem('prestate', `/quicknews/article/:${id}`)
+    localStorage.setItem('prestate', `/quicknews/article/${id}`)
   }, [])
 
   // analytics
