@@ -7,6 +7,7 @@ import Notice from '../../components/Notice'
 import news from '../../components/NewsContent/News'
 import CustomToast from '../../components/CustomToast'
 import withAuthorization from '../../utils/withAuthorization'
+import Loading from '../../components/Loading'
 
 import pn2 from '../../assets/notice/pn2.png'
 import styles from './index.module.css'
@@ -20,6 +21,15 @@ function Article() {
     localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
   )
   const startTimeD2 = Date.now()
+  const [loading, setLoading] = useState(false)
+
+  // loading
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
+  }, [])
 
   // Scroll to top
   const { pathname } = useLocation()
@@ -96,33 +106,39 @@ function Article() {
 
   return (
     <div>
-      {!ack ? (
-        <div>
-          <Notice image={pn2} handleGet={handleGet} />
-        </div>
+      {loading ? (
+        <Loading />
       ) : (
-        <div></div>
-      )}
-      <CustomToast />
-      <div className={styles.main}>
-        <div className={styles.topBar} id="newsContentTop">
-          <div className={styles.bbtn} onClick={handleBack}>
-            {'<'}
+        <div>
+          {!ack ? (
+            <div>
+              <Notice image={pn2} handleGet={handleGet} />
+            </div>
+          ) : (
+            <div></div>
+          )}
+          <CustomToast />
+          <div className={styles.main}>
+            <div className={styles.topBar} id="newsContentTop">
+              <div className={styles.bbtn} onClick={handleBack}>
+                {'<'}
+              </div>
+              <div className={styles.name}>QuickNews</div>
+            </div>
+            <div className={styles.title}>{article.title}</div>
+            <div className={styles.info}>
+              <div>{article.date}</div>
+              <div>{article.author}</div>
+            </div>
+            <div className={styles.imaContainer}>
+              <img className={styles.aimg} src={article.image} alt="" />
+            </div>
+            <div className={styles.text}>{article.component}</div>
           </div>
-          <div className={styles.name}>QuickNews</div>
         </div>
-        <div className={styles.title}>{article.title}</div>
-        <div className={styles.info}>
-          <div>{article.date}</div>
-          <div>{article.author}</div>
-        </div>
-        <div className={styles.imaContainer}>
-          <img className={styles.aimg} src={article.image} alt="" />
-        </div>
-        <div className={styles.text}>{article.component}</div>
-      </div>
+      )}
     </div>
   )
 }
 
-export default withAuthorization(transition(Article))
+export default withAuthorization(Article)

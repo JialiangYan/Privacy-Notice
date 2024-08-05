@@ -50,7 +50,7 @@ function Store() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    }, 3500)
   }, [])
 
   // track timeA
