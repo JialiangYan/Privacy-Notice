@@ -1,5 +1,5 @@
 import { useEffect, useState, startTransition } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { track } from '../../utils/request'
 import transition from '../../animation/transition'
@@ -20,6 +20,17 @@ function Article() {
     localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
   )
   const startTimeD2 = Date.now()
+
+  // Scroll to top
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const element = document.getElementById('newsContentTop')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname])
 
   useEffect(() => {
     if (!endTime) {
@@ -94,7 +105,7 @@ function Article() {
       )}
       <CustomToast />
       <div className={styles.main}>
-        <div className={styles.topBar}>
+        <div className={styles.topBar} id="newsContentTop">
           <div className={styles.bbtn} onClick={handleBack}>
             {'<'}
           </div>
