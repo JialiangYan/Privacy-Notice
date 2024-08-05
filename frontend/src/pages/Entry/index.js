@@ -101,10 +101,12 @@ function Entry() {
           </p>
           <div className={styles.title2}>Risk</div>
           <p>
-            While it is always possible that someone can figure out who
-            participated in a study, we will remove all identifying information
-            from your data before analyzing it in order to make it harder for
-            people to tell who has participated.
+            We will require you to interact with our news app for two minutes.
+            It may make you feel tired or bored. Besides, while it is always
+            possible that someone can figure out who participated in a study, we
+            will remove all identifying information from your data before
+            analyzing it in order to make it harder for people to tell who has
+            participated.
           </p>
           <p>
             There are no other foreseeable risks. If at any time, we become
