@@ -26,7 +26,7 @@ function Article() {
   useEffect(() => {
     const element = document.getElementById('newsContentTop')
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'instant' })
     } else {
       window.scrollTo(0, 0)
     }

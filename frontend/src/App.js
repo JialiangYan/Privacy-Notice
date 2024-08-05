@@ -1,7 +1,11 @@
 import React, { Suspense, lazy } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import PreventNavigation from './utils/PreventNavigation'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  ScrollRestoration,
+} from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
 
@@ -80,7 +84,9 @@ export default function App() {
       <PreventNavigation>
         <AnimatePresence mode="wait">
           <Suspense fallback={<Loading />}>
-            <RouterProvider router={router} />
+            <RouterProvider router={router}>
+              <ScrollRestoration />
+            </RouterProvider>
           </Suspense>
         </AnimatePresence>
       </PreventNavigation>
