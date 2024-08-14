@@ -88,7 +88,7 @@ function Entry() {
           <ul className={styles.lst}>
             <li>Between the ages of 18 and 65</li>
             <li>English speaking</li>
-            <li>Within USA</li>
+            <li>Within North America</li>
             <li>iPhone user</li>
           </ul>
           <p>Your participation should take around 10 minutes.</p>
