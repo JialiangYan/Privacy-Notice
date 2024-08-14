@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
 
 const Loading = lazy(() => import('./components/Loading'))
+const Exit = lazy(() => import('./pages/Exit'))
 const Error = lazy(() => import('./pages/Error'))
 const Entry = lazy(() => import('./pages/Entry'))
 const Store = lazy(() => import('./pages/Store'))
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     element: <Article />,
     path: '/quicknews/article/:id',
+  },
+  {
+    element: <Exit />,
+    path: '/exit',
   },
   {
     path: '*', // 404 NOTFOUND

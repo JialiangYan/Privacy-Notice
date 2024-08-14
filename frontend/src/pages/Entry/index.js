@@ -189,7 +189,7 @@ function Entry() {
           <button
             className={styles.icbtn}
             onClick={() => {
-              window.location.href = 'https://www.prolific.com/'
+              navigate('/exit', { state: { valid: true } })
             }}
           >
             do not want to participate (I want my data excluded)

@@ -1,0 +1,12 @@
+.main {
+  padding: 70px 20px 40px 20px; /* top right bottom left */
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.title1 {
+  font-weight: bold;
+  color: black;
+  font-size: 1.3rem;
+  text-align: center;
+}
