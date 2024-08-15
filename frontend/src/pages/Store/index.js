@@ -82,22 +82,6 @@ function Store() {
     }
   }, [isVisible])
 
-  // Test timeA
-  // useEffect(() => {
-  //   // Define a function to log the value of timeA
-  //   const logTimeA = () => {
-  //     console.log(`Current value of timeA: ${timeA}`)
-  //   }
-
-  //   // Set an interval to call logTimeA every 1000 milliseconds (1 second)
-  //   const intervalId = setInterval(logTimeA, 1000)
-
-  //   // Clean up the interval when the component unmounts
-  //   return () => {
-  //     clearInterval(intervalId)
-  //   }
-  // }, [timeA])
-
   // animation for loading btn
   const getApp = contextSafe(() => {
     tlBtn
@@ -243,72 +227,65 @@ function Store() {
 
   return (
     <div className={styles.main} ref={storeToapp}>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div>
-          {/* Purchase Model */}
-          {open && (
-            <Purchase confirm={confirm} close={close} condition={condition} />
-          )}
-          {/* Store Page */}
-          <div
-            className={`${styles.store} store ${open ? styles.fullStore : ''}`}
-          >
-            {/* Upper part */}
-            <div className={styles.up}>
-              <img
-                className={styles.img}
-                src={up}
-                style={{ marginTop: '5px' }}
-              />
+      {loading && <Loading />}
+      <div>
+        {/* Purchase Model */}
+        {open && (
+          <Purchase confirm={confirm} close={close} condition={condition} />
+        )}
+        {/* Store Page */}
+        <div
+          className={`${styles.store} store ${open ? styles.fullStore : ''}`}
+        >
+          {/* Upper part */}
+          <div className={styles.up}>
+            <img className={styles.img} src={up} style={{ marginTop: '5px' }} />
 
-              <button
-                className={`${styles.btn} btn`}
-                onClick={get ? openApp : getApp}
-              >
-                {btn}
-              </button>
-              <div className={`${styles.downloading} downloading`}>
-                <DownloadAni />
-              </div>
-              <div className={`${styles.loading} loading`}>
-                <LoadingAni />
-              </div>
+            <button
+              className={`${styles.btn} btn`}
+              onClick={get ? openApp : getApp}
+            >
+              {btn}
+            </button>
+            <div className={`${styles.downloading} downloading`}>
+              <DownloadAni />
             </div>
-            {!naturalSetting && (
-              <div>
-                <img src={privacy} ref={refp2} className={styles.img} alt="" />
-                <img src={preview} className={styles.img} alt="" />
-              </div>
-            )}
-            <Slide className={styles.slide} />
-            <div>
-              <div className={styles.down}>
-                <img src={device} className={styles.img} alt="" />
-                <div className={styles.description}>
-                  {description}
-                  <span
-                    className={more ? styles.nomore : styles.more}
-                    onClick={() => openMore(!more)}
-                  >
-                    more
-                  </span>
-                </div>
-              </div>
-              <img src={review} className={styles.img} alt="" />
-              {naturalSetting && (
-                <img ref={refp1} src={privacy} className={styles.img} alt="" />
-              )}
-              <img src={info} className={styles.img} alt="" />
+            <div className={`${styles.loading} loading`}>
+              <LoadingAni />
             </div>
           </div>
-          {/* App Intro Page */}
-          <div className={`${styles.app} app`}>
-            <div className={styles.name}>QuickNews</div>
+          {!naturalSetting && (
+            <div>
+              <img src={privacy} ref={refp2} className={styles.img} alt="" />
+              <img src={preview} className={styles.img} alt="" />
+            </div>
+          )}
+          <Slide className={styles.slide} />
+          <div>
+            <div className={styles.down}>
+              <img src={device} className={styles.img} alt="" />
+              <div className={styles.description}>
+                {description}
+                <span
+                  className={more ? styles.nomore : styles.more}
+                  onClick={() => openMore(!more)}
+                >
+                  more
+                </span>
+              </div>
+            </div>
+            <img src={review} className={styles.img} alt="" />
+            {naturalSetting && (
+              <img ref={refp1} src={privacy} className={styles.img} alt="" />
+            )}
+            <img src={info} className={styles.img} alt="" />
           </div>
         </div>
-      )}
+        {/* App Intro Page */}
+        <div className={`${styles.app} app`}>
+          <div className={styles.name}>QuickNews</div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import transition from '../../animation/transition'
-import { startTransition, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import withAuthorization from '../../utils/withAuthorization'
 import { track } from '../../utils/request'
@@ -19,14 +19,9 @@ function Intro2() {
 
   const handleNext2 = async () => {
     if (displayNext3) {
-      startTransition(() => {
-        navigate('/quicknews/intro3', { state: { valid: true } })
-      })
+      navigate('/quicknews/intro3', { state: { valid: true } })
     } else {
-      await track('Notice_C', { time: 0 }, user.pid)
-      startTransition(() => {
-        navigate('/quicknews/home', { state: { valid: true } })
-      })
+      navigate('/quicknews/home', { state: { valid: true } })
     }
   }
 
