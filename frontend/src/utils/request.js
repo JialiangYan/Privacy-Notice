@@ -36,8 +36,8 @@ export const createUser = async (userId, navigate) => {
   try {
     const res = await apiClient.post('/users/createUser', { id: userId })
     console.log(res.data.message, res.data.user.id)
-    // const cond = res.data.user.condition // real condition
-    const cond = 1 // for test
+    const cond = res.data.user.condition // real condition
+    // const cond = 2 // for test
     const user = {
       pid: res.data.user.id,
       condition: cond,
