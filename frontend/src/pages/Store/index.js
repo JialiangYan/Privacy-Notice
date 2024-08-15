@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { motion } from 'framer-motion'
 
 import styles from './index.module.css'
 
@@ -9,7 +10,7 @@ import withAuthorization from '../../utils/withAuthorization'
 import useOnScreen from '../../utils/useOnScreen'
 import { track } from '../../utils/request'
 import Slide from '../../components/Slide'
-import Purchase from '../../components/Purchase'
+import { Purchase, NPurchase } from '../../components/Purchase'
 import DownloadAni from '../../components/DownloadAni'
 import LoadingAni from '../../components/LoadingAni'
 import Loading from '../../components/Loading'
@@ -237,13 +238,28 @@ function Store() {
       <div className={styles.main} ref={storeToapp} id="main">
         <div>
           {/* Purchase Model */}
-          {open && (
-            <Purchase confirm={confirm} close={close} condition={condition} />
-          )}
+          {open &&
+            (condition === 3 ||
+            condition === 6 ||
+            condition === 8 ||
+            condition === 9 ? (
+              <Purchase confirm={confirm} close={close} />
+            ) : (
+              <NPurchase confirm={confirm} close={close} />
+            ))}
           {/* Store Page */}
           <div
             className={`${styles.store} store ${open ? styles.fullStore : ''}`}
           >
+            {/* Overlay */}
+            {open && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className={`${styles.overlay} overlay`}
+              ></motion.div>
+            )}
             {/* Upper part */}
             <div className={styles.up}>
               <img
