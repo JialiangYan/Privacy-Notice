@@ -11,7 +11,8 @@ function Intro2() {
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'))
   const condition = user.condition
-  const displayNext3 = condition == 4 || condition == 6 || condition == 9
+  const displayNext3 =
+    condition == 4 || condition == 6 || condition == 7 || condition == 9
 
   useEffect(() => {
     localStorage.setItem('prestate', '/quicknews/intro2')
