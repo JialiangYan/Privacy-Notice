@@ -29,24 +29,26 @@ const createUser = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('ID is required')
   }
+  if (await User.findOne({ id })) {
+    const error = new Error('User ID already exists')
+    error.code = 11000
+    throw error
+  }
 
-  const session = await mongoose.startSession()
   try {
     // generate condition
-    session.startTransaction()
-    let counter = await Counter.findOne().session(session)
+    let counter = await Counter.findOne()
     if (!counter) {
       counter = new Counter({ number: 1 })
-      await counter.save({ session })
+      await counter.save()
     } else {
       counter.number++
       if (counter.number > 9) {
         counter.number = 1
       }
-      await counter.save({ session })
+      await counter.save()
     }
     const condition = counter.number
-
     const news = [...returnNews()]
     const user = new User({ id, condition, news })
     await user.save()
@@ -54,17 +56,12 @@ const createUser = asyncHandler(async (req, res) => {
   } catch (error) {
     if (error.code === 11000) {
       res.status(409)
-      await session.abortTransaction()
       throw new Error('User id already exits')
     } else {
       res.status(500)
-      await session.abortTransaction()
       throw new Error('Error creating user')
     }
   }
-
-  await session.commitTransaction()
-  session.endSession()
 })
 
 const finishParticipation = asyncHandler(async (req, res) => {
