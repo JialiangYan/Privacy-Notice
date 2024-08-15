@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import transition from '../../animation/transition'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
@@ -43,6 +42,10 @@ function Store() {
 
   useEffect(() => {
     localStorage.setItem('prestate', '/appstore')
+  }, [])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
   }, [])
 
   // loading
@@ -226,68 +229,74 @@ function Store() {
   })
 
   return (
-    <div className={styles.main} ref={storeToapp}>
+    <div>
       {loading && <Loading />}
-      <div>
-        {/* Purchase Model */}
-        {open && (
-          <Purchase confirm={confirm} close={close} condition={condition} />
-        )}
-        {/* Store Page */}
-        <div
-          className={`${styles.store} store ${open ? styles.fullStore : ''}`}
-        >
-          {/* Upper part */}
-          <div className={styles.up}>
-            <img className={styles.img} src={up} style={{ marginTop: '5px' }} />
-
-            <button
-              className={`${styles.btn} btn`}
-              onClick={get ? openApp : getApp}
-            >
-              {btn}
-            </button>
-            <div className={`${styles.downloading} downloading`}>
-              <DownloadAni />
-            </div>
-            <div className={`${styles.loading} loading`}>
-              <LoadingAni />
-            </div>
-          </div>
-          {!naturalSetting && (
-            <div>
-              <img src={privacy} ref={refp2} className={styles.img} alt="" />
-              <img src={preview} className={styles.img} alt="" />
-            </div>
+      <div className={styles.main} ref={storeToapp}>
+        <div>
+          {/* Purchase Model */}
+          {open && (
+            <Purchase confirm={confirm} close={close} condition={condition} />
           )}
-          <Slide className={styles.slide} />
-          <div>
-            <div className={styles.down}>
-              <img src={device} className={styles.img} alt="" />
-              <div className={styles.description}>
-                {description}
-                <span
-                  className={more ? styles.nomore : styles.more}
-                  onClick={() => openMore(!more)}
-                >
-                  more
-                </span>
+          {/* Store Page */}
+          <div
+            className={`${styles.store} store ${open ? styles.fullStore : ''}`}
+          >
+            {/* Upper part */}
+            <div className={styles.up}>
+              <img
+                className={styles.img}
+                src={up}
+                style={{ marginTop: '5px' }}
+              />
+
+              <button
+                className={`${styles.btn} btn`}
+                onClick={get ? openApp : getApp}
+              >
+                {btn}
+              </button>
+              <div className={`${styles.downloading} downloading`}>
+                <DownloadAni />
+              </div>
+              <div className={`${styles.loading} loading`}>
+                <LoadingAni />
               </div>
             </div>
-            <img src={review} className={styles.img} alt="" />
-            {naturalSetting && (
-              <img ref={refp1} src={privacy} className={styles.img} alt="" />
+            {!naturalSetting && (
+              <div>
+                <img src={privacy} ref={refp2} className={styles.img} alt="" />
+                <img src={preview} className={styles.img} alt="" />
+              </div>
             )}
-            <img src={info} className={styles.img} alt="" />
+            <Slide className={styles.slide} />
+            <div>
+              <div className={styles.down}>
+                <img src={device} className={styles.img} alt="" />
+                <div className={styles.description}>
+                  {description}
+                  <span
+                    className={more ? styles.nomore : styles.more}
+                    onClick={() => openMore(!more)}
+                  >
+                    more
+                  </span>
+                </div>
+              </div>
+              <img src={review} className={styles.img} alt="" />
+              {naturalSetting && (
+                <img ref={refp1} src={privacy} className={styles.img} alt="" />
+              )}
+              <img src={info} className={styles.img} alt="" />
+            </div>
           </div>
-        </div>
-        {/* App Intro Page */}
-        <div className={`${styles.app} app`}>
-          <div className={styles.name}>QuickNews</div>
+          {/* App Intro Page */}
+          <div className={`${styles.app} app`}>
+            <div className={styles.name}>QuickNews</div>
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default withAuthorization(transition(Store))
+export default withAuthorization(Store)

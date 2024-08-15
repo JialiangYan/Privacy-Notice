@@ -14,8 +14,16 @@ import styles from './index.module.css'
 function Article() {
   const navigate = useNavigate()
   const [ack, setAck] = useState(false)
-  const notify = JSON.parse(localStorage.getItem('notify'))
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(localStorage.getItem('user')) || {
+    pid: '-999',
+    condition: 1,
+    permission: false,
+    newsOrder: [0, 1, 2, 3, 4, 5],
+  }
+  const notify = JSON.parse(localStorage.getItem('notify')) || {
+    D1: true,
+    D2: true,
+  }
   const [endTime, setEndTime] = useState(
     localStorage.getItem('time') ? new Date(localStorage.getItem('time')) : null
   )

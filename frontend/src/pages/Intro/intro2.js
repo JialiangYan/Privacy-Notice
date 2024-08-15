@@ -2,7 +2,6 @@ import transition from '../../animation/transition'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import withAuthorization from '../../utils/withAuthorization'
-import { track } from '../../utils/request'
 import styles from './index.module.css'
 
 import i2 from '../../assets/app/2.2.png'
