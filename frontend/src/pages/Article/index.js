@@ -1,5 +1,5 @@
 import { useEffect, useState, startTransition } from 'react'
-import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { track } from '../../utils/request'
 import Notice from '../../components/Notice'
@@ -39,15 +39,12 @@ function Article() {
   }, [])
 
   // Scroll to top
-  const { pathname } = useLocation()
   useEffect(() => {
     const element = document.getElementById('newsContentTop')
     if (element) {
       element.scrollIntoView({ behavior: 'instant' })
-    } else {
-      window.scrollTo(0, 0)
     }
-  }, [pathname])
+  }, [])
 
   useEffect(() => {
     if (!endTime) {

@@ -45,7 +45,10 @@ function Store() {
   }, [])
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    const element = document.getElementById('main')
+    if (element) {
+      element.scrollIntoView({ behavior: 'instant' })
+    }
   }, [])
 
   // loading
@@ -231,7 +234,7 @@ function Store() {
   return (
     <div>
       {loading && <Loading />}
-      <div className={styles.main} ref={storeToapp}>
+      <div className={styles.main} ref={storeToapp} id="main">
         <div>
           {/* Purchase Model */}
           {open && (
