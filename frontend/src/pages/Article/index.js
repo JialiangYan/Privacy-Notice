@@ -42,7 +42,7 @@ function Article() {
   useEffect(() => {
     const element = document.getElementById('newsContentTop')
     if (element) {
-      element.scrollIntoView({ behavior: 'instant' })
+      element.scrollIntoView({ behavior: 'smooth' })
     }
   }, [])
 
