@@ -60,7 +60,7 @@ function Entry() {
       <div className={styles.main}>
         <div className={styles.content}>
           <p>
-            <strong>Study title: </strong> Smartphone news app user study
+            <strong>Study title: </strong> QuickNews User Experience Study
           </p>
           <div className={styles.container}>
             <div className={styles.item}>
@@ -95,9 +95,9 @@ function Entry() {
           <div className={styles.title2}>Benefits</div>
           <p>
             Other than the receipt of a small honorarium, you will not directly
-            benefit from your participation. Information gathered in this
-            research will help us improve existing smartphone user experience
-            and develop new interaction design that could benefit users.
+            benefit from your participation. Information gathered in this study
+            will help us improve existing smartphone user experience and develop
+            new interaction design that could benefit users.
           </p>
           <div className={styles.title2}>Risk</div>
           <p>
@@ -118,8 +118,7 @@ function Entry() {
           <div className={styles.title2}>Remuneration/Compensation</div>
           <p>
             To thank you for your time, you will be eligible to receive $6 after
-            completing the study. Besides, we will be pleased to make a summary
-            of the results available to you once they have been compiled.
+            completing the study.
           </p>
           <div className={styles.title2}>Confidentiality & Anonymity</div>
           <p>
@@ -151,8 +150,7 @@ function Entry() {
           <p>
             If you do not participate in this study or choose to withdraw from
             this study, the data that was collected during your participation
-            will be destroyed. Note that you cannot have your data removed if
-            you have already completed this study.
+            will be destroyed.
           </p>
           <div className={styles.title2}>Further Information</div>
           <p>
