@@ -29,35 +29,38 @@ const createUser = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('ID is required')
   }
-  if (await User.findOne({ id })) {
+
+  const user = await User.findOne({ id })
+  if (user && !user.permission) {
+    // if user has been created and finished
+    res.status(409)
     const error = new Error('User ID already exists')
     error.code = 11000
     throw error
-  }
-
-  try {
-    // generate condition
-    let counter = await Counter.findOne()
-    if (!counter) {
-      counter = new Counter({ number: 1 })
-      await counter.save()
-    } else {
-      counter.number++
-      if (counter.number > 9) {
-        counter.number = 1
-      }
-      await counter.save()
-    }
-    const condition = counter.number
-    const news = [...returnNews()]
-    const user = new User({ id, condition, news })
-    await user.save()
+  } else if (user && user.permission) {
+    // if user has been created but not finished
     res.json({ message: 'Successfully create user', user })
-  } catch (error) {
-    if (error.code === 11000) {
-      res.status(409)
-      throw new Error('User id already exits')
-    } else {
+  } else {
+    // if user has not been created
+    try {
+      // generate condition
+      let counter = await Counter.findOne()
+      if (!counter) {
+        counter = new Counter({ number: 1 })
+        await counter.save()
+      } else {
+        counter.number++
+        if (counter.number > 9) {
+          counter.number = 1
+        }
+        await counter.save()
+      }
+      const condition = counter.number
+      const news = [...returnNews()]
+      const user = new User({ id, condition, news }) // create new user
+      await user.save()
+      res.json({ message: 'Successfully create user', user })
+    } catch (error) {
       res.status(500)
       throw new Error('Error creating user')
     }
