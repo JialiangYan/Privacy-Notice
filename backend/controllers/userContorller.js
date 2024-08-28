@@ -43,7 +43,7 @@ const createUser = asyncHandler(async (req, res) => {
     // if user has not been created
     try {
       // generate condition
-      const condition = 4
+      const condition = 3
       const news = [...returnNews()]
       const user = new User({ id, condition, news }) // create new user
       await user.save()
