@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const mongoose = require('mongoose')
 const User = require('../models/userModel')
+const Counter = require('../models/counterModel')
 
 // Helper functions
 
@@ -43,7 +44,18 @@ const createUser = asyncHandler(async (req, res) => {
     // if user has not been created
     try {
       // generate condition
-      const condition = 2
+      let counter = await Counter.findOne()
+      if (!counter) {
+        counter = new Counter({ number: 1 })
+        await counter.save()
+      } else {
+        counter.number++
+        if (counter.number > 9) {
+          counter.number = 1
+        }
+        await counter.save()
+      }
+      const condition = counter.number
       const news = [...returnNews()]
       const user = new User({ id, condition, news }) // create new user
       await user.save()
