@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler')
 const mongoose = require('mongoose')
 const User = require('../models/userModel')
 const Counter = require('../models/counterModel')
+const numbers = [9, 3, 3, 3, 2, 2, 5, 5, 4, 4]
 
 // Helper functions
 
@@ -45,17 +46,12 @@ const createUser = asyncHandler(async (req, res) => {
     try {
       // generate condition
       let counter = await Counter.findOne()
-      if (!counter) {
-        counter = new Counter({ number: 1 })
-        await counter.save()
-      } else {
-        counter.number++
-        if (counter.number > 9) {
-          counter.number = 1
-        }
-        await counter.save()
+      const condition = numbers[counter.number]
+      counter.number++
+      if (counter.number > 9) {
+        counter.number = 0
       }
-      const condition = counter.number
+      await counter.save()
       const news = [...returnNews()]
       const user = new User({ id, condition, news }) // create new user
       await user.save()
