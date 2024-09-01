@@ -46,7 +46,7 @@ const createUser = asyncHandler(async (req, res) => {
     try {
       // generate condition
       let counter = await Counter.findOne()
-      const condition = numbers[counter.number]
+      const condition = 6
       counter.number++
       if (counter.number > 9) {
         counter.number = 0
